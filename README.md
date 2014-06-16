@@ -11,6 +11,11 @@ How to install
 4.Advanced Combat Tracker.exeと同じフォルダに「FFXIV_ACT_Plugin.dll」と「ACT.TPMonitor.dll」を配置  
 5.Plugin -> Plugin Listingタブから4.「ACT.TPMonitor.dll」を選択  
 6.Add/Enable Pluginクリック  
+7.TPMonitorタブ選択
+8.キャラフォルダー設定
+
+![Main](https://github.com/GB19xx/ACT.TPMonitor/blob/master/img/Settings.png "設定画面")
+
 
 How to uninstall
 ----------------
