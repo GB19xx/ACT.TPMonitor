@@ -26,8 +26,8 @@ namespace ACT.TPMonitor
                         sr.ReadLine();  //MainAdapter
 
                         // Location, ScreenSize
-                        int left = int.Parse(sr.ReadLine().Split('\t')[1].ToString());  //ScreenLeft
-                        int top = int.Parse(sr.ReadLine().Split('\t')[1].ToString());   //ScreenTop
+                        int left = (int)uint.Parse(sr.ReadLine().Split('\t')[1].ToString());  //ScreenLeft
+                        int top = (int)uint.Parse(sr.ReadLine().Split('\t')[1].ToString());   //ScreenTop
                         int width = int.Parse(sr.ReadLine().Split('\t')[1].ToString()); //ScreenWidth
                         int height = int.Parse(sr.ReadLine().Split('\t')[1].ToString());//ScreenHeight
 

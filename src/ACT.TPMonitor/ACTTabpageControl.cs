@@ -502,6 +502,22 @@ namespace ACT.TPMonitor
 			xmlSettings = new SettingsSerializer(this);	// Create a new settings serializer and pass it this instance
 			LoadSettings();
 
+            // Load FFXIV plugin's assembly if needed
+            AppDomain.CurrentDomain.AssemblyResolve += (o, e) =>
+            {
+                var simpleName = new string(e.Name.TakeWhile(x => x != ',').ToArray());
+                if (simpleName == "FFXIV_ACT_Plugin")
+                {
+                    var query = ActGlobals.oFormActMain.ActPlugins.Where(x => x.lblPluginTitle.Text == "FFXIV_ACT_Plugin.dll");
+                    if (query.Any())
+                    {
+                        return System.Reflection.Assembly.LoadFrom(query.First().pluginFile.FullName);
+                    }
+                }
+
+                return null;
+            };
+
 			lblStatus.Text = "Plugin Started.";
 
             controller = new TPMonitorController();
