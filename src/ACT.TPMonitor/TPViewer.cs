@@ -14,7 +14,7 @@ namespace ACT.TPMonitor
             InitializeComponent();
 
             _controller = controller;
-            this.TopMost = true;
+            this.ControlBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;   // hidden border
             this.TransparencyKey = this.BackColor = Color.Navy;                 // the color key to transparent, choose a color that you don't use
             //this.Opacity = 0.3;
@@ -40,7 +40,16 @@ namespace ACT.TPMonitor
 
         public void Adjust(Rectangle rect)
         {
-            this.Location = rect.Location;
+            Point pos = rect.Location;
+            if (_controller.IsFloating)
+            {
+                pos = new Point((int)_controller.FloatingX, (int)_controller.FloatingY);
+            }
+            else
+            {
+                pos.Offset((int)_controller.OffsetX, (int)_controller.OffsetY);
+            }
+            this.Location = pos;
             this.Size = rect.Size;
         }
 

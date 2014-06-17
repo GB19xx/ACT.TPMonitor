@@ -34,21 +34,27 @@ namespace ACT.TPMonitor
         public Font TPFont { get; set; }
         public Rectangle PartyListUI { get; set; }
 
+        public bool IsFloating { get; set; }
+        public decimal OffsetX { get; set; }
+        public decimal OffsetY { get; set; }
+        public decimal FloatingX { get; set; }
+        public decimal FloatingY { get; set; }
+
         public List<PartyMember> PartyMemberInfo { get; private set; }
 
         private Regex regex = new Regex(@"(?<Time>\[.+?\]) TP ((?<Num>\d):(?<Name>.*)|/(?<Command>.+))", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        TPViewer view;
-        Thread checkStatus =null;
-        Thread getTP = null;
+        private TPViewer view;
+        private Thread checkStatus = null;
+        private Thread getTP = null;
         private Process _ffxivProcess = null;
         private IntPtr zero = IntPtr.Zero;
-        private bool stoped;
+        private bool isExited;
 
         public TPMonitorController()
         {
             ActGlobals.oFormActMain.OnLogLineRead += act_OnLogLineRead;
 
-            stoped = false;
+            isExited = false;
 
             PartyMemberInfo = new List<PartyMember>();
             for (int i = 0; i < 8; i++)
@@ -73,7 +79,7 @@ namespace ACT.TPMonitor
         {
             ActGlobals.oFormActMain.OnLogLineRead -= act_OnLogLineRead;
 
-            stoped = true;
+            isExited = true;
 
             if (checkStatus.IsAlive && checkStatus.ThreadState == System.Threading.ThreadState.Running)
                 checkStatus.Abort();
@@ -89,7 +95,7 @@ namespace ACT.TPMonitor
         {
             while (true)
             {
-                if (stoped) break;
+                if (isExited) break;
 
                 try
                 {
@@ -193,7 +199,7 @@ namespace ACT.TPMonitor
                     {
                         switch (command)
                         {
-                            case "adjust":
+                            case "adjust":                                
                                 this.PartyListUI = Util.GetPartyListLocation(this.CharFolder);
                                 view.Adjust();
                                 break;
@@ -222,7 +228,7 @@ namespace ACT.TPMonitor
         {
             while (!CombatantMemory.Abort)
             {
-                if (stoped) break;
+                if (isExited) break;
 
                 if (_ffxivProcess == null)
                 {

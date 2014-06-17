@@ -44,16 +44,16 @@ namespace ACT.TPMonitor
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem(new string[] {
             "/Show",
             "Show Party Member TP value."}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem(new string[] {
             "/Hide",
             "Hide Party Member TP value."}, -1);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem(new string[] {
             "2 - 8:<2> - <8>",
             "Set Displays Party Member 2-8\'s name."}, -1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem(new string[] {
             "/Adjust",
             "If you change the Party List of the HUD configutation, and can also be adjusted."}, -1);
             this.textBoxCharacterFolder = new System.Windows.Forms.TextBox();
@@ -84,6 +84,17 @@ namespace ACT.TPMonitor
             this.textBoxSampleCommand = new System.Windows.Forms.TextBox();
             this.groupBoxOption = new System.Windows.Forms.GroupBox();
             this.checkBoxHideOnDissolve = new System.Windows.Forms.CheckBox();
+            this.groupBoxLocation = new System.Windows.Forms.GroupBox();
+            this.radioButtonOffset = new System.Windows.Forms.RadioButton();
+            this.radioButtonFloating = new System.Windows.Forms.RadioButton();
+            this.numericUpDownOffsetX = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownFloatingX = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownOffsetY = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownFloatingY = new System.Windows.Forms.NumericUpDown();
+            this.labelOffsetX = new System.Windows.Forms.Label();
+            this.labelFloatingX = new System.Windows.Forms.Label();
+            this.labelOffsetY = new System.Windows.Forms.Label();
+            this.labelFloatingY = new System.Windows.Forms.Label();
             this.groupBoxCharacterFolder.SuspendLayout();
             this.groupBoxStatus.SuspendLayout();
             this.tableLayoutPanelStatus.SuspendLayout();
@@ -91,6 +102,11 @@ namespace ACT.TPMonitor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFontSize)).BeginInit();
             this.groupBoxUsage.SuspendLayout();
             this.groupBoxOption.SuspendLayout();
+            this.groupBoxLocation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffsetX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloatingX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffsetY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloatingY)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxCharacterFolder
@@ -101,7 +117,7 @@ namespace ACT.TPMonitor
             this.textBoxCharacterFolder.Name = "textBoxCharacterFolder";
             this.textBoxCharacterFolder.ReadOnly = true;
             this.textBoxCharacterFolder.Size = new System.Drawing.Size(651, 19);
-            this.textBoxCharacterFolder.TabIndex = 1;
+            this.textBoxCharacterFolder.TabIndex = 0;
             this.textBoxCharacterFolder.Text = "%Appdata%";
             // 
             // buttonOpenFolder
@@ -110,7 +126,7 @@ namespace ACT.TPMonitor
             this.buttonOpenFolder.Location = new System.Drawing.Point(663, 18);
             this.buttonOpenFolder.Name = "buttonOpenFolder";
             this.buttonOpenFolder.Size = new System.Drawing.Size(75, 23);
-            this.buttonOpenFolder.TabIndex = 2;
+            this.buttonOpenFolder.TabIndex = 1;
             this.buttonOpenFolder.Text = "Open Folder";
             this.buttonOpenFolder.UseVisualStyleBackColor = true;
             this.buttonOpenFolder.Click += new System.EventHandler(this.buttonOpenFolder_Click);
@@ -122,7 +138,7 @@ namespace ACT.TPMonitor
             this.groupBoxCharacterFolder.Location = new System.Drawing.Point(19, 23);
             this.groupBoxCharacterFolder.Name = "groupBoxCharacterFolder";
             this.groupBoxCharacterFolder.Size = new System.Drawing.Size(744, 54);
-            this.groupBoxCharacterFolder.TabIndex = 3;
+            this.groupBoxCharacterFolder.TabIndex = 0;
             this.groupBoxCharacterFolder.TabStop = false;
             this.groupBoxCharacterFolder.Text = "Character Folder";
             // 
@@ -131,8 +147,8 @@ namespace ACT.TPMonitor
             this.groupBoxStatus.Controls.Add(this.tableLayoutPanelStatus);
             this.groupBoxStatus.Location = new System.Drawing.Point(19, 83);
             this.groupBoxStatus.Name = "groupBoxStatus";
-            this.groupBoxStatus.Size = new System.Drawing.Size(258, 96);
-            this.groupBoxStatus.TabIndex = 7;
+            this.groupBoxStatus.Size = new System.Drawing.Size(292, 96);
+            this.groupBoxStatus.TabIndex = 1;
             this.groupBoxStatus.TabStop = false;
             this.groupBoxStatus.Text = "Status";
             // 
@@ -156,8 +172,8 @@ namespace ACT.TPMonitor
             this.tableLayoutPanelStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelStatus.Size = new System.Drawing.Size(246, 72);
-            this.tableLayoutPanelStatus.TabIndex = 3;
+            this.tableLayoutPanelStatus.Size = new System.Drawing.Size(280, 72);
+            this.tableLayoutPanelStatus.TabIndex = 0;
             // 
             // labelACT
             // 
@@ -176,7 +192,7 @@ namespace ACT.TPMonitor
             this.labelLoggedInStatus.Location = new System.Drawing.Point(123, 57);
             this.labelLoggedInStatus.Name = "labelLoggedInStatus";
             this.labelLoggedInStatus.Size = new System.Drawing.Size(66, 12);
-            this.labelLoggedInStatus.TabIndex = 3;
+            this.labelLoggedInStatus.TabIndex = 7;
             this.labelLoggedInStatus.Text = "No Process.";
             // 
             // labelFFXIVPlugin
@@ -186,7 +202,7 @@ namespace ACT.TPMonitor
             this.labelFFXIVPlugin.Location = new System.Drawing.Point(3, 21);
             this.labelFFXIVPlugin.Name = "labelFFXIVPlugin";
             this.labelFFXIVPlugin.Size = new System.Drawing.Size(101, 12);
-            this.labelFFXIVPlugin.TabIndex = 1;
+            this.labelFFXIVPlugin.TabIndex = 2;
             this.labelFFXIVPlugin.Text = "FFXIV ACT Plugin:";
             // 
             // labelFFXIVProcessStatus
@@ -196,7 +212,7 @@ namespace ACT.TPMonitor
             this.labelFFXIVProcessStatus.Location = new System.Drawing.Point(123, 39);
             this.labelFFXIVProcessStatus.Name = "labelFFXIVProcessStatus";
             this.labelFFXIVProcessStatus.Size = new System.Drawing.Size(66, 12);
-            this.labelFFXIVProcessStatus.TabIndex = 3;
+            this.labelFFXIVProcessStatus.TabIndex = 5;
             this.labelFFXIVProcessStatus.Text = "No Process.";
             // 
             // labelFFXIVProcess
@@ -206,7 +222,7 @@ namespace ACT.TPMonitor
             this.labelFFXIVProcess.Location = new System.Drawing.Point(3, 39);
             this.labelFFXIVProcess.Name = "labelFFXIVProcess";
             this.labelFFXIVProcess.Size = new System.Drawing.Size(81, 12);
-            this.labelFFXIVProcess.TabIndex = 1;
+            this.labelFFXIVProcess.TabIndex = 4;
             this.labelFFXIVProcess.Text = "Game Process:";
             // 
             // labelFFXIVPluginStatus
@@ -226,7 +242,7 @@ namespace ACT.TPMonitor
             this.labelLogin.Location = new System.Drawing.Point(3, 57);
             this.labelLogin.Name = "labelLogin";
             this.labelLogin.Size = new System.Drawing.Size(34, 12);
-            this.labelLogin.TabIndex = 2;
+            this.labelLogin.TabIndex = 6;
             this.labelLogin.Text = "Login:";
             // 
             // labelACTStatus
@@ -236,7 +252,7 @@ namespace ACT.TPMonitor
             this.labelACTStatus.Location = new System.Drawing.Point(123, 3);
             this.labelACTStatus.Name = "labelACTStatus";
             this.labelACTStatus.Size = new System.Drawing.Size(66, 12);
-            this.labelACTStatus.TabIndex = 3;
+            this.labelACTStatus.TabIndex = 1;
             this.labelACTStatus.Text = "No Process.";
             // 
             // groupBoxFont
@@ -246,7 +262,7 @@ namespace ACT.TPMonitor
             this.groupBoxFont.Location = new System.Drawing.Point(624, 83);
             this.groupBoxFont.Name = "groupBoxFont";
             this.groupBoxFont.Size = new System.Drawing.Size(139, 96);
-            this.groupBoxFont.TabIndex = 9;
+            this.groupBoxFont.TabIndex = 4;
             this.groupBoxFont.TabStop = false;
             this.groupBoxFont.Text = "Font";
             this.groupBoxFont.Visible = false;
@@ -294,10 +310,10 @@ namespace ACT.TPMonitor
             this.groupBoxUsage.Controls.Add(this.buttonCopy);
             this.groupBoxUsage.Controls.Add(this.labelSample);
             this.groupBoxUsage.Controls.Add(this.textBoxSampleCommand);
-            this.groupBoxUsage.Location = new System.Drawing.Point(19, 185);
+            this.groupBoxUsage.Location = new System.Drawing.Point(19, 270);
             this.groupBoxUsage.Name = "groupBoxUsage";
             this.groupBoxUsage.Size = new System.Drawing.Size(744, 192);
-            this.groupBoxUsage.TabIndex = 10;
+            this.groupBoxUsage.TabIndex = 5;
             this.groupBoxUsage.TabStop = false;
             this.groupBoxUsage.Text = "Usage";
             // 
@@ -311,14 +327,14 @@ namespace ACT.TPMonitor
             this.listViewCommands.GridLines = true;
             this.listViewCommands.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewCommands.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4});
+            listViewItem25,
+            listViewItem26,
+            listViewItem27,
+            listViewItem28});
             this.listViewCommands.Location = new System.Drawing.Point(31, 74);
             this.listViewCommands.Name = "listViewCommands";
             this.listViewCommands.Size = new System.Drawing.Size(551, 106);
-            this.listViewCommands.TabIndex = 5;
+            this.listViewCommands.TabIndex = 3;
             this.listViewCommands.UseCompatibleStateImageBehavior = false;
             this.listViewCommands.View = System.Windows.Forms.View.Details;
             // 
@@ -334,22 +350,20 @@ namespace ACT.TPMonitor
             // 
             // labelCommand
             // 
-            this.labelCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelCommand.AutoSize = true;
-            this.labelCommand.Location = new System.Drawing.Point(50, 55);
+            this.labelCommand.Location = new System.Drawing.Point(9, 59);
             this.labelCommand.Name = "labelCommand";
             this.labelCommand.Size = new System.Drawing.Size(55, 12);
-            this.labelCommand.TabIndex = 4;
+            this.labelCommand.TabIndex = 2;
             this.labelCommand.Text = "Command";
             // 
             // labelSyntax
             // 
-            this.labelSyntax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelSyntax.AutoSize = true;
-            this.labelSyntax.Location = new System.Drawing.Point(50, 18);
+            this.labelSyntax.Location = new System.Drawing.Point(9, 18);
             this.labelSyntax.Name = "labelSyntax";
             this.labelSyntax.Size = new System.Drawing.Size(40, 12);
-            this.labelSyntax.TabIndex = 4;
+            this.labelSyntax.TabIndex = 0;
             this.labelSyntax.Text = "Syntax";
             // 
             // labelRecommend
@@ -368,7 +382,7 @@ namespace ACT.TPMonitor
             this.buttonCopy.Location = new System.Drawing.Point(604, 157);
             this.buttonCopy.Name = "buttonCopy";
             this.buttonCopy.Size = new System.Drawing.Size(119, 23);
-            this.buttonCopy.TabIndex = 3;
+            this.buttonCopy.TabIndex = 6;
             this.buttonCopy.Text = "Clipbord Copy";
             this.buttonCopy.UseVisualStyleBackColor = true;
             this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
@@ -379,7 +393,7 @@ namespace ACT.TPMonitor
             this.labelSample.Location = new System.Drawing.Point(29, 36);
             this.labelSample.Name = "labelSample";
             this.labelSample.Size = new System.Drawing.Size(97, 12);
-            this.labelSample.TabIndex = 2;
+            this.labelSample.TabIndex = 1;
             this.labelSample.Text = "/e TP [Command]";
             // 
             // textBoxSampleCommand
@@ -391,17 +405,17 @@ namespace ACT.TPMonitor
             this.textBoxSampleCommand.Name = "textBoxSampleCommand";
             this.textBoxSampleCommand.ReadOnly = true;
             this.textBoxSampleCommand.Size = new System.Drawing.Size(150, 115);
-            this.textBoxSampleCommand.TabIndex = 1;
+            this.textBoxSampleCommand.TabIndex = 5;
             this.textBoxSampleCommand.Text = "/e TP 2:<2>\r\n/e TP 3:<3>\r\n/e TP 4:<4>\r\n/e TP 5:<5>\r\n/e TP 6:<6>\r\n/e TP 7:<7>\r\n/e " +
     "TP 8:<8>\r\n/e TP /show";
             // 
             // groupBoxOption
             // 
             this.groupBoxOption.Controls.Add(this.checkBoxHideOnDissolve);
-            this.groupBoxOption.Location = new System.Drawing.Point(283, 83);
+            this.groupBoxOption.Location = new System.Drawing.Point(317, 83);
             this.groupBoxOption.Name = "groupBoxOption";
-            this.groupBoxOption.Size = new System.Drawing.Size(335, 96);
-            this.groupBoxOption.TabIndex = 11;
+            this.groupBoxOption.Size = new System.Drawing.Size(292, 58);
+            this.groupBoxOption.TabIndex = 2;
             this.groupBoxOption.TabStop = false;
             this.groupBoxOption.Text = "Option";
             // 
@@ -417,17 +431,173 @@ namespace ACT.TPMonitor
             this.checkBoxHideOnDissolve.Text = "TPMonitor is to hide when dissolved the party.";
             this.checkBoxHideOnDissolve.UseVisualStyleBackColor = true;
             // 
+            // groupBoxLocation
+            // 
+            this.groupBoxLocation.Controls.Add(this.labelFloatingX);
+            this.groupBoxLocation.Controls.Add(this.labelFloatingY);
+            this.groupBoxLocation.Controls.Add(this.labelOffsetY);
+            this.groupBoxLocation.Controls.Add(this.labelOffsetX);
+            this.groupBoxLocation.Controls.Add(this.numericUpDownFloatingY);
+            this.groupBoxLocation.Controls.Add(this.numericUpDownFloatingX);
+            this.groupBoxLocation.Controls.Add(this.numericUpDownOffsetY);
+            this.groupBoxLocation.Controls.Add(this.numericUpDownOffsetX);
+            this.groupBoxLocation.Controls.Add(this.radioButtonFloating);
+            this.groupBoxLocation.Controls.Add(this.radioButtonOffset);
+            this.groupBoxLocation.Location = new System.Drawing.Point(317, 147);
+            this.groupBoxLocation.Name = "groupBoxLocation";
+            this.groupBoxLocation.Size = new System.Drawing.Size(292, 117);
+            this.groupBoxLocation.TabIndex = 3;
+            this.groupBoxLocation.TabStop = false;
+            this.groupBoxLocation.Text = "Monitor Location";
+            // 
+            // radioButtonOffset
+            // 
+            this.radioButtonOffset.AutoSize = true;
+            this.radioButtonOffset.Checked = true;
+            this.radioButtonOffset.Location = new System.Drawing.Point(6, 17);
+            this.radioButtonOffset.Name = "radioButtonOffset";
+            this.radioButtonOffset.Size = new System.Drawing.Size(119, 16);
+            this.radioButtonOffset.TabIndex = 0;
+            this.radioButtonOffset.TabStop = true;
+            this.radioButtonOffset.Text = "Party List + Offset";
+            this.radioButtonOffset.UseVisualStyleBackColor = true;
+            this.radioButtonOffset.CheckedChanged += new System.EventHandler(this.radioButtonOffset_CheckedChanged);
+            // 
+            // radioButtonFloating
+            // 
+            this.radioButtonFloating.AutoSize = true;
+            this.radioButtonFloating.Location = new System.Drawing.Point(6, 64);
+            this.radioButtonFloating.Name = "radioButtonFloating";
+            this.radioButtonFloating.Size = new System.Drawing.Size(64, 16);
+            this.radioButtonFloating.TabIndex = 5;
+            this.radioButtonFloating.Text = "Floating";
+            this.radioButtonFloating.UseVisualStyleBackColor = true;
+            this.radioButtonFloating.CheckedChanged += new System.EventHandler(this.radioButtonFloating_CheckedChanged);
+            // 
+            // numericUpDownOffsetX
+            // 
+            this.numericUpDownOffsetX.Location = new System.Drawing.Point(54, 39);
+            this.numericUpDownOffsetX.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownOffsetX.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownOffsetX.Name = "numericUpDownOffsetX";
+            this.numericUpDownOffsetX.Size = new System.Drawing.Size(71, 19);
+            this.numericUpDownOffsetX.TabIndex = 2;
+            this.numericUpDownOffsetX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownOffsetX.ValueChanged += new System.EventHandler(this.numericUpDownOffsetX_ValueChanged);
+            // 
+            // numericUpDownFloatingX
+            // 
+            this.numericUpDownFloatingX.Location = new System.Drawing.Point(54, 86);
+            this.numericUpDownFloatingX.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownFloatingX.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownFloatingX.Name = "numericUpDownFloatingX";
+            this.numericUpDownFloatingX.Size = new System.Drawing.Size(71, 19);
+            this.numericUpDownFloatingX.TabIndex = 7;
+            this.numericUpDownFloatingX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownFloatingX.ValueChanged += new System.EventHandler(this.numericUpDownFloatingX_ValueChanged);
+            // 
+            // numericUpDownOffsetY
+            // 
+            this.numericUpDownOffsetY.Location = new System.Drawing.Point(196, 39);
+            this.numericUpDownOffsetY.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownOffsetY.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownOffsetY.Name = "numericUpDownOffsetY";
+            this.numericUpDownOffsetY.Size = new System.Drawing.Size(71, 19);
+            this.numericUpDownOffsetY.TabIndex = 4;
+            this.numericUpDownOffsetY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownOffsetY.ValueChanged += new System.EventHandler(this.numericUpDownOffsetY_ValueChanged);
+            // 
+            // numericUpDownFloatingY
+            // 
+            this.numericUpDownFloatingY.Location = new System.Drawing.Point(196, 86);
+            this.numericUpDownFloatingY.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownFloatingY.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownFloatingY.Name = "numericUpDownFloatingY";
+            this.numericUpDownFloatingY.Size = new System.Drawing.Size(71, 19);
+            this.numericUpDownFloatingY.TabIndex = 9;
+            this.numericUpDownFloatingY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownFloatingY.ValueChanged += new System.EventHandler(this.numericUpDownFloatingY_ValueChanged);
+            // 
+            // labelOffsetX
+            // 
+            this.labelOffsetX.AutoSize = true;
+            this.labelOffsetX.Location = new System.Drawing.Point(34, 41);
+            this.labelOffsetX.Name = "labelOffsetX";
+            this.labelOffsetX.Size = new System.Drawing.Size(14, 12);
+            this.labelOffsetX.TabIndex = 1;
+            this.labelOffsetX.Text = "X:";
+            // 
+            // labelFloatingX
+            // 
+            this.labelFloatingX.AutoSize = true;
+            this.labelFloatingX.Location = new System.Drawing.Point(34, 88);
+            this.labelFloatingX.Name = "labelFloatingX";
+            this.labelFloatingX.Size = new System.Drawing.Size(14, 12);
+            this.labelFloatingX.TabIndex = 6;
+            this.labelFloatingX.Text = "X:";
+            // 
+            // labelOffsetY
+            // 
+            this.labelOffsetY.AutoSize = true;
+            this.labelOffsetY.Location = new System.Drawing.Point(176, 41);
+            this.labelOffsetY.Name = "labelOffsetY";
+            this.labelOffsetY.Size = new System.Drawing.Size(14, 12);
+            this.labelOffsetY.TabIndex = 3;
+            this.labelOffsetY.Text = "Y:";
+            // 
+            // labelFloatingY
+            // 
+            this.labelFloatingY.AutoSize = true;
+            this.labelFloatingY.Location = new System.Drawing.Point(176, 88);
+            this.labelFloatingY.Name = "labelFloatingY";
+            this.labelFloatingY.Size = new System.Drawing.Size(14, 12);
+            this.labelFloatingY.TabIndex = 8;
+            this.labelFloatingY.Text = "Y:";
+            // 
             // ACTTabpageControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBoxLocation);
             this.Controls.Add(this.groupBoxOption);
             this.Controls.Add(this.groupBoxFont);
             this.Controls.Add(this.groupBoxUsage);
             this.Controls.Add(this.groupBoxStatus);
             this.Controls.Add(this.groupBoxCharacterFolder);
             this.Name = "ACTTabpageControl";
-            this.Size = new System.Drawing.Size(786, 400);
+            this.Size = new System.Drawing.Size(786, 465);
             this.groupBoxCharacterFolder.ResumeLayout(false);
             this.groupBoxCharacterFolder.PerformLayout();
             this.groupBoxStatus.ResumeLayout(false);
@@ -439,6 +609,12 @@ namespace ACT.TPMonitor
             this.groupBoxUsage.PerformLayout();
             this.groupBoxOption.ResumeLayout(false);
             this.groupBoxOption.PerformLayout();
+            this.groupBoxLocation.ResumeLayout(false);
+            this.groupBoxLocation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffsetX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloatingX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffsetY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloatingY)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -490,6 +666,17 @@ namespace ACT.TPMonitor
         private Label labelSyntax;
         private ColumnHeader columnHeaderCommand;
         private ColumnHeader columnHeaderDescription;
+        private GroupBox groupBoxLocation;
+        private NumericUpDown numericUpDownFloatingY;
+        private NumericUpDown numericUpDownFloatingX;
+        private NumericUpDown numericUpDownOffsetY;
+        private NumericUpDown numericUpDownOffsetX;
+        private RadioButton radioButtonFloating;
+        private RadioButton radioButtonOffset;
+        private Label labelFloatingX;
+        private Label labelFloatingY;
+        private Label labelOffsetY;
+        private Label labelOffsetX;
         private Font selectedFont;
 
 		#region IActPluginV1 Members
@@ -523,6 +710,11 @@ namespace ACT.TPMonitor
             controller = new TPMonitorController();
             controller.CharFolder = textBoxCharacterFolder.Text;
             controller.PartyListUI = Util.GetPartyListLocation(textBoxCharacterFolder.Text);
+            controller.IsFloating = radioButtonFloating.Checked;
+            controller.OffsetX = numericUpDownOffsetX.Value;
+            controller.OffsetY = numericUpDownOffsetY.Value;
+            controller.FloatingX = numericUpDownFloatingX.Value;
+            controller.FloatingY = numericUpDownFloatingY.Value;
             controller.ChangedStatus += new EventHandler(this.ChangedStatus);
 
             SetFontName();
@@ -556,6 +748,12 @@ namespace ACT.TPMonitor
             xmlSettings.AddControlSetting(comboBoxTPFont.Name, comboBoxTPFont);
             xmlSettings.AddControlSetting(numericUpDownFontSize.Name, numericUpDownFontSize);
             xmlSettings.AddControlSetting(checkBoxHideOnDissolve.Name, checkBoxHideOnDissolve);
+            xmlSettings.AddControlSetting(checkBoxHideOnDissolve.Name, checkBoxHideOnDissolve);
+            xmlSettings.AddControlSetting(radioButtonFloating.Name, radioButtonFloating);
+            xmlSettings.AddControlSetting(numericUpDownOffsetX.Name, numericUpDownOffsetX);
+            xmlSettings.AddControlSetting(numericUpDownOffsetY.Name, numericUpDownOffsetY);
+            xmlSettings.AddControlSetting(numericUpDownFloatingX.Name, numericUpDownFloatingX);
+            xmlSettings.AddControlSetting(numericUpDownFloatingY.Name, numericUpDownFloatingY);
 
 			if (File.Exists(settingsFile))
 			{
@@ -696,5 +894,35 @@ namespace ACT.TPMonitor
         {
             Clipboard.SetText(textBoxSampleCommand.Text);
         }
-	}
+
+        private void radioButtonOffset_CheckedChanged(object sender, EventArgs e)
+        {
+            controller.IsFloating = false;
+        }
+
+        private void numericUpDownOffsetX_ValueChanged(object sender, EventArgs e)
+        {
+            if (controller != null) controller.OffsetX = numericUpDownOffsetX.Value;
+        }
+
+        private void numericUpDownOffsetY_ValueChanged(object sender, EventArgs e)
+        {
+            if (controller != null) controller.OffsetY = numericUpDownOffsetY.Value;
+        }
+
+        private void radioButtonFloating_CheckedChanged(object sender, EventArgs e)
+        {
+            if (controller != null) controller.IsFloating = true;
+        }
+
+        private void numericUpDownFloatingX_ValueChanged(object sender, EventArgs e)
+        {
+            if (controller != null) controller.FloatingX = numericUpDownOffsetX.Value;
+        }
+
+        private void numericUpDownFloatingY_ValueChanged(object sender, EventArgs e)
+        {
+            if (controller != null) controller.FloatingY = numericUpDownOffsetY.Value;
+        }
+    }
 }

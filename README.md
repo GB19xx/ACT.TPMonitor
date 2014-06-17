@@ -11,8 +11,8 @@ How to install
 4.Advanced Combat Tracker.exeと同じフォルダに「FFXIV_ACT_Plugin.dll」と「ACT.TPMonitor.dll」を配置  
 5.Plugin -> Plugin Listingタブから4.「ACT.TPMonitor.dll」を選択  
 6.Add/Enable Pluginクリック  
-7.TPMonitorタブ選択
-8.キャラフォルダー設定
+7.TPMonitorタブ選択  
+8.キャラフォルダー設定  
 
 ![Main](https://github.com/GB19xx/ACT.TPMonitor/blob/master/img/Settings.png "設定画面")
 
@@ -28,14 +28,23 @@ Usage
 ------
 PTメンバーのメモリ検索は諦めたので、コマンドにて手動設定  
 下記をマクロにすると便利  
-/e TP 2:<2>  
-/e TP 3:<3>  
-/e TP 4:<4>  
-/e TP 5:<5>  
-/e TP 6:<6>  
-/e TP 7:<7>  
-/e TP 8:<8>  
+/e TP 2:\<2\>  
+/e TP 3:\<3\>  
+/e TP 4:\<4\>  
+/e TP 5:\<5\>  
+/e TP 6:\<6\>  
+/e TP 7:\<7\>  
+/e TP 8:\<8\>  
 /e TP /show  
+
+Remarks
+-----------
+・Win7(64bit)のみ動作確認  
+・マルチモニタ未検証  
+・サブキャラ未検証（フォルダ変えて）  
+・Zoom100％のみ対応  
+・チャットの種別がないので、他人のコマンドにも反応  
+・CFはパーティ解散じゃにので手動で非表示に  
 
 License
 -------
