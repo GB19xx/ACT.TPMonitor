@@ -44,16 +44,16 @@ namespace ACT.TPMonitor
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "/Show",
             "Show Party Member TP value."}, -1);
-            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "/Hide",
             "Hide Party Member TP value."}, -1);
-            System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "2 - 8:<2> - <8>",
             "Set Displays Party Member 2-8\'s name."}, -1);
-            System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             "/Adjust",
             "If you change the Party List of the HUD configutation, and can also be adjusted."}, -1);
             this.textBoxCharacterFolder = new System.Windows.Forms.TextBox();
@@ -85,16 +85,16 @@ namespace ACT.TPMonitor
             this.groupBoxOption = new System.Windows.Forms.GroupBox();
             this.checkBoxHideOnDissolve = new System.Windows.Forms.CheckBox();
             this.groupBoxLocation = new System.Windows.Forms.GroupBox();
-            this.radioButtonOffset = new System.Windows.Forms.RadioButton();
-            this.radioButtonFloating = new System.Windows.Forms.RadioButton();
-            this.numericUpDownOffsetX = new System.Windows.Forms.NumericUpDown();
+            this.labelFloatingX = new System.Windows.Forms.Label();
+            this.labelFloatingY = new System.Windows.Forms.Label();
+            this.labelOffsetY = new System.Windows.Forms.Label();
+            this.labelOffsetX = new System.Windows.Forms.Label();
+            this.numericUpDownFloatingY = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownFloatingX = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownOffsetY = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownFloatingY = new System.Windows.Forms.NumericUpDown();
-            this.labelOffsetX = new System.Windows.Forms.Label();
-            this.labelFloatingX = new System.Windows.Forms.Label();
-            this.labelOffsetY = new System.Windows.Forms.Label();
-            this.labelFloatingY = new System.Windows.Forms.Label();
+            this.numericUpDownOffsetX = new System.Windows.Forms.NumericUpDown();
+            this.radioButtonFloating = new System.Windows.Forms.RadioButton();
+            this.radioButtonOffset = new System.Windows.Forms.RadioButton();
             this.groupBoxCharacterFolder.SuspendLayout();
             this.groupBoxStatus.SuspendLayout();
             this.tableLayoutPanelStatus.SuspendLayout();
@@ -103,10 +103,10 @@ namespace ACT.TPMonitor
             this.groupBoxUsage.SuspendLayout();
             this.groupBoxOption.SuspendLayout();
             this.groupBoxLocation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffsetX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloatingY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloatingX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffsetY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloatingY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffsetX)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxCharacterFolder
@@ -327,10 +327,10 @@ namespace ACT.TPMonitor
             this.listViewCommands.GridLines = true;
             this.listViewCommands.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewCommands.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem25,
-            listViewItem26,
-            listViewItem27,
-            listViewItem28});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4});
             this.listViewCommands.Location = new System.Drawing.Point(31, 74);
             this.listViewCommands.Name = "listViewCommands";
             this.listViewCommands.Size = new System.Drawing.Size(551, 106);
@@ -430,6 +430,7 @@ namespace ACT.TPMonitor
             this.checkBoxHideOnDissolve.TabIndex = 0;
             this.checkBoxHideOnDissolve.Text = "TPMonitor is to hide when dissolved the party.";
             this.checkBoxHideOnDissolve.UseVisualStyleBackColor = true;
+            this.checkBoxHideOnDissolve.CheckedChanged += new System.EventHandler(this.checkBoxHideOnDissolve_CheckedChanged);
             // 
             // groupBoxLocation
             // 
@@ -450,48 +451,60 @@ namespace ACT.TPMonitor
             this.groupBoxLocation.TabStop = false;
             this.groupBoxLocation.Text = "Monitor Location";
             // 
-            // radioButtonOffset
+            // labelFloatingX
             // 
-            this.radioButtonOffset.AutoSize = true;
-            this.radioButtonOffset.Checked = true;
-            this.radioButtonOffset.Location = new System.Drawing.Point(6, 17);
-            this.radioButtonOffset.Name = "radioButtonOffset";
-            this.radioButtonOffset.Size = new System.Drawing.Size(119, 16);
-            this.radioButtonOffset.TabIndex = 0;
-            this.radioButtonOffset.TabStop = true;
-            this.radioButtonOffset.Text = "Party List + Offset";
-            this.radioButtonOffset.UseVisualStyleBackColor = true;
-            this.radioButtonOffset.CheckedChanged += new System.EventHandler(this.radioButtonOffset_CheckedChanged);
+            this.labelFloatingX.AutoSize = true;
+            this.labelFloatingX.Location = new System.Drawing.Point(34, 88);
+            this.labelFloatingX.Name = "labelFloatingX";
+            this.labelFloatingX.Size = new System.Drawing.Size(14, 12);
+            this.labelFloatingX.TabIndex = 6;
+            this.labelFloatingX.Text = "X:";
             // 
-            // radioButtonFloating
+            // labelFloatingY
             // 
-            this.radioButtonFloating.AutoSize = true;
-            this.radioButtonFloating.Location = new System.Drawing.Point(6, 64);
-            this.radioButtonFloating.Name = "radioButtonFloating";
-            this.radioButtonFloating.Size = new System.Drawing.Size(64, 16);
-            this.radioButtonFloating.TabIndex = 5;
-            this.radioButtonFloating.Text = "Floating";
-            this.radioButtonFloating.UseVisualStyleBackColor = true;
-            this.radioButtonFloating.CheckedChanged += new System.EventHandler(this.radioButtonFloating_CheckedChanged);
+            this.labelFloatingY.AutoSize = true;
+            this.labelFloatingY.Location = new System.Drawing.Point(176, 88);
+            this.labelFloatingY.Name = "labelFloatingY";
+            this.labelFloatingY.Size = new System.Drawing.Size(14, 12);
+            this.labelFloatingY.TabIndex = 8;
+            this.labelFloatingY.Text = "Y:";
             // 
-            // numericUpDownOffsetX
+            // labelOffsetY
             // 
-            this.numericUpDownOffsetX.Location = new System.Drawing.Point(54, 39);
-            this.numericUpDownOffsetX.Maximum = new decimal(new int[] {
+            this.labelOffsetY.AutoSize = true;
+            this.labelOffsetY.Location = new System.Drawing.Point(176, 41);
+            this.labelOffsetY.Name = "labelOffsetY";
+            this.labelOffsetY.Size = new System.Drawing.Size(14, 12);
+            this.labelOffsetY.TabIndex = 3;
+            this.labelOffsetY.Text = "Y:";
+            // 
+            // labelOffsetX
+            // 
+            this.labelOffsetX.AutoSize = true;
+            this.labelOffsetX.Location = new System.Drawing.Point(34, 41);
+            this.labelOffsetX.Name = "labelOffsetX";
+            this.labelOffsetX.Size = new System.Drawing.Size(14, 12);
+            this.labelOffsetX.TabIndex = 1;
+            this.labelOffsetX.Text = "X:";
+            // 
+            // numericUpDownFloatingY
+            // 
+            this.numericUpDownFloatingY.Location = new System.Drawing.Point(196, 86);
+            this.numericUpDownFloatingY.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.numericUpDownOffsetX.Minimum = new decimal(new int[] {
+            this.numericUpDownFloatingY.Minimum = new decimal(new int[] {
             10000,
             0,
             0,
             -2147483648});
-            this.numericUpDownOffsetX.Name = "numericUpDownOffsetX";
-            this.numericUpDownOffsetX.Size = new System.Drawing.Size(71, 19);
-            this.numericUpDownOffsetX.TabIndex = 2;
-            this.numericUpDownOffsetX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownOffsetX.ValueChanged += new System.EventHandler(this.numericUpDownOffsetX_ValueChanged);
+            this.numericUpDownFloatingY.Name = "numericUpDownFloatingY";
+            this.numericUpDownFloatingY.Size = new System.Drawing.Size(71, 19);
+            this.numericUpDownFloatingY.TabIndex = 9;
+            this.numericUpDownFloatingY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownFloatingY.ValueChanged += new System.EventHandler(this.numericUpDownFloatingY_ValueChanged);
             // 
             // numericUpDownFloatingX
             // 
@@ -531,60 +544,48 @@ namespace ACT.TPMonitor
             this.numericUpDownOffsetY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownOffsetY.ValueChanged += new System.EventHandler(this.numericUpDownOffsetY_ValueChanged);
             // 
-            // numericUpDownFloatingY
+            // numericUpDownOffsetX
             // 
-            this.numericUpDownFloatingY.Location = new System.Drawing.Point(196, 86);
-            this.numericUpDownFloatingY.Maximum = new decimal(new int[] {
+            this.numericUpDownOffsetX.Location = new System.Drawing.Point(54, 39);
+            this.numericUpDownOffsetX.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.numericUpDownFloatingY.Minimum = new decimal(new int[] {
+            this.numericUpDownOffsetX.Minimum = new decimal(new int[] {
             10000,
             0,
             0,
             -2147483648});
-            this.numericUpDownFloatingY.Name = "numericUpDownFloatingY";
-            this.numericUpDownFloatingY.Size = new System.Drawing.Size(71, 19);
-            this.numericUpDownFloatingY.TabIndex = 9;
-            this.numericUpDownFloatingY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownFloatingY.ValueChanged += new System.EventHandler(this.numericUpDownFloatingY_ValueChanged);
+            this.numericUpDownOffsetX.Name = "numericUpDownOffsetX";
+            this.numericUpDownOffsetX.Size = new System.Drawing.Size(71, 19);
+            this.numericUpDownOffsetX.TabIndex = 2;
+            this.numericUpDownOffsetX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownOffsetX.ValueChanged += new System.EventHandler(this.numericUpDownOffsetX_ValueChanged);
             // 
-            // labelOffsetX
+            // radioButtonFloating
             // 
-            this.labelOffsetX.AutoSize = true;
-            this.labelOffsetX.Location = new System.Drawing.Point(34, 41);
-            this.labelOffsetX.Name = "labelOffsetX";
-            this.labelOffsetX.Size = new System.Drawing.Size(14, 12);
-            this.labelOffsetX.TabIndex = 1;
-            this.labelOffsetX.Text = "X:";
+            this.radioButtonFloating.AutoSize = true;
+            this.radioButtonFloating.Location = new System.Drawing.Point(6, 64);
+            this.radioButtonFloating.Name = "radioButtonFloating";
+            this.radioButtonFloating.Size = new System.Drawing.Size(64, 16);
+            this.radioButtonFloating.TabIndex = 5;
+            this.radioButtonFloating.Text = "Floating";
+            this.radioButtonFloating.UseVisualStyleBackColor = true;
+            this.radioButtonFloating.CheckedChanged += new System.EventHandler(this.radioButtonFloating_CheckedChanged);
             // 
-            // labelFloatingX
+            // radioButtonOffset
             // 
-            this.labelFloatingX.AutoSize = true;
-            this.labelFloatingX.Location = new System.Drawing.Point(34, 88);
-            this.labelFloatingX.Name = "labelFloatingX";
-            this.labelFloatingX.Size = new System.Drawing.Size(14, 12);
-            this.labelFloatingX.TabIndex = 6;
-            this.labelFloatingX.Text = "X:";
-            // 
-            // labelOffsetY
-            // 
-            this.labelOffsetY.AutoSize = true;
-            this.labelOffsetY.Location = new System.Drawing.Point(176, 41);
-            this.labelOffsetY.Name = "labelOffsetY";
-            this.labelOffsetY.Size = new System.Drawing.Size(14, 12);
-            this.labelOffsetY.TabIndex = 3;
-            this.labelOffsetY.Text = "Y:";
-            // 
-            // labelFloatingY
-            // 
-            this.labelFloatingY.AutoSize = true;
-            this.labelFloatingY.Location = new System.Drawing.Point(176, 88);
-            this.labelFloatingY.Name = "labelFloatingY";
-            this.labelFloatingY.Size = new System.Drawing.Size(14, 12);
-            this.labelFloatingY.TabIndex = 8;
-            this.labelFloatingY.Text = "Y:";
+            this.radioButtonOffset.AutoSize = true;
+            this.radioButtonOffset.Checked = true;
+            this.radioButtonOffset.Location = new System.Drawing.Point(6, 17);
+            this.radioButtonOffset.Name = "radioButtonOffset";
+            this.radioButtonOffset.Size = new System.Drawing.Size(119, 16);
+            this.radioButtonOffset.TabIndex = 0;
+            this.radioButtonOffset.TabStop = true;
+            this.radioButtonOffset.Text = "Party List + Offset";
+            this.radioButtonOffset.UseVisualStyleBackColor = true;
+            this.radioButtonOffset.CheckedChanged += new System.EventHandler(this.radioButtonOffset_CheckedChanged);
             // 
             // ACTTabpageControl
             // 
@@ -611,10 +612,10 @@ namespace ACT.TPMonitor
             this.groupBoxOption.PerformLayout();
             this.groupBoxLocation.ResumeLayout(false);
             this.groupBoxLocation.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffsetX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloatingY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloatingX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffsetY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloatingY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffsetX)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -747,7 +748,6 @@ namespace ACT.TPMonitor
             xmlSettings.AddControlSetting(textBoxCharacterFolder.Name, textBoxCharacterFolder);
             xmlSettings.AddControlSetting(comboBoxTPFont.Name, comboBoxTPFont);
             xmlSettings.AddControlSetting(numericUpDownFontSize.Name, numericUpDownFontSize);
-            xmlSettings.AddControlSetting(checkBoxHideOnDissolve.Name, checkBoxHideOnDissolve);
             xmlSettings.AddControlSetting(checkBoxHideOnDissolve.Name, checkBoxHideOnDissolve);
             xmlSettings.AddControlSetting(radioButtonFloating.Name, radioButtonFloating);
             xmlSettings.AddControlSetting(numericUpDownOffsetX.Name, numericUpDownOffsetX);
@@ -923,6 +923,11 @@ namespace ACT.TPMonitor
         private void numericUpDownFloatingY_ValueChanged(object sender, EventArgs e)
         {
             if (controller != null) controller.FloatingY = numericUpDownOffsetY.Value;
+        }
+
+        private void checkBoxHideOnDissolve_CheckedChanged(object sender, EventArgs e)
+        {
+            if (controller != null) controller.HideOnDissolve = checkBoxHideOnDissolve.Checked;
         }
     }
 }

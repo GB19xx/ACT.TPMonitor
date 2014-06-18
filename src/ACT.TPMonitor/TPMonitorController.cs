@@ -34,6 +34,8 @@ namespace ACT.TPMonitor
         public Font TPFont { get; set; }
         public Rectangle PartyListUI { get; set; }
 
+        public bool HideOnDissolve { get; set; }
+
         public bool IsFloating { get; set; }
         public decimal OffsetX { get; set; }
         public decimal OffsetY { get; set; }
@@ -157,10 +159,13 @@ namespace ACT.TPMonitor
         {
             if (!logInfo.inCombat)
             {
-                if (logInfo.logLine.IndexOf("パーティを解散しました。") > 0 ||
+                if (this.HideOnDissolve &&
+                    (
+                    logInfo.logLine.IndexOf("パーティを解散しました。") > 0 ||
                     logInfo.logLine.IndexOf("You dissolve the party.") > 0 ||
                     logInfo.logLine.IndexOf("Vous dissolvez l'equipe.") > 0 ||
                     logInfo.logLine.IndexOf("Deine Gruppe wurde aufgelost.") > 0)
+                    )
                 {
                     // clear
                     PartyMemberInfo = new List<PartyMember>();
@@ -214,6 +219,10 @@ namespace ACT.TPMonitor
                                 view.Hide();
                                 break;
                             case "show":
+                                if (!view.Visible)
+                                {
+                                    this.PartyListUI = Util.GetPartyListLocation(this.CharFolder);
+                                }
                                 view.Adjust();
                                 view.TopMost = true;
                                 view.Show();

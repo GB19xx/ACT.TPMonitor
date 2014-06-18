@@ -65,8 +65,7 @@ namespace ACT.TPMonitor
 
         public static Rectangle GetPartyListLocation(string path)
         {
-            if (_screenRect.IsEmpty)
-                _screenRect = GetWindowSize(path);
+            _screenRect = GetWindowSize(path);
             Rectangle uiRect = new Rectangle(new Point(0, 0), new Size(0, 0));
 
             string textFile = Path.Combine(path, @"ADDON.DAT");
@@ -82,7 +81,7 @@ namespace ACT.TPMonitor
                         float heightPercent = float.Parse(textLine[i + 3].Substring(2));
                         int width = int.Parse(textLine[i + 4].Substring(2));
                         int height = int.Parse(textLine[i + 5].Substring(2));
-                        float zoom = float.Parse(textLine[i + 7].Substring(2));
+                        float widgetScale = float.Parse(textLine[i + 7].Substring(2));
 
                         int x;
                         if (widthPercent < 30)

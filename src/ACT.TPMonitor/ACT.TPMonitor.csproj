@@ -38,9 +38,8 @@
     <Reference Include="Advanced Combat Tracker">
       <HintPath>..\..\..\..\Advanced Combat Tracker\Advanced Combat Tracker.exe</HintPath>
     </Reference>
-    <Reference Include="FFXIV_ACT_Plugin, Version=1.1.4.6, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\FFXIV_ACT_Plugin.dll</HintPath>
+    <Reference Include="FFXIV_ACT_Plugin">
+      <HintPath>..\..\..\..\Advanced Combat Tracker\FFXIV_ACT_Plugin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
