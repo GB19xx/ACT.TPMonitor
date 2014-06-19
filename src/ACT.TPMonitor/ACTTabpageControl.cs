@@ -908,8 +908,8 @@ namespace ACT.TPMonitor
                     {
                         controller.PartyListUI = Util.GetPartyListLocation(textBoxCharacterFolder.Text);
                         arg.location = new Point(
-                            controller.PartyListUI.Location.X + (int)numericUpDownOffsetX.Value,
-                            controller.PartyListUI.Location.Y + (int)numericUpDownOffsetY.Value);
+                            controller.PartyListUI.Rect.Location.X + (int)numericUpDownOffsetX.Value,
+                            controller.PartyListUI.Rect.Location.Y + (int)numericUpDownOffsetY.Value);
                     }
                     else if (radioButtonFixed.Checked)
                     {

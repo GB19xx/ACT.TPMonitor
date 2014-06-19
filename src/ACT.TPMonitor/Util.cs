@@ -95,10 +95,12 @@ namespace ACT.TPMonitor
             return screenRect;
         }
 
-        public static Rectangle GetPartyListLocation(string path)
+        public static TPMonitorController.Widget GetPartyListLocation(string path)
         {
             _screenRect = GetWindowSize(path);
-            Rectangle uiRect = new Rectangle(new Point(0, 0), new Size(0, 0));
+            TPMonitorController.Widget widget = new TPMonitorController.Widget();
+            widget.Rect = new Rectangle(new Point(0, 0), new Size(0, 0));
+            widget.Scale = 1.0f;
 
             string textFile = Path.Combine(path, @"ADDON.DAT");
             using (System.IO.StreamReader sr = new System.IO.StreamReader(textFile, System.Text.Encoding.GetEncoding("shift_jis")))
@@ -114,6 +116,9 @@ namespace ACT.TPMonitor
                         int width = int.Parse(textLine[i + 4].Substring(2));
                         int height = int.Parse(textLine[i + 5].Substring(2));
                         float widgetScale = float.Parse(textLine[i + 7].Substring(2));
+
+                        width = (int)(width * widgetScale);
+                        height = (int)(height * widgetScale);
 
                         int x;
                         if (widthPercent < 30)
@@ -146,12 +151,13 @@ namespace ACT.TPMonitor
                         y += _screenRect.Top;
                         
 
-                        uiRect = new Rectangle(new Point(x, y), new Size(width, height));
+                        widget.Rect = new Rectangle(new Point(x, y), new Size(width, height));
+                        widget.Scale = widgetScale;
                         break;
                     }
                 }
             }
-            return uiRect;
+            return widget;
         }
     }
 }
