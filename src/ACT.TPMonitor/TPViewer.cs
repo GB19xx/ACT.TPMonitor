@@ -19,6 +19,7 @@ namespace ACT.TPMonitor
             this.ControlBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;   // hidden border
             this.TransparencyKey = this.BackColor = Color.Navy;                 // the color key to transparent, choose a color that you don't use
+            SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
 
             controller.CurrentTPUpdate += CurrentTPUpdate;
         }
@@ -56,9 +57,14 @@ namespace ACT.TPMonitor
 
         public void CurrentTPUpdate(object sender, EventArgs e)
         {
+            this.Refresh();
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
             if (this.Visible)
             {
-                Graphics g = this.CreateGraphics();
+                Graphics g = e.Graphics;
                 g.Clear(this.BackColor);
 
                 int s = _controller.IsFixedMode && _controller.ShowMyTP ? 0 : 1;
@@ -70,7 +76,6 @@ namespace ACT.TPMonitor
                         DrawValue(g, i, _controller.PartyMemberInfo[i].TP, _controller.PartyListUI.Scale);
                     }
                 }
-                g.Dispose();
             }
         }
 
