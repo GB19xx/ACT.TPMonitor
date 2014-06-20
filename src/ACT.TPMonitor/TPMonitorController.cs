@@ -260,10 +260,11 @@ namespace ACT.TPMonitor
                     }
 
                     PartyMemberInfo[0].Name = combatantList[0].Name;
+                    String pattern = PartyMemberInfo[i].Name.Replace(".", "[a-zA-Z']+?");
 
                     foreach (CombatantMemory.Combatant c in combatantList)
                     {
-                        if (PartyMemberInfo[i].Name.Equals(c.Name))
+                        if (Regex.Matches(c.Name, pattern).Count == 1)
                         {
                             PartyMemberInfo[i].TP = c.CurrentTP;
                             break;
