@@ -13,11 +13,12 @@ namespace ACT.TPMonitor
         {
             InitializeComponent();
 
+            this.Icon = Icon.FromHandle(Properties.Resources.army_s_paeon.GetHicon());
+
             _controller = controller;
             this.ControlBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;   // hidden border
             this.TransparencyKey = this.BackColor = Color.Navy;                 // the color key to transparent, choose a color that you don't use
-            //this.Opacity = 0.3;
 
             controller.CurrentTPUpdate += CurrentTPUpdate;
         }
@@ -41,9 +42,9 @@ namespace ACT.TPMonitor
         public void Adjust(Rectangle rect)
         {
             Point pos = rect.Location;
-            if (_controller.IsFloating)
+            if (_controller.IsFixedMode)
             {
-                pos = new Point((int)_controller.FloatingX, (int)_controller.FloatingY);
+                pos = new Point((int)_controller.FixedX, (int)_controller.FixedY);
             }
             else
             {
@@ -60,7 +61,8 @@ namespace ACT.TPMonitor
                 Graphics g = this.CreateGraphics();
                 g.Clear(this.BackColor);
 
-                for (int i = 1; i < _controller.PartyMemberInfo.Count; i++)
+                int s = _controller.IsFixedMode && _controller.ShowMyTP ? 0 : 1;
+                for (int i = s; i < _controller.PartyMemberInfo.Count; i++)
                 {
                     if (!string.IsNullOrEmpty(_controller.PartyMemberInfo[i].Name))
                     {

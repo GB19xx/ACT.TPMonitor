@@ -30,21 +30,25 @@ namespace ACT.TPMonitor
         public bool FFXIVPluginStatus { get; set; }
         public bool FFXIVProcess { get; set; }
         public bool LoggedIn { get; set; }
+        public Point ViewLocation { get; set; }
 
         public Font TPFont { get; set; }
         public Rectangle PartyListUI { get; set; }
 
         public bool HideOnDissolve { get; set; }
+        public bool ShowMyTP { get; set; }
 
-        public bool IsFloating { get; set; }
+        public bool IsFixedMode { get; set; }
         public decimal OffsetX { get; set; }
         public decimal OffsetY { get; set; }
-        public decimal FloatingX { get; set; }
-        public decimal FloatingY { get; set; }
+        public decimal FixedX { get; set; }
+        public decimal FixedY { get; set; }
 
         public List<PartyMember> PartyMemberInfo { get; private set; }
 
         private Regex regex = new Regex(@"(?<Time>\[.+?\]) TP ((?<Num>\d):(?<Name>.*)|/(?<Command>.+))", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        private ACTTabpageControl actTab;
         private TPViewer view;
         private Thread checkStatus = null;
         private Thread getTP = null;
@@ -52,8 +56,11 @@ namespace ACT.TPMonitor
         private IntPtr zero = IntPtr.Zero;
         private bool isExited;
 
-        public TPMonitorController()
+        public TPMonitorController(ACTTabpageControl actTab)
         {
+            this.actTab = actTab;
+            this.actTab.ChangeLocation += new ACTTabpageControl.ChangeLocationEventHandler(this.ChangeLocation);
+
             ActGlobals.oFormActMain.OnLogLineRead += act_OnLogLineRead;
 
             isExited = false;
@@ -92,6 +99,11 @@ namespace ACT.TPMonitor
             view.Dispose();
         }
 
+        private void ChangeLocation(object sender, ACTTabpageControl.ChangeLocationEventArgs e)
+        {
+            view.Location = e.location;
+        }
+
         public event EventHandler ChangedStatus;
         private void CheckProcess()
         {
@@ -106,6 +118,7 @@ namespace ACT.TPMonitor
                     bool oldFFXIVProcess = FFXIVProcess;
                     bool oldLoggedIn = LoggedIn;
                     bool status = false;
+                    Point oldViewLocation = ViewLocation;
 
                     ACTVisible = ActGlobals.oFormActMain.Visible;
                     if (ActGlobals.oFormActMain.Visible)
@@ -132,6 +145,7 @@ namespace ACT.TPMonitor
                     }
 
                     FFXIVProcess = _ffxivProcess != null ? true : false;
+                    Util.FFXIVProcessId = _ffxivProcess.MainWindowHandle;
 
                     if (_ffxivProcess != null)
                     {
@@ -143,10 +157,16 @@ namespace ACT.TPMonitor
                         LoggedIn = false;
                     }
 
-                    if (oldACTVisible != ACTVisible || oldFFXIVPlugin != FFXIVPluginStatus || oldFFXIVProcess != FFXIVProcess || oldLoggedIn != LoggedIn)
-                        ChangedStatus(this, new EventArgs());
+                    ViewLocation = view.Location;
 
-                    Thread.Sleep(500);
+                    if (oldACTVisible != ACTVisible || oldFFXIVPlugin != FFXIVPluginStatus ||
+                        oldFFXIVProcess != FFXIVProcess || oldLoggedIn != LoggedIn ||
+                        oldViewLocation != ViewLocation)
+                    {
+                        ChangedStatus(this, new EventArgs());
+                    }
+
+                    Thread.Sleep(300);
                 }
                 catch
                 {
@@ -260,6 +280,7 @@ namespace ACT.TPMonitor
                     }
 
                     PartyMemberInfo[0].Name = combatantList[0].Name;
+                    PartyMemberInfo[0].TP = combatantList[0].CurrentTP;
 
                     foreach (CombatantMemory.Combatant c in combatantList)
                     {
@@ -273,7 +294,7 @@ namespace ACT.TPMonitor
 
                 OnCurrentTPUpdate();
 
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
             }
         }
 
