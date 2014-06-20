@@ -38,7 +38,7 @@ Usage
 <td>Command</td><td>Description</td>
 </tr>
 <tr>
-<td>2 - 8:\&lt;2&gt; - &lt;8&gt;</td><td>
+<td>2 - 8:&lt;2&gt; - &lt;8&gt;</td><td>
 パーティメンバーの名前を取得します<br>
 パーティメンバーが変わるたび実行する必要があります<br>
 <font color="red">※ログ設定のイニシャルに注意。</font><br>
