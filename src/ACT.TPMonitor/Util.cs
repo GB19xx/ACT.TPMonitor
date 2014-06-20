@@ -2,12 +2,30 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace ACT.TPMonitor
 {
     class Util
     {
+        [StructLayout(LayoutKind.Sequential)]
+        private struct RECT
+        {
+            public int left;
+            public int top;
+            public int right;
+            public int bottom;
+        }
+
+        [DllImport("user32.dll")]
+        private static extern bool GetClientRect(IntPtr hWnd, ref RECT lpRect);
+
+        [DllImport("user32.dll")]
+        private static extern bool GetWindowRect(IntPtr hWnd, ref RECT lpRect);
+
+        public static IntPtr FFXIVProcessId { private get; set; }
+
         private static Rectangle _screenRect;
 
         private static Rectangle GetWindowSize(string path)
@@ -26,10 +44,10 @@ namespace ACT.TPMonitor
                         sr.ReadLine();  //MainAdapter
 
                         // Location, ScreenSize
-                        int left = (int)uint.Parse(sr.ReadLine().Split('\t')[1].ToString());  //ScreenLeft
-                        int top = (int)uint.Parse(sr.ReadLine().Split('\t')[1].ToString());   //ScreenTop
-                        int width = int.Parse(sr.ReadLine().Split('\t')[1].ToString()); //ScreenWidth
-                        int height = int.Parse(sr.ReadLine().Split('\t')[1].ToString());//ScreenHeight
+                        int left = (int)uint.Parse(sr.ReadLine().Split('\t')[1].ToString());    //ScreenLeft
+                        int top = (int)uint.Parse(sr.ReadLine().Split('\t')[1].ToString());     //ScreenTop
+                        int width = int.Parse(sr.ReadLine().Split('\t')[1].ToString());         //ScreenWidth
+                        int height = int.Parse(sr.ReadLine().Split('\t')[1].ToString());        //ScreenHeight
 
                         //ScreenMode (0:Window, 1:FullScreen, 2:Virtual)
                         int mode = int.Parse(sr.ReadLine().Split('\t')[1].ToString());
@@ -38,13 +56,27 @@ namespace ACT.TPMonitor
                         {
                             case 0:
                                 // Window
+                                if (FFXIVProcessId != IntPtr.Zero)
+                                {
+                                    RECT windowRect = new RECT();
+                                    GetWindowRect(FFXIVProcessId, ref windowRect);
+                                    
+                                    RECT clientRect = new RECT();
+                                    GetClientRect(FFXIVProcessId, ref clientRect);
+
+                                    int borderWidth = ((windowRect.right - windowRect.left) - clientRect.right) / 2;
+                                    left = windowRect.left + borderWidth;
+                                    top = windowRect.bottom - clientRect.bottom - borderWidth;
+                                    width = clientRect.right;
+                                    height = clientRect.bottom;
+                                }
                                 break;
                             case 1:
                                 // FullScreen
                                 left = 0;
                                 top = 0;
-                                width = int.Parse(sr.ReadLine().Split('\t')[1].ToString()); //FullScreenWidth
-                                height = int.Parse(sr.ReadLine().Split('\t')[1].ToString());//FullScreenHeight
+                                width = int.Parse(sr.ReadLine().Split('\t')[1].ToString());     //FullScreenWidth
+                                height = int.Parse(sr.ReadLine().Split('\t')[1].ToString());    //FullScreenHeight
                                 break;
                             case 2:
                                 // Virtual
@@ -88,7 +120,7 @@ namespace ACT.TPMonitor
                         {
                             x = (int)((_screenRect.Width * widthPercent / 100));
                         }
-                        else if (widthPercent < 60)
+                        else if (widthPercent < 70)
                         {
                             x = (int)((_screenRect.Width * (widthPercent / 100)) - (width / 2));
                         }
@@ -96,13 +128,14 @@ namespace ACT.TPMonitor
                         {
                             x = (int)((_screenRect.Width * (widthPercent / 100)) - width);
                         }
+                        x += _screenRect.Left;
 
                         int y;
                         if (heightPercent < 30)
                         {
                             y = (int)((_screenRect.Height * heightPercent / 100));
                         }
-                        else if (heightPercent < 60)
+                        else if (heightPercent < 80)
                         {
                             y = (int)((_screenRect.Height * (heightPercent / 100)) - (height / 2));
                         }
@@ -110,6 +143,8 @@ namespace ACT.TPMonitor
                         {
                             y = (int)((_screenRect.Height * (heightPercent / 100)) - height);
                         }
+                        y += _screenRect.Top;
+                        
 
                         uiRect = new Rectangle(new Point(x, y), new Size(width, height));
                         break;

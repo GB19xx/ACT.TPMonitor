@@ -44,18 +44,6 @@ namespace ACT.TPMonitor
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "/Show",
-            "Show Party Member TP value."}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
-            "/Hide",
-            "Hide Party Member TP value."}, -1);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
-            "2 - 8:<2> - <8>",
-            "Set Displays Party Member 2-8\'s name."}, -1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
-            "/Adjust",
-            "If you change the Party List of the HUD configutation, and can also be adjusted."}, -1);
             this.textBoxCharacterFolder = new System.Windows.Forms.TextBox();
             this.buttonOpenFolder = new System.Windows.Forms.Button();
             this.groupBoxCharacterFolder = new System.Windows.Forms.GroupBox();
@@ -72,39 +60,38 @@ namespace ACT.TPMonitor
             this.groupBoxFont = new System.Windows.Forms.GroupBox();
             this.numericUpDownFontSize = new System.Windows.Forms.NumericUpDown();
             this.comboBoxTPFont = new System.Windows.Forms.ComboBox();
-            this.groupBoxUsage = new System.Windows.Forms.GroupBox();
-            this.listViewCommands = new System.Windows.Forms.ListView();
-            this.columnHeaderCommand = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.labelCommand = new System.Windows.Forms.Label();
-            this.labelSyntax = new System.Windows.Forms.Label();
-            this.labelRecommend = new System.Windows.Forms.Label();
+            this.groupBoxRecommend = new System.Windows.Forms.GroupBox();
             this.buttonCopy = new System.Windows.Forms.Button();
-            this.labelSample = new System.Windows.Forms.Label();
-            this.textBoxSampleCommand = new System.Windows.Forms.TextBox();
+            this.textBoxRecommend = new System.Windows.Forms.TextBox();
             this.groupBoxOption = new System.Windows.Forms.GroupBox();
+            this.checkBoxShowMyTP = new System.Windows.Forms.CheckBox();
             this.checkBoxHideOnDissolve = new System.Windows.Forms.CheckBox();
             this.groupBoxLocation = new System.Windows.Forms.GroupBox();
-            this.labelFloatingX = new System.Windows.Forms.Label();
-            this.labelFloatingY = new System.Windows.Forms.Label();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.groupBoxWhereNow = new System.Windows.Forms.GroupBox();
+            this.labelHereNowX = new System.Windows.Forms.Label();
+            this.labelHereNowY = new System.Windows.Forms.Label();
+            this.labelFixedX = new System.Windows.Forms.Label();
+            this.labelFixedY = new System.Windows.Forms.Label();
             this.labelOffsetY = new System.Windows.Forms.Label();
             this.labelOffsetX = new System.Windows.Forms.Label();
-            this.numericUpDownFloatingY = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownFloatingX = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownFixedY = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownFixedX = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownOffsetY = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownOffsetX = new System.Windows.Forms.NumericUpDown();
-            this.radioButtonFloating = new System.Windows.Forms.RadioButton();
+            this.radioButtonFixed = new System.Windows.Forms.RadioButton();
             this.radioButtonOffset = new System.Windows.Forms.RadioButton();
             this.groupBoxCharacterFolder.SuspendLayout();
             this.groupBoxStatus.SuspendLayout();
             this.tableLayoutPanelStatus.SuspendLayout();
             this.groupBoxFont.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFontSize)).BeginInit();
-            this.groupBoxUsage.SuspendLayout();
+            this.groupBoxRecommend.SuspendLayout();
             this.groupBoxOption.SuspendLayout();
             this.groupBoxLocation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloatingY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloatingX)).BeginInit();
+            this.groupBoxWhereNow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFixedY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFixedX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffsetY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffsetX)).BeginInit();
             this.SuspendLayout();
@@ -259,9 +246,9 @@ namespace ACT.TPMonitor
             // 
             this.groupBoxFont.Controls.Add(this.numericUpDownFontSize);
             this.groupBoxFont.Controls.Add(this.comboBoxTPFont);
-            this.groupBoxFont.Location = new System.Drawing.Point(624, 83);
+            this.groupBoxFont.Location = new System.Drawing.Point(615, 261);
             this.groupBoxFont.Name = "groupBoxFont";
-            this.groupBoxFont.Size = new System.Drawing.Size(139, 96);
+            this.groupBoxFont.Size = new System.Drawing.Size(148, 76);
             this.groupBoxFont.TabIndex = 4;
             this.groupBoxFont.TabStop = false;
             this.groupBoxFont.Text = "Font";
@@ -301,85 +288,20 @@ namespace ACT.TPMonitor
             this.comboBoxTPFont.TabIndex = 0;
             this.comboBoxTPFont.SelectedIndexChanged += new System.EventHandler(this.comboBoxTPFont_SelectedIndexChanged);
             // 
-            // groupBoxUsage
+            // groupBoxRecommend
             // 
-            this.groupBoxUsage.Controls.Add(this.listViewCommands);
-            this.groupBoxUsage.Controls.Add(this.labelCommand);
-            this.groupBoxUsage.Controls.Add(this.labelSyntax);
-            this.groupBoxUsage.Controls.Add(this.labelRecommend);
-            this.groupBoxUsage.Controls.Add(this.buttonCopy);
-            this.groupBoxUsage.Controls.Add(this.labelSample);
-            this.groupBoxUsage.Controls.Add(this.textBoxSampleCommand);
-            this.groupBoxUsage.Location = new System.Drawing.Point(19, 270);
-            this.groupBoxUsage.Name = "groupBoxUsage";
-            this.groupBoxUsage.Size = new System.Drawing.Size(744, 192);
-            this.groupBoxUsage.TabIndex = 5;
-            this.groupBoxUsage.TabStop = false;
-            this.groupBoxUsage.Text = "Usage";
-            // 
-            // listViewCommands
-            // 
-            this.listViewCommands.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewCommands.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderCommand,
-            this.columnHeaderDescription});
-            this.listViewCommands.GridLines = true;
-            this.listViewCommands.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listViewCommands.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4});
-            this.listViewCommands.Location = new System.Drawing.Point(31, 74);
-            this.listViewCommands.Name = "listViewCommands";
-            this.listViewCommands.Size = new System.Drawing.Size(551, 106);
-            this.listViewCommands.TabIndex = 3;
-            this.listViewCommands.UseCompatibleStateImageBehavior = false;
-            this.listViewCommands.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeaderCommand
-            // 
-            this.columnHeaderCommand.Text = "Command";
-            this.columnHeaderCommand.Width = 90;
-            // 
-            // columnHeaderDescription
-            // 
-            this.columnHeaderDescription.Text = "Description";
-            this.columnHeaderDescription.Width = 457;
-            // 
-            // labelCommand
-            // 
-            this.labelCommand.AutoSize = true;
-            this.labelCommand.Location = new System.Drawing.Point(9, 59);
-            this.labelCommand.Name = "labelCommand";
-            this.labelCommand.Size = new System.Drawing.Size(55, 12);
-            this.labelCommand.TabIndex = 2;
-            this.labelCommand.Text = "Command";
-            // 
-            // labelSyntax
-            // 
-            this.labelSyntax.AutoSize = true;
-            this.labelSyntax.Location = new System.Drawing.Point(9, 18);
-            this.labelSyntax.Name = "labelSyntax";
-            this.labelSyntax.Size = new System.Drawing.Size(40, 12);
-            this.labelSyntax.TabIndex = 0;
-            this.labelSyntax.Text = "Syntax";
-            // 
-            // labelRecommend
-            // 
-            this.labelRecommend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelRecommend.AutoSize = true;
-            this.labelRecommend.Location = new System.Drawing.Point(586, 18);
-            this.labelRecommend.Name = "labelRecommend";
-            this.labelRecommend.Size = new System.Drawing.Size(67, 12);
-            this.labelRecommend.TabIndex = 4;
-            this.labelRecommend.Text = "Recommend";
+            this.groupBoxRecommend.Controls.Add(this.buttonCopy);
+            this.groupBoxRecommend.Controls.Add(this.textBoxRecommend);
+            this.groupBoxRecommend.Location = new System.Drawing.Point(615, 83);
+            this.groupBoxRecommend.Name = "groupBoxRecommend";
+            this.groupBoxRecommend.Size = new System.Drawing.Size(148, 172);
+            this.groupBoxRecommend.TabIndex = 5;
+            this.groupBoxRecommend.TabStop = false;
+            this.groupBoxRecommend.Text = "Recommend Macro";
             // 
             // buttonCopy
             // 
-            this.buttonCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCopy.Location = new System.Drawing.Point(604, 157);
+            this.buttonCopy.Location = new System.Drawing.Point(15, 139);
             this.buttonCopy.Name = "buttonCopy";
             this.buttonCopy.Size = new System.Drawing.Size(119, 23);
             this.buttonCopy.TabIndex = 6;
@@ -387,37 +309,41 @@ namespace ACT.TPMonitor
             this.buttonCopy.UseVisualStyleBackColor = true;
             this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
             // 
-            // labelSample
+            // textBoxRecommend
             // 
-            this.labelSample.AutoSize = true;
-            this.labelSample.Location = new System.Drawing.Point(29, 36);
-            this.labelSample.Name = "labelSample";
-            this.labelSample.Size = new System.Drawing.Size(97, 12);
-            this.labelSample.TabIndex = 1;
-            this.labelSample.Text = "/e TP [Command]";
-            // 
-            // textBoxSampleCommand
-            // 
-            this.textBoxSampleCommand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSampleCommand.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxSampleCommand.Location = new System.Drawing.Point(588, 36);
-            this.textBoxSampleCommand.Multiline = true;
-            this.textBoxSampleCommand.Name = "textBoxSampleCommand";
-            this.textBoxSampleCommand.ReadOnly = true;
-            this.textBoxSampleCommand.Size = new System.Drawing.Size(150, 115);
-            this.textBoxSampleCommand.TabIndex = 5;
-            this.textBoxSampleCommand.Text = "/e TP 2:<2>\r\n/e TP 3:<3>\r\n/e TP 4:<4>\r\n/e TP 5:<5>\r\n/e TP 6:<6>\r\n/e TP 7:<7>\r\n/e " +
+            this.textBoxRecommend.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxRecommend.Location = new System.Drawing.Point(6, 18);
+            this.textBoxRecommend.Multiline = true;
+            this.textBoxRecommend.Name = "textBoxRecommend";
+            this.textBoxRecommend.ReadOnly = true;
+            this.textBoxRecommend.Size = new System.Drawing.Size(136, 115);
+            this.textBoxRecommend.TabIndex = 5;
+            this.textBoxRecommend.Text = "/e TP 2:<2>\r\n/e TP 3:<3>\r\n/e TP 4:<4>\r\n/e TP 5:<5>\r\n/e TP 6:<6>\r\n/e TP 7:<7>\r\n/e " +
     "TP 8:<8>\r\n/e TP /show";
             // 
             // groupBoxOption
             // 
+            this.groupBoxOption.Controls.Add(this.checkBoxShowMyTP);
             this.groupBoxOption.Controls.Add(this.checkBoxHideOnDissolve);
-            this.groupBoxOption.Location = new System.Drawing.Point(317, 83);
+            this.groupBoxOption.Location = new System.Drawing.Point(19, 185);
             this.groupBoxOption.Name = "groupBoxOption";
-            this.groupBoxOption.Size = new System.Drawing.Size(292, 58);
+            this.groupBoxOption.Size = new System.Drawing.Size(292, 70);
             this.groupBoxOption.TabIndex = 2;
             this.groupBoxOption.TabStop = false;
             this.groupBoxOption.Text = "Option";
+            // 
+            // checkBoxShowMyTP
+            // 
+            this.checkBoxShowMyTP.AutoSize = true;
+            this.checkBoxShowMyTP.Checked = true;
+            this.checkBoxShowMyTP.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowMyTP.Location = new System.Drawing.Point(15, 44);
+            this.checkBoxShowMyTP.Name = "checkBoxShowMyTP";
+            this.checkBoxShowMyTP.Size = new System.Drawing.Size(184, 16);
+            this.checkBoxShowMyTP.TabIndex = 0;
+            this.checkBoxShowMyTP.Text = "Show my TP (Fixed mode only)";
+            this.checkBoxShowMyTP.UseVisualStyleBackColor = true;
+            this.checkBoxShowMyTP.CheckedChanged += new System.EventHandler(this.checkBoxShowMyTP_CheckedChanged);
             // 
             // checkBoxHideOnDissolve
             // 
@@ -434,40 +360,81 @@ namespace ACT.TPMonitor
             // 
             // groupBoxLocation
             // 
-            this.groupBoxLocation.Controls.Add(this.labelFloatingX);
-            this.groupBoxLocation.Controls.Add(this.labelFloatingY);
+            this.groupBoxLocation.Controls.Add(this.buttonSave);
+            this.groupBoxLocation.Controls.Add(this.groupBoxWhereNow);
+            this.groupBoxLocation.Controls.Add(this.labelFixedX);
+            this.groupBoxLocation.Controls.Add(this.labelFixedY);
             this.groupBoxLocation.Controls.Add(this.labelOffsetY);
             this.groupBoxLocation.Controls.Add(this.labelOffsetX);
-            this.groupBoxLocation.Controls.Add(this.numericUpDownFloatingY);
-            this.groupBoxLocation.Controls.Add(this.numericUpDownFloatingX);
+            this.groupBoxLocation.Controls.Add(this.numericUpDownFixedY);
+            this.groupBoxLocation.Controls.Add(this.numericUpDownFixedX);
             this.groupBoxLocation.Controls.Add(this.numericUpDownOffsetY);
             this.groupBoxLocation.Controls.Add(this.numericUpDownOffsetX);
-            this.groupBoxLocation.Controls.Add(this.radioButtonFloating);
+            this.groupBoxLocation.Controls.Add(this.radioButtonFixed);
             this.groupBoxLocation.Controls.Add(this.radioButtonOffset);
-            this.groupBoxLocation.Location = new System.Drawing.Point(317, 147);
+            this.groupBoxLocation.Location = new System.Drawing.Point(317, 83);
             this.groupBoxLocation.Name = "groupBoxLocation";
-            this.groupBoxLocation.Size = new System.Drawing.Size(292, 117);
+            this.groupBoxLocation.Size = new System.Drawing.Size(292, 172);
             this.groupBoxLocation.TabIndex = 3;
             this.groupBoxLocation.TabStop = false;
             this.groupBoxLocation.Text = "Monitor Location";
             // 
-            // labelFloatingX
+            // buttonSave
             // 
-            this.labelFloatingX.AutoSize = true;
-            this.labelFloatingX.Location = new System.Drawing.Point(34, 88);
-            this.labelFloatingX.Name = "labelFloatingX";
-            this.labelFloatingX.Size = new System.Drawing.Size(14, 12);
-            this.labelFloatingX.TabIndex = 6;
-            this.labelFloatingX.Text = "X:";
+            this.buttonSave.Location = new System.Drawing.Point(195, 127);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 11;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // labelFloatingY
+            // groupBoxWhereNow
             // 
-            this.labelFloatingY.AutoSize = true;
-            this.labelFloatingY.Location = new System.Drawing.Point(176, 88);
-            this.labelFloatingY.Name = "labelFloatingY";
-            this.labelFloatingY.Size = new System.Drawing.Size(14, 12);
-            this.labelFloatingY.TabIndex = 8;
-            this.labelFloatingY.Text = "Y:";
+            this.groupBoxWhereNow.Controls.Add(this.labelHereNowX);
+            this.groupBoxWhereNow.Controls.Add(this.labelHereNowY);
+            this.groupBoxWhereNow.Location = new System.Drawing.Point(16, 117);
+            this.groupBoxWhereNow.Name = "groupBoxWhereNow";
+            this.groupBoxWhereNow.Size = new System.Drawing.Size(152, 40);
+            this.groupBoxWhereNow.TabIndex = 10;
+            this.groupBoxWhereNow.TabStop = false;
+            this.groupBoxWhereNow.Text = "Where now?";
+            // 
+            // labelHereNowX
+            // 
+            this.labelHereNowX.AutoSize = true;
+            this.labelHereNowX.Location = new System.Drawing.Point(18, 15);
+            this.labelHereNowX.Name = "labelHereNowX";
+            this.labelHereNowX.Size = new System.Drawing.Size(14, 12);
+            this.labelHereNowX.TabIndex = 6;
+            this.labelHereNowX.Text = "X:";
+            // 
+            // labelHereNowY
+            // 
+            this.labelHereNowY.AutoSize = true;
+            this.labelHereNowY.Location = new System.Drawing.Point(83, 15);
+            this.labelHereNowY.Name = "labelHereNowY";
+            this.labelHereNowY.Size = new System.Drawing.Size(14, 12);
+            this.labelHereNowY.TabIndex = 8;
+            this.labelHereNowY.Text = "Y:";
+            // 
+            // labelFixedX
+            // 
+            this.labelFixedX.AutoSize = true;
+            this.labelFixedX.Location = new System.Drawing.Point(34, 88);
+            this.labelFixedX.Name = "labelFixedX";
+            this.labelFixedX.Size = new System.Drawing.Size(14, 12);
+            this.labelFixedX.TabIndex = 6;
+            this.labelFixedX.Text = "X:";
+            // 
+            // labelFixedY
+            // 
+            this.labelFixedY.AutoSize = true;
+            this.labelFixedY.Location = new System.Drawing.Point(176, 88);
+            this.labelFixedY.Name = "labelFixedY";
+            this.labelFixedY.Size = new System.Drawing.Size(14, 12);
+            this.labelFixedY.TabIndex = 8;
+            this.labelFixedY.Text = "Y:";
             // 
             // labelOffsetY
             // 
@@ -487,43 +454,43 @@ namespace ACT.TPMonitor
             this.labelOffsetX.TabIndex = 1;
             this.labelOffsetX.Text = "X:";
             // 
-            // numericUpDownFloatingY
+            // numericUpDownFixedY
             // 
-            this.numericUpDownFloatingY.Location = new System.Drawing.Point(196, 86);
-            this.numericUpDownFloatingY.Maximum = new decimal(new int[] {
+            this.numericUpDownFixedY.Location = new System.Drawing.Point(196, 86);
+            this.numericUpDownFixedY.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.numericUpDownFloatingY.Minimum = new decimal(new int[] {
+            this.numericUpDownFixedY.Minimum = new decimal(new int[] {
             10000,
             0,
             0,
             -2147483648});
-            this.numericUpDownFloatingY.Name = "numericUpDownFloatingY";
-            this.numericUpDownFloatingY.Size = new System.Drawing.Size(71, 19);
-            this.numericUpDownFloatingY.TabIndex = 9;
-            this.numericUpDownFloatingY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownFloatingY.ValueChanged += new System.EventHandler(this.numericUpDownFloatingY_ValueChanged);
+            this.numericUpDownFixedY.Name = "numericUpDownFixedY";
+            this.numericUpDownFixedY.Size = new System.Drawing.Size(71, 19);
+            this.numericUpDownFixedY.TabIndex = 9;
+            this.numericUpDownFixedY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownFixedY.ValueChanged += new System.EventHandler(this.ChangedLocation);
             // 
-            // numericUpDownFloatingX
+            // numericUpDownFixedX
             // 
-            this.numericUpDownFloatingX.Location = new System.Drawing.Point(54, 86);
-            this.numericUpDownFloatingX.Maximum = new decimal(new int[] {
+            this.numericUpDownFixedX.Location = new System.Drawing.Point(54, 86);
+            this.numericUpDownFixedX.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.numericUpDownFloatingX.Minimum = new decimal(new int[] {
+            this.numericUpDownFixedX.Minimum = new decimal(new int[] {
             10000,
             0,
             0,
             -2147483648});
-            this.numericUpDownFloatingX.Name = "numericUpDownFloatingX";
-            this.numericUpDownFloatingX.Size = new System.Drawing.Size(71, 19);
-            this.numericUpDownFloatingX.TabIndex = 7;
-            this.numericUpDownFloatingX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownFloatingX.ValueChanged += new System.EventHandler(this.numericUpDownFloatingX_ValueChanged);
+            this.numericUpDownFixedX.Name = "numericUpDownFixedX";
+            this.numericUpDownFixedX.Size = new System.Drawing.Size(71, 19);
+            this.numericUpDownFixedX.TabIndex = 7;
+            this.numericUpDownFixedX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownFixedX.ValueChanged += new System.EventHandler(this.ChangedLocation);
             // 
             // numericUpDownOffsetY
             // 
@@ -542,7 +509,7 @@ namespace ACT.TPMonitor
             this.numericUpDownOffsetY.Size = new System.Drawing.Size(71, 19);
             this.numericUpDownOffsetY.TabIndex = 4;
             this.numericUpDownOffsetY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownOffsetY.ValueChanged += new System.EventHandler(this.numericUpDownOffsetY_ValueChanged);
+            this.numericUpDownOffsetY.ValueChanged += new System.EventHandler(this.ChangedLocation);
             // 
             // numericUpDownOffsetX
             // 
@@ -561,18 +528,18 @@ namespace ACT.TPMonitor
             this.numericUpDownOffsetX.Size = new System.Drawing.Size(71, 19);
             this.numericUpDownOffsetX.TabIndex = 2;
             this.numericUpDownOffsetX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numericUpDownOffsetX.ValueChanged += new System.EventHandler(this.numericUpDownOffsetX_ValueChanged);
+            this.numericUpDownOffsetX.ValueChanged += new System.EventHandler(this.ChangedLocation);
             // 
-            // radioButtonFloating
+            // radioButtonFixed
             // 
-            this.radioButtonFloating.AutoSize = true;
-            this.radioButtonFloating.Location = new System.Drawing.Point(6, 64);
-            this.radioButtonFloating.Name = "radioButtonFloating";
-            this.radioButtonFloating.Size = new System.Drawing.Size(64, 16);
-            this.radioButtonFloating.TabIndex = 5;
-            this.radioButtonFloating.Text = "Floating";
-            this.radioButtonFloating.UseVisualStyleBackColor = true;
-            this.radioButtonFloating.CheckedChanged += new System.EventHandler(this.radioButtonFloating_CheckedChanged);
+            this.radioButtonFixed.AutoSize = true;
+            this.radioButtonFixed.Location = new System.Drawing.Point(6, 64);
+            this.radioButtonFixed.Name = "radioButtonFixed";
+            this.radioButtonFixed.Size = new System.Drawing.Size(82, 16);
+            this.radioButtonFixed.TabIndex = 5;
+            this.radioButtonFixed.Text = "Fixed Mode";
+            this.radioButtonFixed.UseVisualStyleBackColor = true;
+            this.radioButtonFixed.CheckedChanged += new System.EventHandler(this.ChangedLocation);
             // 
             // radioButtonOffset
             // 
@@ -585,7 +552,7 @@ namespace ACT.TPMonitor
             this.radioButtonOffset.TabStop = true;
             this.radioButtonOffset.Text = "Party List + Offset";
             this.radioButtonOffset.UseVisualStyleBackColor = true;
-            this.radioButtonOffset.CheckedChanged += new System.EventHandler(this.radioButtonOffset_CheckedChanged);
+            this.radioButtonOffset.CheckedChanged += new System.EventHandler(this.ChangedLocation);
             // 
             // ACTTabpageControl
             // 
@@ -594,11 +561,11 @@ namespace ACT.TPMonitor
             this.Controls.Add(this.groupBoxLocation);
             this.Controls.Add(this.groupBoxOption);
             this.Controls.Add(this.groupBoxFont);
-            this.Controls.Add(this.groupBoxUsage);
+            this.Controls.Add(this.groupBoxRecommend);
             this.Controls.Add(this.groupBoxStatus);
             this.Controls.Add(this.groupBoxCharacterFolder);
             this.Name = "ACTTabpageControl";
-            this.Size = new System.Drawing.Size(786, 465);
+            this.Size = new System.Drawing.Size(786, 344);
             this.groupBoxCharacterFolder.ResumeLayout(false);
             this.groupBoxCharacterFolder.PerformLayout();
             this.groupBoxStatus.ResumeLayout(false);
@@ -606,14 +573,16 @@ namespace ACT.TPMonitor
             this.tableLayoutPanelStatus.PerformLayout();
             this.groupBoxFont.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFontSize)).EndInit();
-            this.groupBoxUsage.ResumeLayout(false);
-            this.groupBoxUsage.PerformLayout();
+            this.groupBoxRecommend.ResumeLayout(false);
+            this.groupBoxRecommend.PerformLayout();
             this.groupBoxOption.ResumeLayout(false);
             this.groupBoxOption.PerformLayout();
             this.groupBoxLocation.ResumeLayout(false);
             this.groupBoxLocation.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloatingY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFloatingX)).EndInit();
+            this.groupBoxWhereNow.ResumeLayout(false);
+            this.groupBoxWhereNow.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFixedY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFixedX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffsetY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffsetX)).EndInit();
             this.ResumeLayout(false);
@@ -652,32 +621,30 @@ namespace ACT.TPMonitor
         private GroupBox groupBoxFont;
         private ComboBox comboBoxTPFont;
         private TableLayoutPanel tableLayoutPanelStatus;
-        private GroupBox groupBoxUsage;
+        private GroupBox groupBoxRecommend;
         private NumericUpDown numericUpDownFontSize;
 
         private TPMonitorController controller;
-        private TextBox textBoxSampleCommand;
-        private Label labelSample;
+        private TextBox textBoxRecommend;
         private GroupBox groupBoxOption;
         private CheckBox checkBoxHideOnDissolve;
         private Button buttonCopy;
-        private Label labelRecommend;
-        private ListView listViewCommands;
-        private Label labelCommand;
-        private Label labelSyntax;
-        private ColumnHeader columnHeaderCommand;
-        private ColumnHeader columnHeaderDescription;
         private GroupBox groupBoxLocation;
-        private NumericUpDown numericUpDownFloatingY;
-        private NumericUpDown numericUpDownFloatingX;
+        private NumericUpDown numericUpDownFixedY;
+        private NumericUpDown numericUpDownFixedX;
         private NumericUpDown numericUpDownOffsetY;
         private NumericUpDown numericUpDownOffsetX;
-        private RadioButton radioButtonFloating;
+        private RadioButton radioButtonFixed;
         private RadioButton radioButtonOffset;
-        private Label labelFloatingX;
-        private Label labelFloatingY;
+        private Label labelFixedX;
+        private Label labelFixedY;
         private Label labelOffsetY;
         private Label labelOffsetX;
+        private CheckBox checkBoxShowMyTP;
+        private GroupBox groupBoxWhereNow;
+        private Label labelHereNowX;
+        private Label labelHereNowY;
+        private Button buttonSave;
         private Font selectedFont;
 
 		#region IActPluginV1 Members
@@ -708,15 +675,19 @@ namespace ACT.TPMonitor
 
 			lblStatus.Text = "Plugin Started.";
 
-            controller = new TPMonitorController();
+            controller = new TPMonitorController(this);
             controller.CharFolder = textBoxCharacterFolder.Text;
             controller.PartyListUI = Util.GetPartyListLocation(textBoxCharacterFolder.Text);
-            controller.IsFloating = radioButtonFloating.Checked;
+            controller.HideOnDissolve = checkBoxHideOnDissolve.Checked;
+            controller.ShowMyTP = checkBoxShowMyTP.Checked;
+            controller.IsFixedMode = radioButtonFixed.Checked;
             controller.OffsetX = numericUpDownOffsetX.Value;
             controller.OffsetY = numericUpDownOffsetY.Value;
-            controller.FloatingX = numericUpDownFloatingX.Value;
-            controller.FloatingY = numericUpDownFloatingY.Value;
+            controller.FixedX = numericUpDownFixedX.Value;
+            controller.FixedY = numericUpDownFixedY.Value;
             controller.ChangedStatus += new EventHandler(this.ChangedStatus);
+
+            OnChangeLocation();
 
             SetFontName();
         }
@@ -740,6 +711,8 @@ namespace ACT.TPMonitor
                 labelFFXIVPluginStatus.Text = controller.FFXIVPluginStatus ? "Started." : "Not started.";
                 labelFFXIVProcessStatus.Text = controller.FFXIVProcess ? "Started." : "No process.";
                 labelLoggedInStatus.Text = controller.LoggedIn ? "Logged in." : "Not logged in.";
+                labelHereNowX.Text = string.Format("X:{0}", controller.ViewLocation.X);
+                labelHereNowY.Text = string.Format("Y:{0}", controller.ViewLocation.Y);
             }
         }
 
@@ -749,11 +722,12 @@ namespace ACT.TPMonitor
             xmlSettings.AddControlSetting(comboBoxTPFont.Name, comboBoxTPFont);
             xmlSettings.AddControlSetting(numericUpDownFontSize.Name, numericUpDownFontSize);
             xmlSettings.AddControlSetting(checkBoxHideOnDissolve.Name, checkBoxHideOnDissolve);
-            xmlSettings.AddControlSetting(radioButtonFloating.Name, radioButtonFloating);
+            xmlSettings.AddControlSetting(checkBoxShowMyTP.Name, checkBoxShowMyTP);
+            xmlSettings.AddControlSetting(radioButtonFixed.Name, radioButtonFixed);
             xmlSettings.AddControlSetting(numericUpDownOffsetX.Name, numericUpDownOffsetX);
             xmlSettings.AddControlSetting(numericUpDownOffsetY.Name, numericUpDownOffsetY);
-            xmlSettings.AddControlSetting(numericUpDownFloatingX.Name, numericUpDownFloatingX);
-            xmlSettings.AddControlSetting(numericUpDownFloatingY.Name, numericUpDownFloatingY);
+            xmlSettings.AddControlSetting(numericUpDownFixedX.Name, numericUpDownFixedX);
+            xmlSettings.AddControlSetting(numericUpDownFixedY.Name, numericUpDownFixedY);
 
 			if (File.Exists(settingsFile))
 			{
@@ -892,42 +866,64 @@ namespace ACT.TPMonitor
 
         private void buttonCopy_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(textBoxSampleCommand.Text);
-        }
-
-        private void radioButtonOffset_CheckedChanged(object sender, EventArgs e)
-        {
-            controller.IsFloating = false;
-        }
-
-        private void numericUpDownOffsetX_ValueChanged(object sender, EventArgs e)
-        {
-            if (controller != null) controller.OffsetX = numericUpDownOffsetX.Value;
-        }
-
-        private void numericUpDownOffsetY_ValueChanged(object sender, EventArgs e)
-        {
-            if (controller != null) controller.OffsetY = numericUpDownOffsetY.Value;
-        }
-
-        private void radioButtonFloating_CheckedChanged(object sender, EventArgs e)
-        {
-            if (controller != null) controller.IsFloating = true;
-        }
-
-        private void numericUpDownFloatingX_ValueChanged(object sender, EventArgs e)
-        {
-            if (controller != null) controller.FloatingX = numericUpDownOffsetX.Value;
-        }
-
-        private void numericUpDownFloatingY_ValueChanged(object sender, EventArgs e)
-        {
-            if (controller != null) controller.FloatingY = numericUpDownOffsetY.Value;
+            Clipboard.SetText(textBoxRecommend.Text);
         }
 
         private void checkBoxHideOnDissolve_CheckedChanged(object sender, EventArgs e)
         {
             if (controller != null) controller.HideOnDissolve = checkBoxHideOnDissolve.Checked;
+        }
+
+        private void checkBoxShowMyTP_CheckedChanged(object sender, EventArgs e)
+        {
+            if (controller != null) controller.ShowMyTP = checkBoxShowMyTP.Checked;
+        }
+
+        private void ChangedLocation(object sender, EventArgs e)
+        {
+            OnChangeLocation();
+        }
+
+        public class ChangeLocationEventArgs : EventArgs
+        {
+            public Point location;
+        }
+
+        public delegate void ChangeLocationEventHandler(object sender, ChangeLocationEventArgs e);
+        public event ChangeLocationEventHandler ChangeLocation;
+        public void OnChangeLocation()
+        {
+            if (ChangeLocation != null)
+            {
+                if (controller != null)
+                {
+                    controller.IsFixedMode = radioButtonFixed.Checked;
+                    controller.OffsetX = numericUpDownOffsetX.Value;
+                    controller.OffsetY = numericUpDownOffsetY.Value;
+                    controller.FixedX = numericUpDownFixedX.Value;
+                    controller.FixedY = numericUpDownFixedY.Value;
+
+                    ChangeLocationEventArgs arg = new ChangeLocationEventArgs();
+                    if (radioButtonOffset.Checked)
+                    {
+                        controller.PartyListUI = Util.GetPartyListLocation(textBoxCharacterFolder.Text);
+                        arg.location = new Point(
+                            controller.PartyListUI.Location.X + (int)numericUpDownOffsetX.Value,
+                            controller.PartyListUI.Location.Y + (int)numericUpDownOffsetY.Value);
+                    }
+                    else if (radioButtonFixed.Checked)
+                    {
+                        arg.location = new Point((int)numericUpDownFixedX.Value, (int)numericUpDownFixedY.Value);
+                    }
+
+                    ChangeLocation(this, arg);
+                }
+            }
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            SaveSettings();
         }
     }
 }

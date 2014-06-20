@@ -88,6 +88,9 @@
   <ItemGroup>
     <None Include="Resources\pirulen rg.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\army%27s_paeon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
