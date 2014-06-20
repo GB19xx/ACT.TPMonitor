@@ -38,20 +38,20 @@ Usage
 <td>Command</td><td>Description</td>
 </tr>
 <tr>
-<td>2 - 8:<2> - <8></td><td>
+<td>2 - 8:\&lt;2&gt; - &lt;8&gt;</td><td>
 パーティメンバーの名前を取得します<br>
 パーティメンバーが変わるたび実行する必要があります<br>
 <font color="red">※ログ設定のイニシャルに注意。</font><br>
 <br>
 また、指定なしにすることで任意のTPを非表示にできます<br>
 ex) 3人目、4人目を非表示 <br>
-　/e TP 2:<2>  <br>
+　/e TP 2:&lt;2&gt;  <br>
 　/e TP 3:<br>
 　/e TP 4:<br>
-　/e TP 5:<5>  <br>
-　/e TP 6:<6>  <br>
-　/e TP 7:<7>  <br>
-　/e TP 8:<8>  <br>
+　/e TP 5:&lt;5&gt;  <br>
+　/e TP 6:&lt;6&gt;  <br>
+　/e TP 7:&lt;7&gt;  <br>
+　/e TP 8:&lt;8&gt;  <br>
 　/e TP /Show  
 </td>
 </tr>
