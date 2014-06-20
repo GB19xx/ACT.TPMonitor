@@ -123,6 +123,7 @@ namespace ACT.TPMonitor
             // 塗りつぶす
             g.FillPath(Brushes.White, path);
             // 後始末
+            g.SmoothingMode = SmoothingMode.Default; 
             p.Dispose();
             path.Dispose();
         }
