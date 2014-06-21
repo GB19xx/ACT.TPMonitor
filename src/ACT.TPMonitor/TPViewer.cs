@@ -19,6 +19,7 @@ namespace ACT.TPMonitor
             this.ControlBox = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;   // hidden border
             this.TransparencyKey = this.BackColor = Color.Navy;                 // the color key to transparent, choose a color that you don't use
+            SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
 
             controller.CurrentTPUpdate += CurrentTPUpdate;
         }
@@ -39,9 +40,9 @@ namespace ACT.TPMonitor
             Adjust(_controller.PartyListUI);
         }
 
-        public void Adjust(Rectangle rect)
+        public void Adjust(TPMonitorController.Widget widget)
         {
-            Point pos = rect.Location;
+            Point pos = widget.Rect.Location;
             if (_controller.IsFixedMode)
             {
                 pos = new Point((int)_controller.FixedX, (int)_controller.FixedY);
@@ -51,14 +52,19 @@ namespace ACT.TPMonitor
                 pos.Offset((int)_controller.OffsetX, (int)_controller.OffsetY);
             }
             this.Location = pos;
-            this.Size = rect.Size;
+            this.Size = widget.Rect.Size;
         }
 
         public void CurrentTPUpdate(object sender, EventArgs e)
         {
+            this.Refresh();
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
             if (this.Visible)
             {
-                Graphics g = this.CreateGraphics();
+                Graphics g = e.Graphics;
                 g.Clear(this.BackColor);
 
                 int s = _controller.IsFixedMode && _controller.ShowMyTP ? 0 : 1;
@@ -66,19 +72,19 @@ namespace ACT.TPMonitor
                 {
                     if (!string.IsNullOrEmpty(_controller.PartyMemberInfo[i].Name))
                     {
-                        DrawBar(g, i, _controller.PartyMemberInfo[i].TP);
-                        DrawValue(g, i, _controller.PartyMemberInfo[i].TP);
+                        DrawBar(g, i, _controller.PartyMemberInfo[i].TP, _controller.PartyListUI.Scale);
+                        DrawValue(g, i, _controller.PartyMemberInfo[i].TP, _controller.PartyListUI.Scale);
                     }
                 }
-                g.Dispose();
             }
         }
 
-        private void DrawBar(Graphics g, int idx, int value)
+        private void DrawBar(Graphics g, int idx, int value, float scale)
         {
+            Rectangle rect = new Rectangle((int)(258 * scale), (int)(((40 * idx) + 60) * scale), (int)(87 * scale), (int)(6 * scale));
             //Brushオブジェクトの作成
             SolidBrush b = new SolidBrush(Color.FromArgb(0x8, 0x2c, 0x52));
-            g.FillRectangle(b, new Rectangle(258, (40 * idx) + 60, 87, 6));
+            g.FillRectangle(b, rect.X, rect.Y, rect.Width, rect.Height);
 
             //Penの作成
             int width = 1;
@@ -86,19 +92,17 @@ namespace ACT.TPMonitor
 
             //LineJoinをRoundに変更して四角を描く（角が丸められる）
             framePen.LineJoin = System.Drawing.Drawing2D.LineJoin.Bevel;
-            g.DrawRectangle(framePen, new Rectangle(258, (40 * idx) + 60, 87, 6));
+            g.DrawRectangle(framePen, rect.X, rect.Y, rect.Width, rect.Height);
 
             // TP-Value
             Brush valueBrush = Brushes.White;
-            int percentValue = ((88 - width) * value) / 1000;
-            g.FillRectangle(valueBrush, new Rectangle(258 + 1, (40 * idx) + 61, percentValue - 1, 5));
+            g.FillRectangle(valueBrush, rect.X + width, rect.Y + width, (value * rect.Width / 1000) - width, rect.Height - width);
         }
 
-        private void DrawValue(Graphics g, int idx, int value)
+        private void DrawValue(Graphics g, int idx, int value, float scale)
         {
             // レイアウト枠
-            Rectangle rect = new Rectangle(247, 0, 100, 8);
-            rect.Y = (40 * idx) + 68;
+            Rectangle rect = new Rectangle((int)(247 * scale), (int)(((40 * idx) + 60 + 8) * scale), (int)(100 * scale), (int)(8 * scale));
             rect.Inflate(0, 0); // ちょっと小さい枠内にレイアウト
 
             // 文字列位置の設定
@@ -113,10 +117,10 @@ namespace ACT.TPMonitor
 
             // パスを作成
             GraphicsPath path = new GraphicsPath();
-            path.AddString(value.ToString(), f.FontFamily, (int)f.Style, f.Height, rect, sf); // 文字列のパスを追加
+            path.AddString(value.ToString(), f.FontFamily, (int)f.Style, f.Height * scale, rect, sf); // 文字列のパスを追加
 
             // フチを描く
-            Pen p = new Pen(Color.FromArgb(0x46, 0x86, 0xa9), 1.0f);
+            Pen p = new Pen(Color.FromArgb(0x46, 0x86, 0xa9), 1.0f * scale);
             //p.Color = Color.White;
             p.LineJoin = LineJoin.Round;
             g.DrawPath(p, path);
@@ -124,6 +128,7 @@ namespace ACT.TPMonitor
             // 塗りつぶす
             g.FillPath(Brushes.White, path);
             // 後始末
+            g.SmoothingMode = SmoothingMode.Default; 
             p.Dispose();
             path.Dispose();
         }

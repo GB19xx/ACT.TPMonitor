@@ -24,6 +24,12 @@ namespace ACT.TPMonitor
             }
         }
 
+        public class Widget
+        {
+            public Rectangle Rect { get; set; }
+            public float Scale { get; set; }
+        }
+
         public string CharFolder { get; set; }
 
         public bool ACTVisible { get; set; }
@@ -33,7 +39,7 @@ namespace ACT.TPMonitor
         public Point ViewLocation { get; set; }
 
         public Font TPFont { get; set; }
-        public Rectangle PartyListUI { get; set; }
+        public Widget PartyListUI { get; set; }
 
         public bool HideOnDissolve { get; set; }
         public bool ShowMyTP { get; set; }
