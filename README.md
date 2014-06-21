@@ -7,9 +7,9 @@ TPMonitor for FFXIV on ACT
 
 How to install
 ----------------
-1. ACT導入  
-2. FFXIVプラグイン導入  
-3. bin.zipをダウンロードし、展開  
+1. [ACT](http://advancedcombattracker.com/download.php)より、本体とPluginをダウンロード  
+2. ACT、FFXIVプラグイン導入  
+3. [bin.zip](https://github.com/GB19xx/ACT.TPMonitor/archive/master.zip)をダウンロードし、展開  
 4. Advanced Combat Tracker.exeと同じフォルダに「FFXIV_ACT_Plugin.dll」と「ACT.TPMonitor.dll」を配置  
 5. Plugin -> Plugin Listingタブから、上記4.「ACT.TPMonitor.dll」を選択  
 6. Add/Enable Pluginクリック  
@@ -17,7 +17,7 @@ How to install
 8. キャラクターフォルダー設定  
 【キャラクターフォルダーの特定方法】  
 	8-1. ログイン後、HUDを保存する  
-	8-2. ADDON.DATが近いとそのフォルダ
+	8-2. ADDON.DATの更新日時が近いとそのフォルダ  
 	
 <img src="https://raw.githubusercontent.com/GB19xx/ACT.TPMonitor/master/img/Settings.png" alt="Settings">
 
