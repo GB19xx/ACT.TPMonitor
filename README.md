@@ -119,6 +119,9 @@ Special thanks
 + [RainbowMage氏](https://github.com/RainbowMage)  
   FFXIVPluginの動的ロード、マルチモニタの修正いただきました！  
 
++ [madogiwa氏](https://github.com/madogiwa)  
+  UIスケール対応いただきました！  
+
 + [pirulen](http://typodermicfonts.com/pirulen/)  
   Free Font! GREATE JOB!
 
