@@ -81,7 +81,7 @@ ex) 3人目、4人目を非表示 <br>
 	/e TP 8:<8>  
 	/e TP /Show  
 
-チャットログの名前がフルネーム以外でプレイしている場合、上記マクロの前後にテキストコマンドを追記することで取得できます  
+チャットログの名前をフルネーム以外でプレイしている場合、上記マクロの前後にテキストコマンドを追記することで取得できます  
 /chatlog name 0 (先頭に追記）  
 /chatlog name 1~3 (最後に追記）
   
@@ -99,6 +99,10 @@ Offsetにて微調整可能
 ###Option
 + パーティ解散を契機に非表示  
 + 自分のTPも表示（Fixed Mode時のみ有効）  
+
+###Display Job
++ 特定ジョブのTPを非表示にできます  
++ 記載のないジョブは表示されます  
 
 Remarks
 -----------
@@ -121,6 +125,9 @@ Special thanks
 
 + [madogiwa氏](https://github.com/madogiwa)  
   UIスケール対応いただきました！  
+
++ [grindingcoil氏](https://github.com/grindingcoil)  
+  更新チェックのソース流用いたしました！  
 
 + [pirulen](http://typodermicfonts.com/pirulen/)  
   Free Font! GREATE JOB!
