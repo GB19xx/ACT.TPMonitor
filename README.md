@@ -118,6 +118,9 @@ License
 
 記載されている会社名・製品名・システム名などは、各社の商標、または登録商標です。  
 
+Copyright (c) 2014, grindingcoil All rights reserved.  
+Originally under 3-clause BSD license, https://github.com/grindingcoil/act_timeline/blob/master/LICENSE.txt
+
 Special thanks
 ----------------
 + [RainbowMage氏](https://github.com/RainbowMage)  
