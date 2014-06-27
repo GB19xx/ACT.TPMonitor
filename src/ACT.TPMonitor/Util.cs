@@ -94,7 +94,7 @@ namespace ACT.TPMonitor
             }
             return screenRect;
         }
-
+        
         public static TPMonitorController.Widget GetPartyListLocation(string path)
         {
             _screenRect = GetWindowSize(path);

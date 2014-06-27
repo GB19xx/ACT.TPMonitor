@@ -14,11 +14,13 @@ namespace ACT.TPMonitor
     {
         public class PartyMember
         {
+            public JOB Job { get; set; }
             public string Name { get; set; }
             public int TP { get; set; }
 
             public PartyMember()
             {
+                this.Job = JOB.Unknown;
                 this.Name = "";
                 this.TP = 0;
             }
@@ -50,7 +52,8 @@ namespace ACT.TPMonitor
         public decimal FixedX { get; set; }
         public decimal FixedY { get; set; }
 
-        public List<PartyMember> PartyMemberInfo { get; private set; }
+        public SynchronizedCollection<PartyMember> PartyMemberInfo { get; private set; }
+        public SynchronizedCollection<JOB> HideJob { get; set; }
 
         private Regex regex = new Regex(@"(?<Time>\[.+?\]) TP ((?<Num>\d):(?<Name>.*)|/(?<Command>.+))", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
@@ -67,11 +70,13 @@ namespace ACT.TPMonitor
             this.actTab = actTab;
             this.actTab.ChangeLocation += new ACTTabpageControl.ChangeLocationEventHandler(this.ChangeLocation);
 
+            HideJob = new SynchronizedCollection<JOB>();
+
             ActGlobals.oFormActMain.OnLogLineRead += act_OnLogLineRead;
 
             isExited = false;
 
-            PartyMemberInfo = new List<PartyMember>();
+            PartyMemberInfo = new SynchronizedCollection<PartyMember>();
             for (int i = 0; i < 8; i++)
             {
                 PartyMemberInfo.Add(new PartyMember());
@@ -183,7 +188,7 @@ namespace ACT.TPMonitor
 
         private void act_OnLogLineRead(bool isImport, LogLineEventArgs logInfo)
         {
-            if (!logInfo.inCombat)
+            if (!isImport)
             {
                 if (this.HideOnDissolve &&
                     (
@@ -194,7 +199,7 @@ namespace ACT.TPMonitor
                     )
                 {
                     // clear
-                    PartyMemberInfo = new List<PartyMember>();
+                    PartyMemberInfo = new SynchronizedCollection<PartyMember>();
                     for (int i = 0; i < 8; i++)
                     {
                         PartyMemberInfo.Add(new PartyMember());
@@ -230,12 +235,12 @@ namespace ACT.TPMonitor
                     {
                         switch (command)
                         {
-                            case "adjust":                                
+                            case "adjust":
                                 this.PartyListUI = Util.GetPartyListLocation(this.CharFolder);
                                 view.Adjust();
                                 break;
                             case "clear":
-                                PartyMemberInfo = new List<PartyMember>();
+                                PartyMemberInfo = new SynchronizedCollection<PartyMember>();
                                 for (int i = 0; i < 8; i++)
                                 {
                                     PartyMemberInfo.Add(new PartyMember());
@@ -292,6 +297,7 @@ namespace ACT.TPMonitor
                     {
                         if (PartyMemberInfo[i].Name.Equals(c.Name))
                         {
+                            PartyMemberInfo[i].Job = (JOB)c.Job;
                             PartyMemberInfo[i].TP = c.CurrentTP;
                             break;
                         }

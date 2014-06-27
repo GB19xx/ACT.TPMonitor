@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<versionInfo>
+  <version>1.2.1.0</version>
+  <changeSummary>
+    <jp>- 自動更新チェック実装
+        - 表示ジョブを選択機能追加
+        - インポートログは対象外に修正
+        - 戦闘中にもコマンドを受け付けるよう修正
+    </jp>
+  </changeSummary>
+  <downloadUrl>https://github.com/GB19xx/ACT.TPMonitor</downloadUrl>
+</versionInfo>
