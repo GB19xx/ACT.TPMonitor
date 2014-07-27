@@ -53,6 +53,10 @@ namespace ACT.TPMonitor
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ACTTabpageControl));
             this.textBoxCharacterFolder = new System.Windows.Forms.TextBox();
             this.buttonOpenFolder = new System.Windows.Forms.Button();
@@ -75,8 +79,20 @@ namespace ACT.TPMonitor
             this.textBoxRecommend = new System.Windows.Forms.TextBox();
             this.groupBoxOption = new System.Windows.Forms.GroupBox();
             this.checkBoxShowMyTP = new System.Windows.Forms.CheckBox();
-            this.checkBoxHideOnDissolve = new System.Windows.Forms.CheckBox();
-            this.groupBoxLocation = new System.Windows.Forms.GroupBox();
+            this.checkBoxHideWhenEnded = new System.Windows.Forms.CheckBox();
+            this.checkBoxHideWhenDissolve = new System.Windows.Forms.CheckBox();
+            this.groupBoxSettings = new System.Windows.Forms.GroupBox();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonApply = new System.Windows.Forms.Button();
+            this.buttonDefault = new System.Windows.Forms.Button();
+            this.groupBoxScale = new System.Windows.Forms.GroupBox();
+            this.checkBoxUserScale = new System.Windows.Forms.CheckBox();
+            this.numericUpDownUserScale = new System.Windows.Forms.NumericUpDown();
+            this.dataGridViewColor = new System.Windows.Forms.DataGridView();
+            this.ColumnStartTP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnEndTP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDialog = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBoxWhereNow = new System.Windows.Forms.GroupBox();
             this.labelHereNowX = new System.Windows.Forms.Label();
             this.labelHereNowY = new System.Windows.Forms.Label();
@@ -111,6 +127,7 @@ namespace ACT.TPMonitor
             this.checkBoxPLD = new System.Windows.Forms.CheckBox();
             this.checkBoxGLD = new System.Windows.Forms.CheckBox();
             this.imageListJobOff = new System.Windows.Forms.ImageList(this.components);
+            this.textBoxColors = new System.Windows.Forms.TextBox();
             this.groupBoxCharacterFolder.SuspendLayout();
             this.groupBoxStatus.SuspendLayout();
             this.tableLayoutPanelStatus.SuspendLayout();
@@ -118,7 +135,10 @@ namespace ACT.TPMonitor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFontSize)).BeginInit();
             this.groupBoxRecommend.SuspendLayout();
             this.groupBoxOption.SuspendLayout();
-            this.groupBoxLocation.SuspendLayout();
+            this.groupBoxSettings.SuspendLayout();
+            this.groupBoxScale.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUserScale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewColor)).BeginInit();
             this.groupBoxWhereNow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFixedY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFixedX)).BeginInit();
@@ -277,7 +297,7 @@ namespace ACT.TPMonitor
             // 
             this.groupBoxFont.Controls.Add(this.numericUpDownFontSize);
             this.groupBoxFont.Controls.Add(this.comboBoxTPFont);
-            this.groupBoxFont.Location = new System.Drawing.Point(615, 261);
+            this.groupBoxFont.Location = new System.Drawing.Point(769, 83);
             this.groupBoxFont.Name = "groupBoxFont";
             this.groupBoxFont.Size = new System.Drawing.Size(148, 76);
             this.groupBoxFont.TabIndex = 4;
@@ -355,10 +375,11 @@ namespace ACT.TPMonitor
             // groupBoxOption
             // 
             this.groupBoxOption.Controls.Add(this.checkBoxShowMyTP);
-            this.groupBoxOption.Controls.Add(this.checkBoxHideOnDissolve);
-            this.groupBoxOption.Location = new System.Drawing.Point(19, 185);
+            this.groupBoxOption.Controls.Add(this.checkBoxHideWhenEnded);
+            this.groupBoxOption.Controls.Add(this.checkBoxHideWhenDissolve);
+            this.groupBoxOption.Location = new System.Drawing.Point(317, 83);
             this.groupBoxOption.Name = "groupBoxOption";
-            this.groupBoxOption.Size = new System.Drawing.Size(292, 70);
+            this.groupBoxOption.Size = new System.Drawing.Size(292, 96);
             this.groupBoxOption.TabIndex = 2;
             this.groupBoxOption.TabStop = false;
             this.groupBoxOption.Text = "Option";
@@ -368,7 +389,7 @@ namespace ACT.TPMonitor
             this.checkBoxShowMyTP.AutoSize = true;
             this.checkBoxShowMyTP.Checked = true;
             this.checkBoxShowMyTP.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowMyTP.Location = new System.Drawing.Point(15, 44);
+            this.checkBoxShowMyTP.Location = new System.Drawing.Point(15, 66);
             this.checkBoxShowMyTP.Name = "checkBoxShowMyTP";
             this.checkBoxShowMyTP.Size = new System.Drawing.Size(184, 16);
             this.checkBoxShowMyTP.TabIndex = 0;
@@ -376,44 +397,201 @@ namespace ACT.TPMonitor
             this.checkBoxShowMyTP.UseVisualStyleBackColor = true;
             this.checkBoxShowMyTP.CheckedChanged += new System.EventHandler(this.checkBoxShowMyTP_CheckedChanged);
             // 
-            // checkBoxHideOnDissolve
+            // checkBoxHideWhenEnded
             // 
-            this.checkBoxHideOnDissolve.AutoSize = true;
-            this.checkBoxHideOnDissolve.Checked = true;
-            this.checkBoxHideOnDissolve.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxHideOnDissolve.Location = new System.Drawing.Point(15, 22);
-            this.checkBoxHideOnDissolve.Name = "checkBoxHideOnDissolve";
-            this.checkBoxHideOnDissolve.Size = new System.Drawing.Size(262, 16);
-            this.checkBoxHideOnDissolve.TabIndex = 0;
-            this.checkBoxHideOnDissolve.Text = "TPMonitor is to hide when dissolved the party.";
-            this.checkBoxHideOnDissolve.UseVisualStyleBackColor = true;
-            this.checkBoxHideOnDissolve.CheckedChanged += new System.EventHandler(this.checkBoxHideOnDissolve_CheckedChanged);
+            this.checkBoxHideWhenEnded.AutoSize = true;
+            this.checkBoxHideWhenEnded.Checked = true;
+            this.checkBoxHideWhenEnded.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxHideWhenEnded.Location = new System.Drawing.Point(15, 44);
+            this.checkBoxHideWhenEnded.Name = "checkBoxHideWhenEnded";
+            this.checkBoxHideWhenEnded.Size = new System.Drawing.Size(128, 16);
+            this.checkBoxHideWhenEnded.TabIndex = 0;
+            this.checkBoxHideWhenEnded.Text = "Hide when ID ended.";
+            this.checkBoxHideWhenEnded.UseVisualStyleBackColor = true;
+            this.checkBoxHideWhenEnded.CheckedChanged += new System.EventHandler(this.checkBoxHideWhenEnded_CheckedChanged);
             // 
-            // groupBoxLocation
+            // checkBoxHideWhenDissolve
             // 
-            this.groupBoxLocation.Controls.Add(this.groupBoxWhereNow);
-            this.groupBoxLocation.Controls.Add(this.labelFixedX);
-            this.groupBoxLocation.Controls.Add(this.labelFixedY);
-            this.groupBoxLocation.Controls.Add(this.labelOffsetY);
-            this.groupBoxLocation.Controls.Add(this.labelOffsetX);
-            this.groupBoxLocation.Controls.Add(this.numericUpDownFixedY);
-            this.groupBoxLocation.Controls.Add(this.numericUpDownFixedX);
-            this.groupBoxLocation.Controls.Add(this.numericUpDownOffsetY);
-            this.groupBoxLocation.Controls.Add(this.numericUpDownOffsetX);
-            this.groupBoxLocation.Controls.Add(this.radioButtonFixed);
-            this.groupBoxLocation.Controls.Add(this.radioButtonOffset);
-            this.groupBoxLocation.Location = new System.Drawing.Point(317, 83);
-            this.groupBoxLocation.Name = "groupBoxLocation";
-            this.groupBoxLocation.Size = new System.Drawing.Size(292, 172);
-            this.groupBoxLocation.TabIndex = 3;
-            this.groupBoxLocation.TabStop = false;
-            this.groupBoxLocation.Text = "Monitor Location";
+            this.checkBoxHideWhenDissolve.AutoSize = true;
+            this.checkBoxHideWhenDissolve.Checked = true;
+            this.checkBoxHideWhenDissolve.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxHideWhenDissolve.Location = new System.Drawing.Point(15, 22);
+            this.checkBoxHideWhenDissolve.Name = "checkBoxHideWhenDissolve";
+            this.checkBoxHideWhenDissolve.Size = new System.Drawing.Size(181, 16);
+            this.checkBoxHideWhenDissolve.TabIndex = 0;
+            this.checkBoxHideWhenDissolve.Text = "Hide when dissolved the party.";
+            this.checkBoxHideWhenDissolve.UseVisualStyleBackColor = true;
+            this.checkBoxHideWhenDissolve.CheckedChanged += new System.EventHandler(this.checkBoxHideWhenDissolve_CheckedChanged);
+            // 
+            // groupBoxSettings
+            // 
+            this.groupBoxSettings.Controls.Add(this.buttonCancel);
+            this.groupBoxSettings.Controls.Add(this.buttonApply);
+            this.groupBoxSettings.Controls.Add(this.buttonDefault);
+            this.groupBoxSettings.Controls.Add(this.groupBoxScale);
+            this.groupBoxSettings.Controls.Add(this.dataGridViewColor);
+            this.groupBoxSettings.Controls.Add(this.groupBoxWhereNow);
+            this.groupBoxSettings.Controls.Add(this.labelFixedX);
+            this.groupBoxSettings.Controls.Add(this.labelFixedY);
+            this.groupBoxSettings.Controls.Add(this.labelOffsetY);
+            this.groupBoxSettings.Controls.Add(this.labelOffsetX);
+            this.groupBoxSettings.Controls.Add(this.numericUpDownFixedY);
+            this.groupBoxSettings.Controls.Add(this.numericUpDownFixedX);
+            this.groupBoxSettings.Controls.Add(this.numericUpDownOffsetY);
+            this.groupBoxSettings.Controls.Add(this.numericUpDownOffsetX);
+            this.groupBoxSettings.Controls.Add(this.radioButtonFixed);
+            this.groupBoxSettings.Controls.Add(this.radioButtonOffset);
+            this.groupBoxSettings.Location = new System.Drawing.Point(19, 297);
+            this.groupBoxSettings.Name = "groupBoxSettings";
+            this.groupBoxSettings.Size = new System.Drawing.Size(744, 217);
+            this.groupBoxSettings.TabIndex = 3;
+            this.groupBoxSettings.TabStop = false;
+            this.groupBoxSettings.Text = "Settings";
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Location = new System.Drawing.Point(663, 188);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 13;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // buttonApply
+            // 
+            this.buttonApply.Location = new System.Drawing.Point(582, 188);
+            this.buttonApply.Name = "buttonApply";
+            this.buttonApply.Size = new System.Drawing.Size(75, 23);
+            this.buttonApply.TabIndex = 13;
+            this.buttonApply.Text = "Apply";
+            this.buttonApply.UseVisualStyleBackColor = true;
+            this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
+            // 
+            // buttonDefault
+            // 
+            this.buttonDefault.Location = new System.Drawing.Point(316, 188);
+            this.buttonDefault.Name = "buttonDefault";
+            this.buttonDefault.Size = new System.Drawing.Size(75, 23);
+            this.buttonDefault.TabIndex = 13;
+            this.buttonDefault.Text = "Default";
+            this.buttonDefault.UseVisualStyleBackColor = true;
+            this.buttonDefault.Click += new System.EventHandler(this.buttonDefault_Click);
+            // 
+            // groupBoxScale
+            // 
+            this.groupBoxScale.Controls.Add(this.checkBoxUserScale);
+            this.groupBoxScale.Controls.Add(this.numericUpDownUserScale);
+            this.groupBoxScale.Location = new System.Drawing.Point(6, 163);
+            this.groupBoxScale.Name = "groupBoxScale";
+            this.groupBoxScale.Size = new System.Drawing.Size(152, 48);
+            this.groupBoxScale.TabIndex = 12;
+            this.groupBoxScale.TabStop = false;
+            // 
+            // checkBoxUserScale
+            // 
+            this.checkBoxUserScale.AutoSize = true;
+            this.checkBoxUserScale.Location = new System.Drawing.Point(6, -1);
+            this.checkBoxUserScale.Name = "checkBoxUserScale";
+            this.checkBoxUserScale.Size = new System.Drawing.Size(52, 16);
+            this.checkBoxUserScale.TabIndex = 13;
+            this.checkBoxUserScale.Text = "Scale";
+            this.checkBoxUserScale.UseVisualStyleBackColor = true;
+            this.checkBoxUserScale.CheckedChanged += new System.EventHandler(this.ChangedScale);
+            // 
+            // numericUpDownUserScale
+            // 
+            this.numericUpDownUserScale.Enabled = false;
+            this.numericUpDownUserScale.Location = new System.Drawing.Point(48, 18);
+            this.numericUpDownUserScale.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.numericUpDownUserScale.Minimum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.numericUpDownUserScale.Name = "numericUpDownUserScale";
+            this.numericUpDownUserScale.Size = new System.Drawing.Size(71, 19);
+            this.numericUpDownUserScale.TabIndex = 13;
+            this.numericUpDownUserScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDownUserScale.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDownUserScale.ValueChanged += new System.EventHandler(this.ChangedScale);
+            // 
+            // dataGridViewColor
+            // 
+            this.dataGridViewColor.AllowUserToResizeColumns = false;
+            this.dataGridViewColor.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
+            this.dataGridViewColor.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewColor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewColor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnStartTP,
+            this.ColumnEndTP,
+            this.ColumnColor,
+            this.ColumnDialog});
+            this.dataGridViewColor.Location = new System.Drawing.Point(316, 18);
+            this.dataGridViewColor.MultiSelect = false;
+            this.dataGridViewColor.Name = "dataGridViewColor";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewColor.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewColor.RowTemplate.Height = 21;
+            this.dataGridViewColor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridViewColor.Size = new System.Drawing.Size(422, 164);
+            this.dataGridViewColor.TabIndex = 11;
+            this.dataGridViewColor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewColor_CellContentClick);
+            // 
+            // ColumnStartTP
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            this.ColumnStartTP.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnStartTP.HeaderText = "StartTP";
+            this.ColumnStartTP.Name = "ColumnStartTP";
+            this.ColumnStartTP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnStartTP.Width = 80;
+            // 
+            // ColumnEndTP
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            this.ColumnEndTP.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnEndTP.HeaderText = "EndTP";
+            this.ColumnEndTP.Name = "ColumnEndTP";
+            this.ColumnEndTP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColumnEndTP.Width = 80;
+            // 
+            // ColumnColor
+            // 
+            this.ColumnColor.HeaderText = "Color";
+            this.ColumnColor.Name = "ColumnColor";
+            this.ColumnColor.ReadOnly = true;
+            this.ColumnColor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnDialog
+            // 
+            this.ColumnDialog.HeaderText = "";
+            this.ColumnDialog.Name = "ColumnDialog";
+            this.ColumnDialog.Text = "Edit Color";
+            this.ColumnDialog.UseColumnTextForButtonValue = true;
             // 
             // groupBoxWhereNow
             // 
             this.groupBoxWhereNow.Controls.Add(this.labelHereNowX);
             this.groupBoxWhereNow.Controls.Add(this.labelHereNowY);
-            this.groupBoxWhereNow.Location = new System.Drawing.Point(16, 117);
+            this.groupBoxWhereNow.Location = new System.Drawing.Point(6, 117);
             this.groupBoxWhereNow.Name = "groupBoxWhereNow";
             this.groupBoxWhereNow.Size = new System.Drawing.Size(152, 40);
             this.groupBoxWhereNow.TabIndex = 10;
@@ -576,7 +754,7 @@ namespace ACT.TPMonitor
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(688, 344);
+            this.buttonSave.Location = new System.Drawing.Point(688, 268);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 11;
@@ -603,7 +781,7 @@ namespace ACT.TPMonitor
             this.groupBoxDisplayJob.Controls.Add(this.checkBoxPGL);
             this.groupBoxDisplayJob.Controls.Add(this.checkBoxPLD);
             this.groupBoxDisplayJob.Controls.Add(this.checkBoxGLD);
-            this.groupBoxDisplayJob.Location = new System.Drawing.Point(19, 261);
+            this.groupBoxDisplayJob.Location = new System.Drawing.Point(19, 185);
             this.groupBoxDisplayJob.Name = "groupBoxDisplayJob";
             this.groupBoxDisplayJob.Size = new System.Drawing.Size(590, 106);
             this.groupBoxDisplayJob.TabIndex = 6;
@@ -911,20 +1089,29 @@ namespace ACT.TPMonitor
             this.imageListJobOff.Images.SetKeyName(16, "Summoner_off.png");
             this.imageListJobOff.Images.SetKeyName(17, "Scholar_off.png");
             // 
+            // textBoxColors
+            // 
+            this.textBoxColors.Location = new System.Drawing.Point(769, 311);
+            this.textBoxColors.Name = "textBoxColors";
+            this.textBoxColors.Size = new System.Drawing.Size(100, 19);
+            this.textBoxColors.TabIndex = 12;
+            this.textBoxColors.Visible = false;
+            // 
             // ACTTabpageControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBoxColors);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.groupBoxDisplayJob);
-            this.Controls.Add(this.groupBoxLocation);
+            this.Controls.Add(this.groupBoxSettings);
             this.Controls.Add(this.groupBoxOption);
             this.Controls.Add(this.groupBoxFont);
             this.Controls.Add(this.groupBoxRecommend);
             this.Controls.Add(this.groupBoxStatus);
             this.Controls.Add(this.groupBoxCharacterFolder);
             this.Name = "ACTTabpageControl";
-            this.Size = new System.Drawing.Size(786, 377);
+            this.Size = new System.Drawing.Size(950, 559);
             this.groupBoxCharacterFolder.ResumeLayout(false);
             this.groupBoxCharacterFolder.PerformLayout();
             this.groupBoxStatus.ResumeLayout(false);
@@ -936,8 +1123,12 @@ namespace ACT.TPMonitor
             this.groupBoxRecommend.PerformLayout();
             this.groupBoxOption.ResumeLayout(false);
             this.groupBoxOption.PerformLayout();
-            this.groupBoxLocation.ResumeLayout(false);
-            this.groupBoxLocation.PerformLayout();
+            this.groupBoxSettings.ResumeLayout(false);
+            this.groupBoxSettings.PerformLayout();
+            this.groupBoxScale.ResumeLayout(false);
+            this.groupBoxScale.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUserScale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewColor)).EndInit();
             this.groupBoxWhereNow.ResumeLayout(false);
             this.groupBoxWhereNow.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFixedY)).EndInit();
@@ -947,11 +1138,10 @@ namespace ACT.TPMonitor
             this.groupBoxDisplayJob.ResumeLayout(false);
             this.groupBoxDisplayJob.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
-
 		#endregion
-
 
         #endregion
 
@@ -1006,9 +1196,9 @@ namespace ACT.TPMonitor
         private TPMonitorController controller;
         private TextBox textBoxRecommend;
         private GroupBox groupBoxOption;
-        private CheckBox checkBoxHideOnDissolve;
+        private CheckBox checkBoxHideWhenDissolve;
         private Button buttonCopy;
-        private GroupBox groupBoxLocation;
+        private GroupBox groupBoxSettings;
         private NumericUpDown numericUpDownFixedY;
         private NumericUpDown numericUpDownFixedX;
         private NumericUpDown numericUpDownOffsetY;
@@ -1045,7 +1235,21 @@ namespace ACT.TPMonitor
         private CheckBox checkBoxSMN;
         private CheckBox checkBoxSCH;
         private Font selectedFont;
+        private CheckBox checkBoxHideWhenEnded;
+        private DataGridView dataGridViewColor;
+        private Button buttonCancel;
+        private Button buttonApply;
+        private Button buttonDefault;
+        private GroupBox groupBoxScale;
+        private TextBox textBoxColors;
         private List<JOB> hideJob = new List<JOB>();
+        private CheckBox checkBoxUserScale;
+        private NumericUpDown numericUpDownUserScale;
+        private DataGridViewTextBoxColumn ColumnStartTP;
+        private DataGridViewTextBoxColumn ColumnEndTP;
+        private DataGridViewTextBoxColumn ColumnColor;
+        private DataGridViewButtonColumn ColumnDialog;
+        private DataTable dtColor = new DataTable();
 
 		#region IActPluginV1 Members
 		public void InitPlugin(TabPage pluginScreenSpace, Label pluginStatusText)
@@ -1080,14 +1284,24 @@ namespace ACT.TPMonitor
                 return null;
             };
 
-            lblStatus.Text = "Plugin Started.";
             controller.CharFolder = textBoxCharacterFolder.Text;
-            controller.HideOnDissolve = checkBoxHideOnDissolve.Checked;
+            controller.HideWhenDissolve = checkBoxHideWhenDissolve.Checked;
+            controller.HideWhenEnded = checkBoxHideWhenEnded.Checked;
             controller.ShowMyTP = checkBoxShowMyTP.Checked;
             controller.IsFixedMode = radioButtonFixed.Checked;
             controller.ChangedStatus += new EventHandler(this.ChangedStatus);
             OnChangeLocation();
             SetFontName();
+
+            if (string.IsNullOrEmpty(textBoxColors.Text))
+            {
+                SetDefaultColor();
+                dtColor = GetDataTable();
+            }
+            SetColorSetting();
+            buttonApply_Click(this, null);
+
+            lblStatus.Text = "Plugin Started.";
         }
 
         public void DeInitPlugin()
@@ -1123,18 +1337,24 @@ namespace ACT.TPMonitor
             }
         }
 
-		private void LoadSettings()
+        #region Config Settings
+        private void LoadSettings()
 		{
             xmlSettings.AddControlSetting(textBoxCharacterFolder.Name, textBoxCharacterFolder);
             xmlSettings.AddControlSetting(comboBoxTPFont.Name, comboBoxTPFont);
             xmlSettings.AddControlSetting(numericUpDownFontSize.Name, numericUpDownFontSize);
-            xmlSettings.AddControlSetting(checkBoxHideOnDissolve.Name, checkBoxHideOnDissolve);
+            xmlSettings.AddControlSetting(checkBoxHideWhenDissolve.Name, checkBoxHideWhenDissolve);
+            xmlSettings.AddControlSetting(checkBoxHideWhenEnded.Name, checkBoxHideWhenEnded);
             xmlSettings.AddControlSetting(checkBoxShowMyTP.Name, checkBoxShowMyTP);
             xmlSettings.AddControlSetting(radioButtonFixed.Name, radioButtonFixed);
             xmlSettings.AddControlSetting(numericUpDownOffsetX.Name, numericUpDownOffsetX);
             xmlSettings.AddControlSetting(numericUpDownOffsetY.Name, numericUpDownOffsetY);
             xmlSettings.AddControlSetting(numericUpDownFixedX.Name, numericUpDownFixedX);
             xmlSettings.AddControlSetting(numericUpDownFixedY.Name, numericUpDownFixedY);
+            xmlSettings.AddControlSetting(textBoxColors.Name, textBoxColors);
+
+            xmlSettings.AddControlSetting(checkBoxUserScale.Name, checkBoxUserScale);
+            xmlSettings.AddControlSetting(numericUpDownUserScale.Name, numericUpDownUserScale);
 
             xmlSettings.AddControlSetting(checkBoxGLD.Name, checkBoxGLD);
             xmlSettings.AddControlSetting(checkBoxPGL.Name, checkBoxPGL);
@@ -1180,7 +1400,7 @@ namespace ACT.TPMonitor
 			}
 		}
 
-		private void SaveSettings()
+        private void SaveSettings()
 		{
 			FileStream fs = new FileStream(settingsFile, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
 			XmlTextWriter xWriter = new XmlTextWriter(fs, Encoding.UTF8);
@@ -1197,27 +1417,9 @@ namespace ACT.TPMonitor
 			xWriter.Flush();	// Flush the file buffer to disk
 			xWriter.Close();
 		}
+        #endregion
 
-        private void buttonOpenFolder_Click(object sender, EventArgs e)
-        {
-            FolderBrowserDialog f = new FolderBrowserDialog();
-            f.RootFolder = Environment.SpecialFolder.MyDocuments;
-            f.SelectedPath = textBoxCharacterFolder.Text;
-            f.ShowNewFolderButton = false;
-            if (f.ShowDialog(this) == DialogResult.OK)
-            {
-                if (Path.GetFileName(f.SelectedPath).StartsWith("FFXIV_CHR"))
-                {
-                    textBoxCharacterFolder.Text = f.SelectedPath;
-                    controller.PartyListUI = Util.GetPartyListLocation(textBoxCharacterFolder.Text);
-                }
-                else
-                {
-                    MessageBox.Show("Please select a folder that starts with 'FFXIV_CHR'");
-                }
-            }
-        }
-
+        #region Font Settings
         private void SetFontName()
         {
             comboBoxTPFont.Items.Add("PIRULEN");
@@ -1288,22 +1490,56 @@ namespace ACT.TPMonitor
         {
             comboBoxTPFont_SelectedIndexChanged(this, e);
         }
+        #endregion
 
+        private void buttonOpenFolder_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog f = new FolderBrowserDialog();
+            f.RootFolder = Environment.SpecialFolder.MyDocuments;
+            f.SelectedPath = textBoxCharacterFolder.Text;
+            f.ShowNewFolderButton = false;
+            if (f.ShowDialog(this) == DialogResult.OK)
+            {
+                if (Path.GetFileName(f.SelectedPath).StartsWith("FFXIV_CHR"))
+                {
+                    textBoxCharacterFolder.Text = f.SelectedPath;
+                    controller.PartyListUI = Util.GetPartyListLocation(textBoxCharacterFolder.Text);
+                }
+                else
+                {
+                    MessageBox.Show("Please select a folder that starts with 'FFXIV_CHR'");
+                }
+            }
+        }
+        
         private void buttonCopy_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(textBoxRecommend.Text);
         }
 
-        private void checkBoxHideOnDissolve_CheckedChanged(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, EventArgs e)
         {
-            controller.HideOnDissolve = checkBoxHideOnDissolve.Checked;
+            SaveSettings();
+        }
+
+        #region Options
+        private void checkBoxHideWhenDissolve_CheckedChanged(object sender, EventArgs e)
+        {
+            controller.HideWhenDissolve = checkBoxHideWhenDissolve.Checked;
+        }
+
+        private void checkBoxHideWhenEnded_CheckedChanged(object sender, EventArgs e)
+        {
+            controller.HideWhenEnded = checkBoxHideWhenEnded.Checked;
         }
 
         private void checkBoxShowMyTP_CheckedChanged(object sender, EventArgs e)
         {
             controller.ShowMyTP = checkBoxShowMyTP.Checked;
         }
+        #endregion
 
+        #region Change Location 
         private void ChangedLocation(object sender, EventArgs e)
         {
             OnChangeLocation();
@@ -1311,7 +1547,7 @@ namespace ACT.TPMonitor
 
         public class ChangeLocationEventArgs : EventArgs
         {
-            public Point location;
+            public Point Location;
         }
 
         public delegate void ChangeLocationEventHandler(object sender, ChangeLocationEventArgs e);
@@ -1330,24 +1566,21 @@ namespace ACT.TPMonitor
                 if (radioButtonOffset.Checked)
                 {
                     controller.PartyListUI = Util.GetPartyListLocation(textBoxCharacterFolder.Text);
-                    arg.location = new Point(
+                    arg.Location = new Point(
                         controller.PartyListUI.Rect.Location.X + (int)numericUpDownOffsetX.Value,
                         controller.PartyListUI.Rect.Location.Y + (int)numericUpDownOffsetY.Value);
                 }
                 else if (radioButtonFixed.Checked)
                 {
-                    arg.location = new Point((int)numericUpDownFixedX.Value, (int)numericUpDownFixedY.Value);
+                    arg.Location = new Point((int)numericUpDownFixedX.Value, (int)numericUpDownFixedY.Value);
                 }
 
                 ChangeLocation(this, arg);
             }
         }
+        #endregion
 
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            SaveSettings();
-        }
-
+        #region Job Settings
         private void checkBoxJob_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox chkJob = (CheckBox)sender;
@@ -1363,5 +1596,208 @@ namespace ACT.TPMonitor
                 controller.HideJob.Add((JOB)chkJob.Tag);
             }
         }
+        #endregion
+
+        #region Color Settings
+        private void SetDefaultColor()
+        {
+            textBoxColors.Text = "0:1000:White";
+        }
+
+        private void SetColorSetting()
+        {
+            dataGridViewColor.Rows.Clear();
+            string[] rows = textBoxColors.Text.Split('|');
+            for (int i = 0; i < rows.Length; i++)
+            {
+                dataGridViewColor.Rows.Insert(i, rows[i].Split(':'));
+            }
+        }
+
+        private void buttonDefault_Click(object sender, EventArgs e)
+        {
+            SetDefaultColor();
+            SetColorSetting();
+        }
+
+        private void buttonApply_Click(object sender, EventArgs e)
+        {
+            if (!CheckInput()) return;
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < dataGridViewColor.Rows.Count - 1; i++)
+            {
+                sb.Append(dataGridViewColor[0, i].Value + ":");     //StartTP
+                sb.Append(dataGridViewColor[1, i].Value + ":");     //EndTP
+                sb.Append(dataGridViewColor[2, i].Value + "|");     //Color
+            }
+
+            if (sb.Length != 0)
+            {
+                sb.Remove(sb.Length - 1, 1);
+                textBoxColors.Text = sb.ToString();
+            }
+            else
+            {
+                textBoxColors.Text = string.Empty;
+            }
+
+            dtColor = GetDataTable();
+            controller.dtColor = dtColor;
+        }
+        
+        private bool CheckInput()
+        {
+            int checkValue;
+            DataGridView dgv = dataGridViewColor;
+
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                foreach (DataGridViewCell cell in dgv.Rows[row.Index].Cells)
+                {
+                    switch (cell.ColumnIndex)
+                    {
+                        case 0:
+                        case 1:
+                            if (cell.Value == null || cell.Value.ToString() == "")
+                            {
+                                dgv.Rows[row.Index].ErrorText = "Eter a value in all cells.";
+                                return false;
+                            }
+                            else if (!int.TryParse(cell.Value.ToString(), out checkValue))
+                            {
+                                dgv.Rows[row.Index].ErrorText = "Valid only numbers.";
+                                return false;
+                            }
+
+                            if (cell.ColumnIndex == 0)
+                            {
+                                if (row.Index > 0 &&
+                                    int.Parse(dgv[0, row.Index].Value.ToString()) < int.Parse(dgv[1, row.Index - 1].Value.ToString()))
+                                {
+                                    dgv.Rows[row.Index].ErrorText = "Intersects the EndTP of another row.";
+                                    return false;
+                                }
+                            }
+                            else
+                            {
+                                if (cell.ColumnIndex == 1 &&
+                                    int.Parse(dgv[0, row.Index].Value.ToString()) >= int.Parse(dgv[1, row.Index].Value.ToString()))
+                                {
+                                    dgv.Rows[row.Index].ErrorText = "Must have StartTP < EndTP.";
+                                    return false;
+                                }
+                            }
+                            break;
+                        case 2:
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                dgv.Rows[row.Index].ErrorText = null;
+            }
+            return true;
+        }
+
+        private DataTable GetDataTable()
+        {
+            DataTable dt = new DataTable();
+
+            var cols = dataGridViewColor.Columns;
+            foreach (DataGridViewColumn c in cols)
+            {
+                if (c.ValueType != null)
+                {
+                    dt.Columns.Add(c.Name, c.ValueType);
+                }
+                else
+                {
+                    dt.Columns.Add(c.Name);
+                }
+            }
+
+            var rows = dataGridViewColor.Rows;
+            foreach (DataGridViewRow r in rows)
+            {
+                List<object> array = new List<object>();
+                foreach (DataGridViewCell cell in r.Cells)
+                {
+                    array.Add(cell.Value);
+                }
+                dt.Rows.Add(array.ToArray());
+            }
+            return dt;
+        }
+
+        private void dataGridViewColor_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = (DataGridView)sender;
+            if (dgv.Columns[e.ColumnIndex].Name == "ColumnDialog")
+            {
+                ColorDialog diag = new ColorDialog();
+                if (dgv[2, e.RowIndex].Value == null || dgv[2, e.RowIndex].Value.ToString() == "")
+                    diag.Color = Color.White;
+                else
+                    diag.Color = Color.FromName(dgv[2, e.RowIndex].Value.ToString());
+
+                if (diag.ShowDialog(this) == DialogResult.OK)
+                {
+                    if (diag.Color.IsNamedColor)
+                        dgv[2, e.RowIndex].Value = diag.Color.Name;
+                    else
+                        dgv[2, e.RowIndex].Value = string.Format("{0}, {1}, {2}", diag.Color.R, diag.Color.G, diag.Color.B);
+                }                
+            }
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            SetColorSetting();
+        }
+        #endregion
+
+        #region Change Scale
+        private void ChangedScale(object sender, EventArgs e)
+        {
+            OnChangeScale();
+        }
+
+        public class ChangeScaleEventArgs : EventArgs
+        {
+            public float Scale;
+        }
+
+        public delegate void ChangeScaleEventHandler(object sender, ChangeScaleEventArgs e);
+        public event ChangeScaleEventHandler ChangeScale;
+        public void OnChangeScale()
+        {
+            numericUpDownUserScale.Enabled = checkBoxUserScale.Checked;
+            controller.IsUserScale = checkBoxUserScale.Checked;
+
+            float scale = (float)numericUpDownUserScale.Value / 100;
+            controller.UserScale = scale;
+
+            if (lblStatus.Text.Equals("Plugin Started.") && ChangeScale != null)
+            {
+                ChangeScaleEventArgs arg = new ChangeScaleEventArgs();
+            //    if (radioButtonOffset.Checked)
+            //    {
+            //        controller.PartyListUI = Util.GetPartyListLocation(textBoxCharacterFolder.Text);
+            //        arg.Location = new Point(
+            //            controller.PartyListUI.Rect.Location.X + (int)numericUpDownOffsetX.Value,
+            //            controller.PartyListUI.Rect.Location.Y + (int)numericUpDownOffsetY.Value);
+            //    }
+            //    else if (radioButtonFixed.Checked)
+            //    {
+            //        arg.Location = new Point((int)numericUpDownFixedX.Value, (int)numericUpDownFixedY.Value);
+            //    }
+                arg.Scale = scale;
+                ChangeScale(this, arg);
+            }
+        }
+        #endregion
     }
 }

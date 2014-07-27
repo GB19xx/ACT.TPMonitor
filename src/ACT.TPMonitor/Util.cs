@@ -85,6 +85,8 @@ namespace ACT.TPMonitor
                                 width = Screen.PrimaryScreen.Bounds.Width;
                                 height = Screen.PrimaryScreen.Bounds.Height;
                                 break;
+                            default:
+                                break;
                         }
 
                         screenRect = new Rectangle(new Point(left, top), new Size(width, height));
@@ -94,8 +96,13 @@ namespace ACT.TPMonitor
             }
             return screenRect;
         }
-        
+
         public static TPMonitorController.Widget GetPartyListLocation(string path)
+        {
+            return GetPartyListLocation(path, 0f);
+        }
+
+        public static TPMonitorController.Widget GetPartyListLocation(string path, float scale)
         {
             _screenRect = GetWindowSize(path);
             TPMonitorController.Widget widget = new TPMonitorController.Widget();
@@ -115,7 +122,7 @@ namespace ACT.TPMonitor
                         float heightPercent = float.Parse(textLine[i + 3].Substring(2));
                         int width = int.Parse(textLine[i + 4].Substring(2));
                         int height = int.Parse(textLine[i + 5].Substring(2));
-                        float widgetScale = float.Parse(textLine[i + 7].Substring(2));
+                        float widgetScale = scale == 0f ? float.Parse(textLine[i + 7].Substring(2)) : scale;
 
                         width = (int)(width * widgetScale);
                         height = (int)(height * widgetScale);
