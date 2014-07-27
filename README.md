@@ -98,11 +98,21 @@ Offsetにて微調整可能
 
 ###Option
 + パーティ解散を契機に非表示  
++ ID終了時に非表示  
 + 自分のTPも表示（Fixed Mode時のみ有効）  
 
 ###Display Job
 + 特定ジョブのTPを非表示にできます  
 + 記載のないジョブは表示されます  
+
+###Scale
++ UIのScaleより優先されます  
+
+###Color Setting
++ StartT  
++ EndT  
++ Color(ReadOnly)  
++ Edit Color(Show Dialog)  
 
 Remarks
 -----------
@@ -110,7 +120,6 @@ Remarks
 + マルチディスプレイ未検証  
 + サブキャラクター未検証  
 + チャットの種別がないので、他人のコマンドにも反応します
-+ CFはパーティ解散ではないため、手動で非表示にしてください  
 
 License
 -------
