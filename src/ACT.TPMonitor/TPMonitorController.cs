@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Text;
@@ -43,7 +44,8 @@ namespace ACT.TPMonitor
         public Font TPFont { get; set; }
         public Widget PartyListUI { get; set; }
 
-        public bool HideOnDissolve { get; set; }
+        public bool HideWhenDissolve { get; set; }
+        public bool HideWhenEnded { get; set; }
         public bool ShowMyTP { get; set; }
 
         public bool IsFixedMode { get; set; }
@@ -51,11 +53,16 @@ namespace ACT.TPMonitor
         public decimal OffsetY { get; set; }
         public decimal FixedX { get; set; }
         public decimal FixedY { get; set; }
+        public bool IsUserScale { get; set; }
+        public float UserScale { get; set; }
 
         public SynchronizedCollection<PartyMember> PartyMemberInfo { get; private set; }
         public SynchronizedCollection<JOB> HideJob { get; set; }
+        public DataTable dtColor { get; set; }
 
-        private Regex regex = new Regex(@"(?<Time>\[.+?\]) TP ((?<Num>\d):(?<Name>.*)|/(?<Command>.+))", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private Regex regexCmd = new Regex(@"(?<Time>\[.+?\]) TP ((?<Num>\d):(?<Name>.*)|/(?<Command>.+))", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private Regex regexDissolve = new Regex(@"(パーティ(を解散しま|が解散されま)した|のパーティから離脱しました)。", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private Regex regexEnded = new Regex(@"「.+?」の攻略を終了した。$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         private ACTTabpageControl actTab;
         private TPViewer view;
@@ -69,6 +76,7 @@ namespace ACT.TPMonitor
         {
             this.actTab = actTab;
             this.actTab.ChangeLocation += new ACTTabpageControl.ChangeLocationEventHandler(this.ChangeLocation);
+            this.actTab.ChangeScale += new ACTTabpageControl.ChangeScaleEventHandler(this.ChangeScale);
 
             HideJob = new SynchronizedCollection<JOB>();
 
@@ -112,7 +120,12 @@ namespace ACT.TPMonitor
 
         private void ChangeLocation(object sender, ACTTabpageControl.ChangeLocationEventArgs e)
         {
-            view.Location = e.location;
+            view.Location = e.Location;
+        }
+
+        private void ChangeScale(object sender, ACTTabpageControl.ChangeScaleEventArgs e)
+        {
+            view.Adjust(Util.GetPartyListLocation(this.CharFolder, this.IsUserScale ? e.Scale : 0f));
         }
 
         public event EventHandler ChangedStatus;
@@ -122,14 +135,14 @@ namespace ACT.TPMonitor
             {
                 if (isExited) break;
 
+                bool oldACTVisible = ACTVisible;
+                bool oldFFXIVPlugin = FFXIVPluginStatus;
+                bool oldFFXIVProcess = FFXIVProcess;
+                bool oldLoggedIn = LoggedIn;
+                bool status = false;
+                Point oldViewLocation = ViewLocation;
                 try
                 {
-                    bool oldACTVisible = ACTVisible;
-                    bool oldFFXIVPlugin = FFXIVPluginStatus;
-                    bool oldFFXIVProcess = FFXIVProcess;
-                    bool oldLoggedIn = LoggedIn;
-                    bool status = false;
-                    Point oldViewLocation = ViewLocation;
 
                     ACTVisible = ActGlobals.oFormActMain.Visible;
                     if (ActGlobals.oFormActMain.Visible)
@@ -170,18 +183,20 @@ namespace ACT.TPMonitor
 
                     ViewLocation = view.Location;
 
+                    Thread.Sleep(500);
+                }
+                catch
+                {
+                    Thread.Sleep(500);
+                }
+                finally
+                {
                     if (oldACTVisible != ACTVisible || oldFFXIVPlugin != FFXIVPluginStatus ||
                         oldFFXIVProcess != FFXIVProcess || oldLoggedIn != LoggedIn ||
                         oldViewLocation != ViewLocation)
                     {
                         ChangedStatus(this, new EventArgs());
                     }
-
-                    Thread.Sleep(300);
-                }
-                catch
-                {
-                    Thread.Sleep(500);
                 }
             }
         }
@@ -190,26 +205,22 @@ namespace ACT.TPMonitor
         {
             if (!isImport)
             {
-                if (this.HideOnDissolve &&
-                    (
-                    logInfo.logLine.IndexOf("パーティを解散しました。") > 0 ||
-                    logInfo.logLine.IndexOf("You dissolve the party.") > 0 ||
-                    logInfo.logLine.IndexOf("Vous dissolvez l'equipe.") > 0 ||
-                    logInfo.logLine.IndexOf("Deine Gruppe wurde aufgelost.") > 0)
-                    )
+                if ((this.HideWhenDissolve && regexDissolve.IsMatch(logInfo.logLine)) ||
+                    (this.HideWhenEnded && regexEnded.IsMatch(logInfo.logLine)))
                 {
                     // clear
-                    PartyMemberInfo = new SynchronizedCollection<PartyMember>();
                     for (int i = 0; i < 8; i++)
                     {
-                        PartyMemberInfo.Add(new PartyMember());
+                        PartyMemberInfo[i].Job = JOB.Unknown;
+                        PartyMemberInfo[i].Name = string.Empty;
+                        PartyMemberInfo[i].TP = 0;
                     }
                     // hide at dissolution.
                     view.Hide();
                     return;
                 }
 
-                Match match = regex.Match(logInfo.logLine);
+                Match match = regexCmd.Match(logInfo.logLine);
                 if (match.Success)
                 {
                     string command = match.Groups["Command"].ToString().ToLower();
@@ -240,10 +251,11 @@ namespace ACT.TPMonitor
                                 view.Adjust();
                                 break;
                             case "clear":
-                                PartyMemberInfo = new SynchronizedCollection<PartyMember>();
                                 for (int i = 0; i < 8; i++)
                                 {
-                                    PartyMemberInfo.Add(new PartyMember());
+                                    PartyMemberInfo[i].Job = JOB.Unknown;
+                                    PartyMemberInfo[i].Name = string.Empty;
+                                    PartyMemberInfo[i].TP = 0;
                                 }
                                 break;
                             case "hide":
@@ -257,6 +269,8 @@ namespace ACT.TPMonitor
                                 view.Adjust();
                                 view.TopMost = true;
                                 view.Show();
+                                break;
+                            default:
                                 break;
                         }
                     }
@@ -306,7 +320,7 @@ namespace ACT.TPMonitor
 
                 OnCurrentTPUpdate();
 
-                Thread.Sleep(500);
+                Thread.Sleep(200);
             }
         }
 

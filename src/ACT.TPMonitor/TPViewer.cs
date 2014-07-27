@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -56,7 +57,7 @@ namespace ACT.TPMonitor
         }
 
         public void CurrentTPUpdate(object sender, EventArgs e)
-        {
+        {            
             this.Refresh();
         }
 
@@ -73,8 +74,8 @@ namespace ACT.TPMonitor
                     if (!string.IsNullOrEmpty(_controller.PartyMemberInfo[i].Name) &&
                         _controller.HideJob.IndexOf(_controller.PartyMemberInfo[i].Job) == -1)
                     {
-                        DrawBar(g, i, _controller.PartyMemberInfo[i].TP, _controller.PartyListUI.Scale);
-                        DrawValue(g, i, _controller.PartyMemberInfo[i].TP, _controller.PartyListUI.Scale);
+                        DrawBar(g, i, _controller.PartyMemberInfo[i].TP, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
+                        DrawValue(g, i, _controller.PartyMemberInfo[i].TP, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
                     }
                 }
             }
@@ -96,8 +97,30 @@ namespace ACT.TPMonitor
             g.DrawRectangle(framePen, rect.X, rect.Y, rect.Width, rect.Height);
 
             // TP-Value
-            Brush valueBrush = Brushes.White;
+            Brush valueBrush = GetColor(value);
             g.FillRectangle(valueBrush, rect.X + width, rect.Y + width, (value * rect.Width / 1000) - width, rect.Height - width);
+        }
+
+        private Brush GetColor(int value)
+        {
+            var brush = Brushes.White;
+            foreach (DataRow r in _controller.dtColor.Rows)
+            {
+                if (int.Parse(r[0].ToString()) <= value && value <= int.Parse(r[1].ToString()))
+                {
+                    string[] rgb = r[2].ToString().Split(',');
+                    if (rgb.Length == 3)
+                    {
+                        brush = new SolidBrush(Color.FromArgb(255, int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2])));
+                    }
+                    else
+                    {
+                        brush = new SolidBrush(Color.FromName(r[2].ToString()));
+                    }
+                    break;
+                }
+            }
+            return brush;
         }
 
         private void DrawValue(Graphics g, int idx, int value, float scale)
