@@ -47,4 +47,10 @@ namespace ACT.TPMonitor
         SMN = 0x1B,
         SCH = 0x1C
     }
+
+    public enum Style
+    {
+        Normal,
+        Alliance
+    }
 }
