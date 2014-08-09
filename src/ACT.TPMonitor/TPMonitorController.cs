@@ -7,6 +7,7 @@ using System.Text;
 using Advanced_Combat_Tracker;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Windows.Forms;
 using FFXIV_ACT_Plugin;
 
 namespace ACT.TPMonitor
@@ -53,6 +54,9 @@ namespace ACT.TPMonitor
         public decimal OffsetY { get; set; }
         public decimal FixedX { get; set; }
         public decimal FixedY { get; set; }
+        public bool IsAllianceStyle { get; set; }
+        public decimal AllianceX { get; set; }
+        public decimal AllianceY { get; set; }
         public bool IsUserScale { get; set; }
         public float UserScale { get; set; }
 
@@ -65,7 +69,9 @@ namespace ACT.TPMonitor
         private Regex regexEnded = new Regex(@"「.+?」の攻略を終了した。$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         private ACTTabpageControl actTab;
-        private TPViewer view;
+        private Form viewer;
+        private TPViewer normalStyle;
+        private AllianceStyleViewer allianceStyle;
         private Thread checkStatus = null;
         private Thread getTP = null;
         private Process _ffxivProcess = null;
@@ -90,10 +96,19 @@ namespace ACT.TPMonitor
                 PartyMemberInfo.Add(new PartyMember());
             }
 
-            view = new TPViewer(this);
-            view.Show();
-            view.Hide();
+            normalStyle = new TPViewer(this);
+            normalStyle.Show();
+            normalStyle.Hide();
 
+            allianceStyle = new AllianceStyleViewer(this);
+            allianceStyle.Show();
+            allianceStyle.Hide();
+
+            if (this.IsAllianceStyle)
+                viewer = allianceStyle;
+            else
+                viewer = normalStyle;
+            
             checkStatus = new Thread(new ThreadStart(CheckProcess));
             checkStatus.Name = "Check Status Thread";
             checkStatus.Start();
@@ -114,18 +129,36 @@ namespace ACT.TPMonitor
             if (getTP.IsAlive && getTP.ThreadState == System.Threading.ThreadState.Running)
                 getTP.Abort();
 
-            view.Close();
-            view.Dispose();
+            normalStyle.Close();
+            normalStyle.Dispose();
+            allianceStyle.Close();
+            allianceStyle.Dispose();
         }
 
         private void ChangeLocation(object sender, ACTTabpageControl.ChangeLocationEventArgs e)
         {
-            view.Location = e.Location;
+            if (viewer.Visible)
+            {
+                if (this.IsAllianceStyle)
+                {
+                    normalStyle.Hide();
+                    viewer = allianceStyle;
+                }
+                else
+                {
+                    normalStyle.Show();
+                    viewer = normalStyle;
+                }
+            }
+            viewer.Location = e.Location;
         }
 
         private void ChangeScale(object sender, ACTTabpageControl.ChangeScaleEventArgs e)
         {
-            view.Adjust(Util.GetPartyListLocation(this.CharFolder, this.IsUserScale ? e.Scale : 0f));
+            if (this.IsAllianceStyle)
+                allianceStyle.Adjust();
+            else
+                normalStyle.Adjust(Util.GetPartyListLocation(this.CharFolder, this.IsUserScale ? e.Scale : 0f));
         }
 
         public event EventHandler ChangedStatus;
@@ -181,7 +214,7 @@ namespace ACT.TPMonitor
                         LoggedIn = false;
                     }
 
-                    ViewLocation = view.Location;
+                    ViewLocation = viewer.Location;
 
                     Thread.Sleep(500);
                 }
@@ -216,7 +249,7 @@ namespace ACT.TPMonitor
                         PartyMemberInfo[i].TP = 0;
                     }
                     // hide at dissolution.
-                    view.Hide();
+                    viewer.Hide();
                     return;
                 }
 
@@ -248,7 +281,10 @@ namespace ACT.TPMonitor
                         {
                             case "adjust":
                                 this.PartyListUI = Util.GetPartyListLocation(this.CharFolder);
-                                view.Adjust();
+                                if (this.IsAllianceStyle)
+                                    allianceStyle.Adjust();
+                                else
+                                    normalStyle.Adjust();
                                 break;
                             case "clear":
                                 for (int i = 0; i < 8; i++)
@@ -259,16 +295,24 @@ namespace ACT.TPMonitor
                                 }
                                 break;
                             case "hide":
-                                view.Hide();
+                                viewer.Hide();
                                 break;
                             case "show":
-                                if (!view.Visible)
+                                if (this.IsAllianceStyle)
+                                    viewer = allianceStyle;
+                                else
+                                    viewer = normalStyle;
+
+                                if (!viewer.Visible)
                                 {
                                     this.PartyListUI = Util.GetPartyListLocation(this.CharFolder);
                                 }
-                                view.Adjust();
-                                view.TopMost = true;
-                                view.Show();
+                                if (this.IsAllianceStyle)
+                                    allianceStyle.Adjust();
+                                else
+                                    normalStyle.Adjust();
+                                viewer.TopMost = true;
+                                viewer.Show();
                                 break;
                             default:
                                 break;
@@ -290,7 +334,7 @@ namespace ACT.TPMonitor
                     continue;
                 }
 
-                if (PartyMemberInfo.Count == 0)
+                if (!viewer.Visible || PartyMemberInfo.Count == 0)
                 {
                     Thread.Sleep(100);
                     continue;

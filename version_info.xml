@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <versionInfo>
-  <version>1.3.0.0</version>
+  <version>1.4.0.0</version>
   <changeSummary>
     <jp>
-    - パーティ解散時の非表示修正
-    - ダンジョン終了時の非表示
-    - 色設定追加
-    - 個別スケール追加
+    - アライアンススタイル追加
     </jp>
   </changeSummary>
   <downloadUrl>https://github.com/GB19xx/ACT.TPMonitor</downloadUrl>

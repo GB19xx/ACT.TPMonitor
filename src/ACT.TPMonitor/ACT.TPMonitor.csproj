@@ -56,6 +56,12 @@
     <Compile Include="ACTTabpageControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="AllianceStyleViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AllianceStyleViewer.Designer.cs">
+      <DependentUpon>AllianceStyleViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enums.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -78,6 +84,9 @@
   <ItemGroup>
     <EmbeddedResource Include="ACTTabpageControl.resx">
       <DependentUpon>ACTTabpageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AllianceStyleViewer.resx">
+      <DependentUpon>AllianceStyleViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
