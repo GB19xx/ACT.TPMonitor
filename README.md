@@ -90,20 +90,28 @@ ex) 3人目、4人目を非表示 <br>
 2：名のみイニシャル  
 3：姓名ともにイニシャル  
 
-###Monitor Location
-+ Party List + Offset  
-Offsetにて微調整可能
-+ Fixed mode  
-マルチディスプレイの方はこちらを使用してください  
-
-###Option
+Option
+------
 + パーティ解散を契機に非表示  
 + ID終了時に非表示  
 + 自分のTPも表示（Fixed Mode時のみ有効）  
 
-###Display Job
+Display Job
+------
 + 特定ジョブのTPを非表示にできます  
 + 記載のないジョブは表示されます  
+
+Settings  
+------
+###Party List
++ Offset  
+Offsetにて微調整可能
++ Fixed mode  
+マルチディスプレイの方はこちらを使用してください  
+
+###Alliance
++ X, Y 指定して表示  
+<img src="https://raw.githubusercontent.com/GB19xx/ACT.TPMonitor/master/img/AllianceSample.png" alt="AllianceSample">
 
 ###Scale
 + UIのScaleより優先されます  
