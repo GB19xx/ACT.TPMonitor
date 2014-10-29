@@ -41,7 +41,7 @@ namespace ACT.TPMonitor
             Adjust(_controller.PartyListUI);
         }
 
-        public void Adjust(TPMonitorController.Widget widget)
+        public void Adjust(Widget widget)
         {
             Point pos = widget.Rect.Location;
             if (_controller.IsFixedMode)

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -97,15 +96,15 @@ namespace ACT.TPMonitor
             return screenRect;
         }
 
-        public static TPMonitorController.Widget GetPartyListLocation(string path)
+        public static Widget GetPartyListLocation(string path)
         {
             return GetPartyListLocation(path, 0f);
         }
 
-        public static TPMonitorController.Widget GetPartyListLocation(string path, float scale)
+        public static Widget GetPartyListLocation(string path, float scale)
         {
             _screenRect = GetWindowSize(path);
-            TPMonitorController.Widget widget = new TPMonitorController.Widget();
+            Widget widget = new Widget();
             widget.Rect = new Rectangle(new Point(0, 0), new Size(0, 0));
             widget.Scale = 1.0f;
 

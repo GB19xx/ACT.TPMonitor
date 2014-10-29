@@ -36,10 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Advanced Combat Tracker">
-      <HintPath>..\..\..\..\Advanced Combat Tracker\Advanced Combat Tracker.exe</HintPath>
+      <HintPath>D:\Advanced Combat Tracker\Advanced Combat Tracker.exe</HintPath>
     </Reference>
     <Reference Include="FFXIV_ACT_Plugin">
-      <HintPath>..\..\..\..\Advanced Combat Tracker\FFXIV_ACT_Plugin.dll</HintPath>
+      <HintPath>D:\Advanced Combat Tracker\FFXIV_ACT_Plugin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -63,6 +63,8 @@
       <DependentUpon>AllianceStyleViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Enums.cs" />
+    <Compile Include="FFXIVPluginHelper.cs" />
+    <Compile Include="PartyMember.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -80,6 +82,7 @@
     <Compile Include="Util.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Widget.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ACTTabpageControl.resx">

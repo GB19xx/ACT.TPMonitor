@@ -14,26 +14,6 @@ namespace ACT.TPMonitor
 {
     public class TPMonitorController : IDisposable
     {
-        public class PartyMember
-        {
-            public JOB Job { get; set; }
-            public string Name { get; set; }
-            public int TP { get; set; }
-
-            public PartyMember()
-            {
-                this.Job = JOB.Unknown;
-                this.Name = "";
-                this.TP = 0;
-            }
-        }
-
-        public class Widget
-        {
-            public Rectangle Rect { get; set; }
-            public float Scale { get; set; }
-        }
-
         public string CharFolder { get; set; }
 
         public bool ACTVisible { get; set; }
@@ -64,7 +44,7 @@ namespace ACT.TPMonitor
         public SynchronizedCollection<JOB> HideJob { get; set; }
         public DataTable dtColor { get; set; }
 
-        private Regex regexCmd = new Regex(@"(?<Time>\[.+?\]) TP ((?<Num>\d):(?<Name>.*)|/(?<Command>.+))", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private Regex regexCmd = new Regex(@"(?<Time>\[.+?\]) .{2}:.{4}:TP ((?<Num>\d):(?<Name>.*)|/(?<Command>.+))", RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private Regex regexDissolve = new Regex(@"(パーティ(を解散しま|が解散されま)した|のパーティから離脱しました)。", RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private Regex regexEnded = new Regex(@"「.+?」の攻略を終了した。$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
@@ -76,7 +56,7 @@ namespace ACT.TPMonitor
         private Thread getTP = null;
         private Process _ffxivProcess = null;
         private IntPtr zero = IntPtr.Zero;
-        private bool isExited;
+        private bool isExited;        
 
         public TPMonitorController(ACTTabpageControl actTab)
         {
@@ -124,6 +104,8 @@ namespace ACT.TPMonitor
 
             isExited = true;
 
+            viewer.Hide();
+
             if (checkStatus.IsAlive && checkStatus.ThreadState == System.Threading.ThreadState.Running)
                 checkStatus.Abort();
             if (getTP.IsAlive && getTP.ThreadState == System.Threading.ThreadState.Running)
@@ -133,21 +115,25 @@ namespace ACT.TPMonitor
             normalStyle.Dispose();
             allianceStyle.Close();
             allianceStyle.Dispose();
+
+            FFXIVPluginHelper.Instance = null;
         }
 
         private void ChangeLocation(object sender, ACTTabpageControl.ChangeLocationEventArgs e)
         {
             if (viewer.Visible)
             {
-                if (this.IsAllianceStyle)
+                if (viewer.GetType().Name == "TPViewer" && this.IsAllianceStyle)
                 {
-                    normalStyle.Hide();
+                    viewer.Hide();
                     viewer = allianceStyle;
+                    viewer.Show();
                 }
-                else
+                else if (viewer.GetType().Name == "AllianceStyleViewer" && !this.IsAllianceStyle)
                 {
-                    normalStyle.Show();
+                    viewer.Hide();
                     viewer = normalStyle;
+                    viewer.Show();
                 }
             }
             viewer.Location = e.Location;
@@ -185,16 +171,20 @@ namespace ACT.TPMonitor
                         {
                             if (plugin.pluginFile.Name == "FFXIV_ACT_Plugin.dll" && plugin.lblPluginStatus.Text == "FFXIV Plugin Started.")
                             {
+                                if (FFXIVPluginHelper.Instance == null)
+                                {
+                                    FFXIVPluginHelper.Instance = (object)plugin.pluginObj;
+                                    FFXIVPluginHelper.Version = new Version(FileVersionInfo.GetVersionInfo(plugin.pluginFile.ToString()).FileVersion);
+                                }
+
                                 status = true;
+                                                                
                                 break;
                             }
                         }
                         FFXIVPluginStatus = status;
 
-                        if (!ReadMemory.ValidateProcessMember(ref _ffxivProcess, ref zero))
-                        {
-                            FFXIVPluginStatus = false;
-                        }
+                        _ffxivProcess = FFXIVPluginHelper.GetFFXIVProcess;
                     }
                     else
                     {
@@ -206,7 +196,7 @@ namespace ACT.TPMonitor
 
                     if (_ffxivProcess != null)
                     {
-                        CombatantMemory.Player player = CombatantMemory.GetPlayerData(_ffxivProcess, zero);
+                        FFXIV_ACT_Plugin.Memory.Player player = FFXIVPluginHelper.GetPlayerData();
                         LoggedIn = player.Vit > 0 ? true : false;
                     }
                     else
@@ -324,7 +314,7 @@ namespace ACT.TPMonitor
 
         private void GetMemberTP()
         {
-            while (!CombatantMemory.Abort)
+            while (true)
             {
                 if (isExited) break;
 
@@ -340,31 +330,37 @@ namespace ACT.TPMonitor
                     continue;
                 }
 
-                List<CombatantMemory.Combatant> combatantList = CombatantMemory.GetCombatantList(_ffxivProcess, zero);
-                for (int i = 0; i < PartyMemberInfo.Count; i++)
+                try
                 {
-                    if (combatantList.Count == 0)
+                    List<FFXIV_ACT_Plugin.Memory.Combatant> combatantList = FFXIVPluginHelper.GetCombatantList();
+                    for (int i = 0; i < PartyMemberInfo.Count; i++)
                     {
-                        break;
-                    }
-
-                    PartyMemberInfo[0].Name = combatantList[0].Name;
-                    PartyMemberInfo[0].TP = combatantList[0].CurrentTP;
-
-                    foreach (CombatantMemory.Combatant c in combatantList)
-                    {
-                        if (PartyMemberInfo[i].Name.Equals(c.Name))
+                        if (combatantList.Count == 0)
                         {
-                            PartyMemberInfo[i].Job = (JOB)c.Job;
-                            PartyMemberInfo[i].TP = c.CurrentTP;
                             break;
                         }
+
+                        PartyMemberInfo[0].Name = combatantList[0].Name;
+                        PartyMemberInfo[0].TP = combatantList[0].CurrentTP;
+
+                        foreach (FFXIV_ACT_Plugin.Memory.Combatant c in combatantList)
+                        {
+                            if (PartyMemberInfo[i].Name.Equals(c.Name))
+                            {
+                                PartyMemberInfo[i].Job = (JOB)c.Job;
+                                PartyMemberInfo[i].TP = c.CurrentTP;
+                                break;
+                            }
+                        }
                     }
+
+                    OnCurrentTPUpdate();
+
                 }
-
-                OnCurrentTPUpdate();
-
-                Thread.Sleep(200);
+                finally
+                {
+                    Thread.Sleep(200);
+                }
             }
         }
 

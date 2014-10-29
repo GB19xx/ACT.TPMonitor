@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace ACT.TPMonitor
+﻿namespace ACT.TPMonitor
 {
     public enum TYPE : byte
     {
@@ -45,7 +40,9 @@ namespace ACT.TPMonitor
         BLM = 0x19,
         ACN = 0x1A,
         SMN = 0x1B,
-        SCH = 0x1C
+        SCH = 0x1C,
+        ROG = 0x1D,
+        NIN = 0x1E
     }
 
     public enum Style
