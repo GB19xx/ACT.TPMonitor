@@ -9,7 +9,7 @@ How to install
 ----------------
 1. [ACT](http://advancedcombattracker.com/download.php)より、本体とPluginをダウンロード  
 2. ACT、FFXIVプラグイン導入  
-3. [ACT.TPMonitor_xxxx.zip](https://github.com/GB19xx/ACT.TPMonitor/releases/download/1.5.0.0/ACT.TPMonitor_1.5.0.0.zip)をダウンロードし、展開  
+3. [ACT.TPMonitor_xxxx.zip](https://github.com/GB19xx/ACT.TPMonitor/releases/download/1.5.0.1/ACT.TPMonitor_1.5.0.1.zip)をダウンロードし、展開  
 4. Advanced Combat Tracker.exeと同じフォルダに「FFXIV_ACT_Plugin.dll」と「ACT.TPMonitor.dll」を配置  
 5. Plugin -> Plugin Listingタブから、上記4.「ACT.TPMonitor.dll」を選択  
 6. Add/Enable Pluginクリック  
