@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Reflection;
-using FFXIV_ACT_Plugin.Memory;
 
 namespace ACT.TPMonitor
 {
@@ -68,9 +67,9 @@ namespace ACT.TPMonitor
             return scanCombatants;
         }
 
-        public static Player GetPlayerData()
+        public static Combatant GetPlayerData()
         {
-            Player player = new Player();
+            Combatant player = new Combatant();
             try
             {
                 var scanCombatants = GetScanCombatants();
@@ -78,7 +77,7 @@ namespace ACT.TPMonitor
 
                 var item = scanCombatants.GetType().InvokeMember("GetPlayerData", BindingFlags.Public | BindingFlags.Instance | BindingFlags.InvokeMethod, null, scanCombatants, null);
                 FieldInfo fi = item.GetType().GetField("Vit", BindingFlags.Public | BindingFlags.Instance | BindingFlags.GetField);
-                player.Vit = (int)fi.GetValue(item);
+                player.MaxHP = (int)fi.GetValue(item);
             }
             catch { }
             return player;

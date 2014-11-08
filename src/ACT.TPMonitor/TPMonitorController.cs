@@ -8,12 +8,12 @@ using Advanced_Combat_Tracker;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
-using FFXIV_ACT_Plugin;
 
 namespace ACT.TPMonitor
 {
     public class TPMonitorController : IDisposable
     {
+        public ActPluginData actPlugin { get; private set; }
         public string CharFolder { get; set; }
 
         public bool ACTVisible { get; set; }
@@ -60,6 +60,7 @@ namespace ACT.TPMonitor
 
         public TPMonitorController(ACTTabpageControl actTab)
         {
+            this.actPlugin = ActGlobals.oFormActMain.PluginGetSelfData(actTab);
             this.actTab = actTab;
             this.actTab.ChangeLocation += new ACTTabpageControl.ChangeLocationEventHandler(this.ChangeLocation);
             this.actTab.ChangeScale += new ACTTabpageControl.ChangeScaleEventHandler(this.ChangeScale);
@@ -115,8 +116,6 @@ namespace ACT.TPMonitor
             normalStyle.Dispose();
             allianceStyle.Close();
             allianceStyle.Dispose();
-
-            FFXIVPluginHelper.Instance = null;
         }
 
         private void ChangeLocation(object sender, ACTTabpageControl.ChangeLocationEventArgs e)
@@ -175,8 +174,8 @@ namespace ACT.TPMonitor
                                 {
                                     FFXIVPluginHelper.Instance = (object)plugin.pluginObj;
                                     FFXIVPluginHelper.Version = new Version(FileVersionInfo.GetVersionInfo(plugin.pluginFile.ToString()).FileVersion);
-                                }
-
+                                } 
+                                
                                 status = true;
                                                                 
                                 break;
@@ -196,8 +195,8 @@ namespace ACT.TPMonitor
 
                     if (_ffxivProcess != null)
                     {
-                        FFXIV_ACT_Plugin.Memory.Player player = FFXIVPluginHelper.GetPlayerData();
-                        LoggedIn = player.Vit > 0 ? true : false;
+                        Combatant player = FFXIVPluginHelper.GetPlayerData();
+                        LoggedIn = player.Level > 0 ? true : false;
                     }
                     else
                     {
@@ -332,7 +331,7 @@ namespace ACT.TPMonitor
 
                 try
                 {
-                    List<FFXIV_ACT_Plugin.Memory.Combatant> combatantList = FFXIVPluginHelper.GetCombatantList();
+                    List<Combatant> combatantList = FFXIVPluginHelper.GetCombatantList();
                     for (int i = 0; i < PartyMemberInfo.Count; i++)
                     {
                         if (combatantList.Count == 0)
@@ -343,7 +342,7 @@ namespace ACT.TPMonitor
                         PartyMemberInfo[0].Name = combatantList[0].Name;
                         PartyMemberInfo[0].TP = combatantList[0].CurrentTP;
 
-                        foreach (FFXIV_ACT_Plugin.Memory.Combatant c in combatantList)
+                        foreach (Combatant c in combatantList)
                         {
                             if (PartyMemberInfo[i].Name.Equals(c.Name))
                             {

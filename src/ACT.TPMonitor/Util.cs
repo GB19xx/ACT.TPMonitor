@@ -63,9 +63,8 @@ namespace ACT.TPMonitor
                                     RECT clientRect = new RECT();
                                     GetClientRect(FFXIVProcessId, ref clientRect);
 
-                                    int borderWidth = ((windowRect.right - windowRect.left) - clientRect.right) / 2;
-                                    left = windowRect.left + borderWidth;
-                                    top = windowRect.bottom - clientRect.bottom - borderWidth;
+                                    left = windowRect.left + SystemInformation.FrameBorderSize.Width;
+                                    top = windowRect.bottom - clientRect.bottom - SystemInformation.FrameBorderSize.Height;
                                     width = clientRect.right;
                                     height = clientRect.bottom;
                                 }

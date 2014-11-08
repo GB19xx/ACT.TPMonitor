@@ -8,6 +8,7 @@
  */
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
@@ -93,7 +94,7 @@ namespace ACT.TPMonitor
                 var remoteInfo = RemoteVersionInfo.FetchUrl(versionInfoUrl);
                 if (CompareVersionString(remoteInfo.Version, localVersion) > 0)
                 {
-                    var msg = String.Format("TPMonitorの更新版が公開されています: {0}\nお手元のバージョン: {1}\n主な変更:\n{2}\nダウンロードサイトを開きますか？",
+                    var msg = String.Format("TPMonitorの更新版が公開されています: {0}\nお手元のバージョン: {1}\n\n主な変更:{2}\n適用しますか？",
                         remoteInfo.Version, localVersion, remoteInfo.ChangeSummaryJp);
                     var result = MessageBox.Show(msg, "ACT.TPMonitor", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)

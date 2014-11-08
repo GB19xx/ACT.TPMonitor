@@ -66,8 +66,8 @@
             this.imageListJob.Images.SetKeyName(26, "Arcanist.png");
             this.imageListJob.Images.SetKeyName(27, "Summoner.png");
             this.imageListJob.Images.SetKeyName(28, "Scholar.png");
-            this.imageListJob.Images.SetKeyName(29, "noimage.png");
-            this.imageListJob.Images.SetKeyName(30, "noimage.png");
+            this.imageListJob.Images.SetKeyName(29, "Rogue.png");
+            this.imageListJob.Images.SetKeyName(30, "Ninja.png");
             // 
             // AllianceStyleViewer
             // 

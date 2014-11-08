@@ -53,10 +53,10 @@ namespace ACT.TPMonitor
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ACTTabpageControl));
             this.textBoxCharacterFolder = new System.Windows.Forms.TextBox();
             this.buttonOpenFolder = new System.Windows.Forms.Button();
@@ -138,6 +138,8 @@ namespace ACT.TPMonitor
             this.imageListJobOff = new System.Windows.Forms.ImageList(this.components);
             this.textBoxColors = new System.Windows.Forms.TextBox();
             this.checkBoxAllianceStyle = new System.Windows.Forms.CheckBox();
+            this.groupBoxUpdateCheck = new System.Windows.Forms.GroupBox();
+            this.buttonCheck = new System.Windows.Forms.Button();
             this.groupBoxCharacterFolder.SuspendLayout();
             this.groupBoxStatus.SuspendLayout();
             this.tableLayoutPanelStatus.SuspendLayout();
@@ -160,6 +162,7 @@ namespace ACT.TPMonitor
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewColor)).BeginInit();
             this.groupBoxWhereNow.SuspendLayout();
             this.groupBoxDisplayJob.SuspendLayout();
+            this.groupBoxUpdateCheck.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxCharacterFolder
@@ -773,8 +776,8 @@ namespace ACT.TPMonitor
             // 
             this.dataGridViewColor.AllowUserToResizeColumns = false;
             this.dataGridViewColor.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightCyan;
-            this.dataGridViewColor.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
+            this.dataGridViewColor.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewColor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewColor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnStartTP,
@@ -784,14 +787,14 @@ namespace ACT.TPMonitor
             this.dataGridViewColor.Location = new System.Drawing.Point(316, 18);
             this.dataGridViewColor.MultiSelect = false;
             this.dataGridViewColor.Name = "dataGridViewColor";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewColor.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewColor.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewColor.RowTemplate.Height = 21;
             this.dataGridViewColor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewColor.Size = new System.Drawing.Size(422, 164);
@@ -800,9 +803,9 @@ namespace ACT.TPMonitor
             // 
             // ColumnStartTP
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N0";
-            this.ColumnStartTP.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            this.ColumnStartTP.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnStartTP.HeaderText = "StartTP";
             this.ColumnStartTP.Name = "ColumnStartTP";
             this.ColumnStartTP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -810,9 +813,9 @@ namespace ACT.TPMonitor
             // 
             // ColumnEndTP
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N0";
-            this.ColumnEndTP.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            this.ColumnEndTP.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnEndTP.HeaderText = "EndTP";
             this.ColumnEndTP.Name = "ColumnEndTP";
             this.ColumnEndTP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -905,7 +908,7 @@ namespace ACT.TPMonitor
             this.checkBoxNIN.AutoSize = true;
             this.checkBoxNIN.Checked = true;
             this.checkBoxNIN.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxNIN.ImageIndex = 0;
+            this.checkBoxNIN.ImageIndex = 19;
             this.checkBoxNIN.ImageList = this.imageListJob;
             this.checkBoxNIN.Location = new System.Drawing.Point(226, 62);
             this.checkBoxNIN.Name = "checkBoxNIN";
@@ -936,6 +939,8 @@ namespace ACT.TPMonitor
             this.imageListJob.Images.SetKeyName(15, "Arcanist.png");
             this.imageListJob.Images.SetKeyName(16, "Summoner.png");
             this.imageListJob.Images.SetKeyName(17, "Scholar.png");
+            this.imageListJob.Images.SetKeyName(18, "Rogue.png");
+            this.imageListJob.Images.SetKeyName(19, "Ninja.png");
             // 
             // checkBoxROG
             // 
@@ -943,7 +948,7 @@ namespace ACT.TPMonitor
             this.checkBoxROG.AutoSize = true;
             this.checkBoxROG.Checked = true;
             this.checkBoxROG.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxROG.ImageIndex = 0;
+            this.checkBoxROG.ImageIndex = 18;
             this.checkBoxROG.ImageList = this.imageListJob;
             this.checkBoxROG.Location = new System.Drawing.Point(226, 18);
             this.checkBoxROG.Name = "checkBoxROG";
@@ -1229,6 +1234,8 @@ namespace ACT.TPMonitor
             this.imageListJobOff.Images.SetKeyName(15, "Arcanist_off.png");
             this.imageListJobOff.Images.SetKeyName(16, "Summoner_off.png");
             this.imageListJobOff.Images.SetKeyName(17, "Scholar_off.png");
+            this.imageListJobOff.Images.SetKeyName(18, "Rogue_off.png");
+            this.imageListJobOff.Images.SetKeyName(19, "Ninja_off.png");
             // 
             // textBoxColors
             // 
@@ -1252,10 +1259,31 @@ namespace ACT.TPMonitor
             this.checkBoxAllianceStyle.Visible = false;
             this.checkBoxAllianceStyle.CheckedChanged += new System.EventHandler(this.ChangedLocation);
             // 
+            // groupBoxUpdateCheck
+            // 
+            this.groupBoxUpdateCheck.Controls.Add(this.buttonCheck);
+            this.groupBoxUpdateCheck.Location = new System.Drawing.Point(769, 23);
+            this.groupBoxUpdateCheck.Name = "groupBoxUpdateCheck";
+            this.groupBoxUpdateCheck.Size = new System.Drawing.Size(148, 54);
+            this.groupBoxUpdateCheck.TabIndex = 11;
+            this.groupBoxUpdateCheck.TabStop = false;
+            this.groupBoxUpdateCheck.Text = "Update Check";
+            // 
+            // buttonCheck
+            // 
+            this.buttonCheck.Location = new System.Drawing.Point(37, 18);
+            this.buttonCheck.Name = "buttonCheck";
+            this.buttonCheck.Size = new System.Drawing.Size(75, 23);
+            this.buttonCheck.TabIndex = 0;
+            this.buttonCheck.Text = "Check";
+            this.buttonCheck.UseVisualStyleBackColor = true;
+            this.buttonCheck.Click += new System.EventHandler(this.buttonCheck_Click);
+            // 
             // ACTTabpageControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBoxUpdateCheck);
             this.Controls.Add(this.checkBoxAllianceStyle);
             this.Controls.Add(this.textBoxColors);
             this.Controls.Add(this.buttonSave);
@@ -1299,6 +1327,7 @@ namespace ACT.TPMonitor
             this.groupBoxWhereNow.PerformLayout();
             this.groupBoxDisplayJob.ResumeLayout(false);
             this.groupBoxDisplayJob.PerformLayout();
+            this.groupBoxUpdateCheck.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1423,6 +1452,8 @@ namespace ACT.TPMonitor
         private CheckBox checkBoxAllianceStyle;
         private CheckBox checkBoxNIN;
         private CheckBox checkBoxROG;
+        private GroupBox groupBoxUpdateCheck;
+        private Button buttonCheck;
         private DataTable dtColor = new DataTable();
 
 		#region IActPluginV1 Members
@@ -1438,7 +1469,7 @@ namespace ACT.TPMonitor
             this.Dock = DockStyle.Fill;	            // Expand the UserControl to fill the tab's client space            
 
             controller = new TPMonitorController(this);
-
+            
             xmlSettings = new SettingsSerializer(this);	// Create a new settings serializer and pass it this instance
             LoadSettings();
 
@@ -1493,9 +1524,11 @@ namespace ACT.TPMonitor
 
         private void CheckForUpdate()
         {
-            var myVersion = typeof(ACTTabpageControl).Assembly.GetName().Version.ToString();
-            var updateChecker = new UpdateChecker(myVersion);
-            updateChecker.PerformCheckOnNewThread();
+            AutoUpdater.PluginDate = ActGlobals.oFormActMain.PluginGetSelfData(this);
+            AutoUpdater.Owner = "GB19xx";
+            AutoUpdater.RepositoryName= "ACT.TPMonitor";
+            AutoUpdater.IsCoverdPreRelease = false;
+            AutoUpdater.Start();
         }
 
         private void ChangedStatus(object sender, EventArgs e)
@@ -1984,5 +2017,11 @@ namespace ACT.TPMonitor
             }
         }
         #endregion
+
+        private void buttonCheck_Click(object sender, EventArgs e)
+        {
+            AutoUpdater.IsCoverdPreRelease = true;
+            AutoUpdater.Start();
+        }
     }
 }
