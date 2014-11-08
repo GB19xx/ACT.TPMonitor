@@ -5,6 +5,10 @@ TPMonitor for FFXIV on ACT
 
 <img src="https://raw.githubusercontent.com/GB19xx/ACT.TPMonitor/master/img/Sample.png" alt="Sample">
 
+Latest Version
+----------------
+[ACT.TPMonitor_1.5.1.0.zip](https://github.com/GB19xx/ACT.TPMonitor/releases/download/1.5.1.0/ACT.TPMonitor_1.5.1.0.zip)
+
 How to install
 ----------------
 1. [ACT](http://advancedcombattracker.com/download.php)より、本体とPluginをダウンロード  
@@ -117,8 +121,8 @@ Offsetにて微調整可能
 + UIのScaleより優先されます  
 
 ###Color Setting
-+ StartT  
-+ EndT  
++ StartTP  
++ EndTP  
 + Color(ReadOnly)  
 + Edit Color(Show Dialog)  
 
