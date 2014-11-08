@@ -133,14 +133,16 @@ Remarks
 + サブキャラクター未検証  
 + チャットの種別がないので、他人のコマンドにも反応します
 
-License
+Licenses
 -------
 三条項BSDライセンス (3-clause BSD license)  
 
 記載されている会社名・製品名・システム名などは、各社の商標、または登録商標です。  
+Copyright (C) 2010 - 2014 SQUARE ENIX CO., LTD. All Rights Reserved.  
 
-Copyright (c) 2014, grindingcoil All rights reserved.  
-Originally under 3-clause BSD license, https://github.com/grindingcoil/act_timeline/blob/master/LICENSE.txt
+・[DotNetZip](https://github.com/haf/DotNetZip.Semverd/blob/master/LICENSE) (Ms-PL)  
+・[Json.Net](https://json.codeplex.com/license) (MIT License)  
+・UpdateChecker.cs by grindingcoil ([Originally under 3-clause BSD license](https://github.com/grindingcoil/act_timeline/blob/master/LICENSE.txt))
 
 Special thanks
 ----------------
