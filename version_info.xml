@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <versionInfo>
-  <version>1.5.0.0</version>
+  <version>1.5.1.0</version>
   <changeSummary>
     <jp>
-    - FFXIV_ACT_Plugin 1.2.2.0 対応
-    - 双剣士 追加
-    - 忍者 追加（未確認）
+    - 更新チェックから、自動ダウンロードおよび適用に改善
+    - Improve to apply after an automatic download.
     </jp>
   </changeSummary>
-  <downloadUrl>https://github.com/GB19xx/ACT.TPMonitor</downloadUrl>
+  <downloadUrl>https://github.com/GB19xx/ACT.TPMonitor/releases</downloadUrl>
 </versionInfo>
