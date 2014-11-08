@@ -23,6 +23,9 @@ namespace ACT.TPMonitor
         [DllImport("user32.dll")]
         private static extern bool GetWindowRect(IntPtr hWnd, ref RECT lpRect);
 
+        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+        public static extern IntPtr GetForegroundWindow();
+
         public static IntPtr FFXIVProcessId { private get; set; }
 
         private static Rectangle _screenRect;
@@ -163,6 +166,11 @@ namespace ACT.TPMonitor
                 }
             }
             return widget;
+        }
+
+        public static bool IsActive(IntPtr hWnd)
+        {
+            return hWnd == GetForegroundWindow();
         }
     }
 }

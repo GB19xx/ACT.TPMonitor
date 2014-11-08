@@ -63,7 +63,7 @@ namespace ACT.TPMonitor
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (this.Visible)
+            if (this.Visible && Util.IsActive(FFXIVPluginHelper.GetFFXIVProcess.MainWindowHandle))
             {
                 Graphics g = e.Graphics;
                 g.Clear(this.BackColor);
