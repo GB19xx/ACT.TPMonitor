@@ -122,6 +122,7 @@ namespace ACT.TPMonitor
 #if DEBUG 
             localFileUpdateTime = localFileUpdateTime.AddMonths(-1);
 #endif
+            localFileUpdateTime = localFileUpdateTime.AddMinutes(30);
             foreach (GitHub.Release r in releses)
             {
                 if (r.draft || !r.assets[0].state.Equals("uploaded")) continue;
