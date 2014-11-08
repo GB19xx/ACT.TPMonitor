@@ -7,7 +7,7 @@ TPMonitor for FFXIV on ACT
 
 Latest Version
 ----------------
-[ACT.TPMonitor_1.5.1.0.zip](https://github.com/GB19xx/ACT.TPMonitor/releases/download/1.5.1.0/ACT.TPMonitor_1.5.1.0.zip)
+[ACT.TPMonitor_1.5.0.1.zip](https://github.com/GB19xx/ACT.TPMonitor/releases/download/1.5.0.0/ACT.TPMonitor_1.5.0.1.zip)
 
 How to install
 ----------------
