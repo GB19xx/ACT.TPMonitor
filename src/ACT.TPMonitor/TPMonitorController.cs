@@ -196,7 +196,7 @@ namespace ACT.TPMonitor
                     if (_ffxivProcess != null)
                     {
                         Combatant player = FFXIVPluginHelper.GetPlayerData();
-                        LoggedIn = player.Level > 0 ? true : false;
+                        LoggedIn = player.MaxHP > 0 ? true : false;
                     }
                     else
                     {
