@@ -120,16 +120,18 @@ namespace ACT.TPMonitor
         {
             DateTime localFileUpdateTime = PluginDate.pluginFile.LastWriteTime;
 #if DEBUG 
-            localFileUpdateTime = localFileUpdateTime.AddMonths(-1);
+            localFileUpdateTime = DateTime.Parse("2014/11/8 22:40:24");
 #endif
             localFileUpdateTime = localFileUpdateTime.AddMinutes(30);
             foreach (GitHub.Release r in releses)
             {
-                if (r.draft || !r.assets[0].state.Equals("uploaded")) continue;
+                if (r.draft) continue;
+                if (r.assets.Count == 0) continue;
+                if (!(r.assets[0].content_type.Equals("application/x-zip-compressed") && r.assets[0].state.Equals("uploaded"))) continue;
                 if (r.prerelease && !IsCoverdPreRelease) continue;
 
-                DateTime publishedTime = DateTime.Parse(r.published_at);
-                if (publishedTime.CompareTo(localFileUpdateTime) == 1)
+                DateTime updatedTime = DateTime.Parse(r.assets[0].updated_at);
+                if (updatedTime.CompareTo(localFileUpdateTime) == 1)
                 {
                     return r;
                 }
