@@ -119,8 +119,8 @@ namespace ACT.TPMonitor
                 {
                     if (textLine[i].Equals("n:_PartyList_a"))
                     {
-                        float widthPercent = float.Parse(textLine[i + 2].Substring(2));
-                        float heightPercent = float.Parse(textLine[i + 3].Substring(2));
+                        float widthPercent = GetFloat(textLine[i + 2].Substring(2));
+                        float heightPercent = GetFloat(textLine[i + 3].Substring(2));
                         int width = int.Parse(textLine[i + 4].Substring(2));
                         int height = int.Parse(textLine[i + 5].Substring(2));
                         float widgetScale = scale == 0f ? float.Parse(textLine[i + 7].Substring(2)) : scale;
@@ -166,6 +166,17 @@ namespace ACT.TPMonitor
                 }
             }
             return widget;
+        }
+
+        private static float GetFloat(string v)
+        {
+            if (v.IndexOf(".") > 0)
+                return float.Parse(v);
+            else
+            {
+                System.Globalization.CultureInfo cultureFr = new System.Globalization.CultureInfo("fr-fr");
+                return float.Parse(v.Replace(".", ","), cultureFr);
+            }
         }
 
         public static bool IsActive(IntPtr hWnd)
