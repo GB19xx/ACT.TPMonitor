@@ -123,7 +123,7 @@ namespace ACT.TPMonitor
                         float heightPercent = GetFloat(textLine[i + 3].Substring(2));
                         int width = int.Parse(textLine[i + 4].Substring(2));
                         int height = int.Parse(textLine[i + 5].Substring(2));
-                        float widgetScale = scale == 0f ? float.Parse(textLine[i + 7].Substring(2)) : scale;
+                        float widgetScale = scale == 0f ? GetFloat(textLine[i + 7].Substring(2)) : scale;
 
                         width = (int)(width * widgetScale);
                         height = (int)(height * widgetScale);
@@ -175,7 +175,7 @@ namespace ACT.TPMonitor
             else
             {
                 System.Globalization.CultureInfo cultureFr = new System.Globalization.CultureInfo("fr-fr");
-                return float.Parse(v.Replace(".", ","), cultureFr);
+                return float.Parse(v, cultureFr);
             }
         }
 
