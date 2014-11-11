@@ -50,24 +50,31 @@ namespace ACT.TPMonitor
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (this.Visible && Util.IsActive(FFXIVPluginHelper.GetFFXIVProcess.MainWindowHandle))
+            if (this.Visible)
             {
-                Graphics g = e.Graphics;
-
-                for (int i = 0; i < _controller.PartyMemberInfo.Count; i++)
+                if (_controller.DisappearsInActive && !Util.IsActive(FFXIVPluginHelper.GetFFXIVProcess.MainWindowHandle))
                 {
-                    DrawImg(g, i, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
+                    // Disappears
+                }
+                else
+                {
+                    Graphics g = e.Graphics;
 
-                    if (!string.IsNullOrEmpty(_controller.PartyMemberInfo[i].Name) &&
-                        _controller.HideJob.IndexOf(_controller.PartyMemberInfo[i].Job) == -1)
+                    for (int i = 0; i < _controller.PartyMemberInfo.Count; i++)
                     {
-                        // TP
-                        DrawBar(g, i, _controller.PartyMemberInfo[i].TP, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
-                    }
-                    else
-                    {
-                        // TP
-                        DrawBar(g, i, 0, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
+                        DrawImg(g, i, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
+
+                        if (!string.IsNullOrEmpty(_controller.PartyMemberInfo[i].Name) &&
+                            _controller.HideJob.IndexOf(_controller.PartyMemberInfo[i].Job) == -1)
+                        {
+                            // TP
+                            DrawBar(g, i, _controller.PartyMemberInfo[i].TP, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
+                        }
+                        else
+                        {
+                            // TP
+                            DrawBar(g, i, 0, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
+                        }
                     }
                 }
             }

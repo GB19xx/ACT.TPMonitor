@@ -63,19 +63,26 @@ namespace ACT.TPMonitor
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (this.Visible && Util.IsActive(FFXIVPluginHelper.GetFFXIVProcess.MainWindowHandle))
+            if (this.Visible)
             {
-                Graphics g = e.Graphics;
-                g.Clear(this.BackColor);
-
-                int s = _controller.IsFixedMode && _controller.ShowMyTP ? 0 : 1;
-                for (int i = s; i < _controller.PartyMemberInfo.Count; i++)
+                if (_controller.DisappearsInActive && !Util.IsActive(FFXIVPluginHelper.GetFFXIVProcess.MainWindowHandle))
                 {
-                    if (!string.IsNullOrEmpty(_controller.PartyMemberInfo[i].Name) &&
-                        _controller.HideJob.IndexOf(_controller.PartyMemberInfo[i].Job) == -1)
+                    // Disappears
+                }
+                else
+                {
+                    Graphics g = e.Graphics;
+                    g.Clear(this.BackColor);
+
+                    int s = _controller.IsFixedMode && _controller.ShowMyTP ? 0 : 1;
+                    for (int i = s; i < _controller.PartyMemberInfo.Count; i++)
                     {
-                        DrawBar(g, i, _controller.PartyMemberInfo[i].TP, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
-                        DrawValue(g, i, _controller.PartyMemberInfo[i].TP, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
+                        if (!string.IsNullOrEmpty(_controller.PartyMemberInfo[i].Name) &&
+                            _controller.HideJob.IndexOf(_controller.PartyMemberInfo[i].Job) == -1)
+                        {
+                            DrawBar(g, i, _controller.PartyMemberInfo[i].TP, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
+                            DrawValue(g, i, _controller.PartyMemberInfo[i].TP, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
+                        }
                     }
                 }
             }

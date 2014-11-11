@@ -28,6 +28,7 @@ namespace ACT.TPMonitor
         public bool HideWhenDissolve { get; set; }
         public bool HideWhenEnded { get; set; }
         public bool ShowMyTP { get; set; }
+        public bool DisappearsInActive { get; set; }
 
         public bool IsFixedMode { get; set; }
         public decimal OffsetX { get; set; }
