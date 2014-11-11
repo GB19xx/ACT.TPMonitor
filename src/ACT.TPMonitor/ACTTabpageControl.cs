@@ -1526,10 +1526,9 @@ namespace ACT.TPMonitor
         {
             AutoUpdater.PluginDate = ActGlobals.oFormActMain.PluginGetSelfData(this);
             AutoUpdater.Owner = "GB19xx";
+            AutoUpdater.RepositoryName = "ACT.TPMonitor";
 #if DEBUG
             AutoUpdater.RepositoryName = "TestRepository";
-#else
-            AutoUpdater.RepositoryName= "ACT.TPMonitor";
 #endif
             AutoUpdater.IsCoverdPreRelease = false;
             AutoUpdater.Start();

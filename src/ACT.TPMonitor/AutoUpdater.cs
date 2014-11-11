@@ -91,7 +91,14 @@ namespace ACT.TPMonitor
                     {
                         var title = "New version available!";
                         var instruction = String.Format("A new version of {0} is available.", RepositoryName);
-                        var msg = string.Format("\n\n{0} {1}{2} is now available.\nYou have version {3}.\nApply it now?", RepositoryName, newVersion.tag_name, IsCoverdPreRelease && newVersion.prerelease ? "[PreRelease]" : "", CurrentVersion);
+                        var msg = string.Format("\n\n{0} {1}{2} is now available.\nYou have version {3}.\nApply it now?\n\n:{4}\n -{5}", 
+                            RepositoryName, 
+                            newVersion.tag_name, 
+                            IsCoverdPreRelease && newVersion.prerelease ? "[PreRelease]" : "", 
+                            CurrentVersion, 
+                            newVersion.name, 
+                            newVersion.body
+                            );
                         var result = MessageBox.Show(instruction + msg, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
                         {
@@ -120,7 +127,8 @@ namespace ACT.TPMonitor
         {
             DateTime localFileUpdateTime = PluginDate.pluginFile.LastWriteTime;
 #if DEBUG 
-            localFileUpdateTime = DateTime.Parse("2014/11/8 22:40:24");
+            localFileUpdateTime = DateTime.Parse("2014/11/10 1:10:08");
+            localFileUpdateTime = localFileUpdateTime.AddDays(-10);
 #endif
             localFileUpdateTime = localFileUpdateTime.AddMinutes(30);
             foreach (GitHub.Release r in releses)
@@ -180,6 +188,7 @@ namespace ACT.TPMonitor
                     Directory.Delete(zipPath, true);
 
                     ThreadInvokes.CheckboxSetChecked(ActGlobals.oFormActMain, PluginDate.cbEnabled, true);
+                    PluginDate.pluginFile.Refresh();
                 }
             }
         }
