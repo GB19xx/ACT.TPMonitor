@@ -126,6 +126,22 @@ Offsetにて微調整可能
 + Color(ReadOnly)  
 + Edit Color(Show Dialog)  
 
+Examples:
+<table>
+<tr>
+<td> </td><td>StartTP</td><td>EndTP</td><td>Color</td>
+</tr>
+<tr>
+<td> </td><td>0</td><td>400</td><td>Red</td>
+</tr>
+<tr>
+<td> </td><td>400</td><td>800</td><td>Aqua</td>
+</tr>
+<tr>
+<td> </td><td>800</td><td>1000</td><td>White</td>
+</tr>
+</table>
+
 Remarks
 -----------
 + Win7(64bit)のみ動作確認  
