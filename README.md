@@ -7,7 +7,7 @@ TPMonitor for FFXIV on ACT
 
 Latest Version
 ----------------
-[ACT.TPMonitor_1.5.1.1.zip](https://github.com/GB19xx/ACT.TPMonitor/releases/download/1.5.1.1/ACT.TPMonitor_1.5.1.1.zip)
+[ACT.TPMonitor.zip](https://github.com/GB19xx/ACT.TPMonitor/releases/latest)
 
 How to install
 ----------------
@@ -99,6 +99,7 @@ Option
 + パーティ解散を契機に非表示  
 + ID終了時に非表示  
 + 自分のTPも表示（Fixed Mode時のみ有効）  
++ ゲーム画面が非アクティブ時は非表示  
 
 Display Job
 ------
