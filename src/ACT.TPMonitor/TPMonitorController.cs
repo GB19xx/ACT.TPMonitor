@@ -13,13 +13,16 @@ namespace ACT.TPMonitor
 {
     public class TPMonitorController : IDisposable
     {
+        public readonly Version SUPPORTED_VERSION = new Version("1.2.2.0");
+
         public ActPluginData actPlugin { get; private set; }
+        public bool IsUnSupportedVerion { get; private set; }
         public string CharFolder { get; set; }
 
-        public bool ACTVisible { get; set; }
-        public bool FFXIVPluginStatus { get; set; }
-        public bool FFXIVProcess { get; set; }
-        public bool LoggedIn { get; set; }
+        public bool IsACTVisible { get; set; }
+        public bool IsFFXIVPluginStarted { get; set; }
+        public bool IsFFXIVProcessStarted { get; set; }
+        public bool IsLoggedIn { get; set; }
         public Point ViewLocation { get; set; }
 
         public Font TPFont { get; set; }
@@ -41,7 +44,7 @@ namespace ACT.TPMonitor
         public bool IsUserScale { get; set; }
         public float UserScale { get; set; }
 
-        public SynchronizedCollection<PartyMember> PartyMemberInfo { get; private set; }
+        public SynchronizedCollection<Combatant> PartyMemberInfo { get; private set; }
         public SynchronizedCollection<JOB> HideJob { get; set; }
         public DataTable dtColor { get; set; }
 
@@ -55,9 +58,9 @@ namespace ACT.TPMonitor
         private AllianceStyleViewer allianceStyle;
         private Thread checkStatus = null;
         private Thread getTP = null;
-        private Process _ffxivProcess = null;
+        private Process ffxivProcess = null;
         private IntPtr zero = IntPtr.Zero;
-        private bool isExited;        
+        private bool isExited;
 
         public TPMonitorController(ACTTabpageControl actTab)
         {
@@ -72,10 +75,10 @@ namespace ACT.TPMonitor
 
             isExited = false;
 
-            PartyMemberInfo = new SynchronizedCollection<PartyMember>();
+            PartyMemberInfo = new SynchronizedCollection<Combatant>();
             for (int i = 0; i < 8; i++)
             {
-                PartyMemberInfo.Add(new PartyMember());
+                PartyMemberInfo.Add(new Combatant());
             }
 
             normalStyle = new TPViewer(this);
@@ -154,54 +157,85 @@ namespace ACT.TPMonitor
             {
                 if (isExited) break;
 
-                bool oldACTVisible = ACTVisible;
-                bool oldFFXIVPlugin = FFXIVPluginStatus;
-                bool oldFFXIVProcess = FFXIVProcess;
-                bool oldLoggedIn = LoggedIn;
-                bool status = false;
+                bool oldACTVisible = IsACTVisible;
+                bool oldFFXIVPlugin = IsFFXIVPluginStarted;
+                bool oldFFXIVProcess = IsFFXIVProcessStarted;
+                bool oldLoggedIn = IsLoggedIn;
                 Point oldViewLocation = ViewLocation;
                 try
                 {
 
-                    ACTVisible = ActGlobals.oFormActMain.Visible;
+                    IsACTVisible = ActGlobals.oFormActMain.Visible;
+                    IsFFXIVPluginStarted = false;
                     if (ActGlobals.oFormActMain.Visible)
                     {
-                        status = false;
-                        foreach (ActPluginData plugin in ActGlobals.oFormActMain.ActPlugins)
+                        IsFFXIVPluginStarted = FFXIVPluginHelper.Instance == null ? false : true;
+                    }
+                    if (!oldFFXIVPlugin && IsFFXIVPluginStarted)
+                    {
+                        if (FFXIVPluginHelper.GetVersion.CompareTo(SUPPORTED_VERSION) == -1)
+                            IsUnSupportedVerion = true;
+                        else
+                            IsUnSupportedVerion = false;
+                    }
+
+                    ffxivProcess = FFXIVPluginHelper.GetFFXIVProcess;
+
+                    if (ffxivProcess != null)
+                    {
+                        IsFFXIVProcessStarted = true;
+                        Util.FFXIVProcessId = ffxivProcess.MainWindowHandle;
+
+                        Combatant player = FFXIVPluginHelper.GetPlayerData();
+                        if (player.Job != 0)
                         {
-                            if (plugin.pluginFile.Name == "FFXIV_ACT_Plugin.dll" && plugin.lblPluginStatus.Text == "FFXIV Plugin Started.")
+                            IsLoggedIn = true;
+
+                            if (oldLoggedIn == false)
                             {
-                                if (FFXIVPluginHelper.Instance == null)
+                                Util.InitializedAtLogin();
+
+                                switch (Util.GameLanguage)
                                 {
-                                    FFXIVPluginHelper.Instance = (object)plugin.pluginObj;
-                                    FFXIVPluginHelper.Version = new Version(FileVersionInfo.GetVersionInfo(plugin.pluginFile.ToString()).FileVersion);
-                                } 
-                                
-                                status = true;
-                                                                
-                                break;
+                                    case Language.English:
+                                        regexDissolve = new Regex(@"(You (dissolve the|leave .+'s) party|The party has been disbanded)\.", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                                        regexEnded = new Regex(@".+ has ended\.$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                                        break;
+                                    case Language.German:
+                                        regexDissolve = new Regex(@"((Deine|Die) Gruppe wurde aufgelöst|Du bist aus der Gruppe von .+ ausgetreten)\.", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                                        regexEnded = new Regex(@"„.+“ wurde beendet\.$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                                        break;
+                                    case Language.French:
+                                        regexDissolve = new Regex(@"(L'équipe (est|a été) dissoute|Vous quittez l'équipe de .+)\.", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                                        regexEnded = new Regex(@"La mission “.+” commence\.$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                                        break;
+                                    case Language.Japanese:
+                                    default:
+                                        regexDissolve = new Regex(@"(パーティ(を解散しま|が解散されま)した|のパーティから離脱しました)。", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                                        regexEnded = new Regex(@"「.+?」の攻略を終了した。$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                                        break;
+                                }
                             }
                         }
-                        FFXIVPluginStatus = status;
-
-                        _ffxivProcess = FFXIVPluginHelper.GetFFXIVProcess;
+                        else
+                        {
+                            IsLoggedIn = false;
+                        }
                     }
                     else
                     {
-                        FFXIVPluginStatus = false;
-                    }
+                        IsFFXIVProcessStarted = false;
+                        IsLoggedIn = false;
 
-                    FFXIVProcess = _ffxivProcess != null ? true : false;
-                    Util.FFXIVProcessId = _ffxivProcess.MainWindowHandle;
-
-                    if (_ffxivProcess != null)
-                    {
-                        Combatant player = FFXIVPluginHelper.GetPlayerData();
-                        LoggedIn = player.MaxHP > 0 ? true : false;
-                    }
-                    else
-                    {
-                        LoggedIn = false;
+                        // clear
+                        for (int i = 0; i < 8; i++)
+                        {
+                            PartyMemberInfo[i].Job = (int)JOB.Unknown;
+                            PartyMemberInfo[i].Name = string.Empty;
+                            PartyMemberInfo[i].CurrentTP = 0;
+                        }
+                        // hide at dissolution.
+                        viewer.Hide();
                     }
 
                     ViewLocation = viewer.Location;
@@ -214,8 +248,10 @@ namespace ACT.TPMonitor
                 }
                 finally
                 {
-                    if (oldACTVisible != ACTVisible || oldFFXIVPlugin != FFXIVPluginStatus ||
-                        oldFFXIVProcess != FFXIVProcess || oldLoggedIn != LoggedIn ||
+                    if (oldACTVisible != IsACTVisible || 
+                        oldFFXIVPlugin != IsFFXIVPluginStarted ||
+                        oldFFXIVProcess != IsFFXIVProcessStarted ||
+                        oldLoggedIn != IsLoggedIn ||
                         oldViewLocation != ViewLocation)
                     {
                         ChangedStatus(this, new EventArgs());
@@ -234,9 +270,9 @@ namespace ACT.TPMonitor
                     // clear
                     for (int i = 0; i < 8; i++)
                     {
-                        PartyMemberInfo[i].Job = JOB.Unknown;
+                        PartyMemberInfo[i].Job = (int)JOB.Unknown;
                         PartyMemberInfo[i].Name = string.Empty;
-                        PartyMemberInfo[i].TP = 0;
+                        PartyMemberInfo[i].CurrentTP = 0;
                     }
                     // hide at dissolution.
                     viewer.Hide();
@@ -279,9 +315,9 @@ namespace ACT.TPMonitor
                             case "clear":
                                 for (int i = 0; i < 8; i++)
                                 {
-                                    PartyMemberInfo[i].Job = JOB.Unknown;
+                                    PartyMemberInfo[i].Job = (int)JOB.Unknown;
                                     PartyMemberInfo[i].Name = string.Empty;
-                                    PartyMemberInfo[i].TP = 0;
+                                    PartyMemberInfo[i].CurrentTP = 0;
                                 }
                                 break;
                             case "hide":
@@ -318,7 +354,7 @@ namespace ACT.TPMonitor
             {
                 if (isExited) break;
 
-                if (_ffxivProcess == null)
+                if (ffxivProcess == null)
                 {
                     Thread.Sleep(3000);
                     continue;
@@ -333,6 +369,8 @@ namespace ACT.TPMonitor
                 try
                 {
                     List<Combatant> combatantList = FFXIVPluginHelper.GetCombatantList();
+                    if (combatantList == null) continue;
+
                     for (int i = 0; i < PartyMemberInfo.Count; i++)
                     {
                         if (combatantList.Count == 0)
@@ -341,21 +379,25 @@ namespace ACT.TPMonitor
                         }
 
                         PartyMemberInfo[0].Name = combatantList[0].Name;
-                        PartyMemberInfo[0].TP = combatantList[0].CurrentTP;
+                        PartyMemberInfo[0].CurrentTP = combatantList[0].CurrentTP;
 
                         foreach (Combatant c in combatantList)
                         {
                             if (PartyMemberInfo[i].Name.Equals(c.Name))
                             {
-                                PartyMemberInfo[i].Job = (JOB)c.Job;
-                                PartyMemberInfo[i].TP = c.CurrentTP;
+                                PartyMemberInfo[i].Job = c.Job;
+                                PartyMemberInfo[i].Name = c.Name;
+                                PartyMemberInfo[i].CurrentHP = c.CurrentHP;
+                                PartyMemberInfo[i].MaxHP = c.MaxHP;
+                                PartyMemberInfo[i].CurrentMP = c.CurrentMP;
+                                PartyMemberInfo[i].MaxMP = c.MaxMP;
+                                PartyMemberInfo[i].CurrentTP = c.CurrentTP;
                                 break;
                             }
                         }
                     }
 
                     OnCurrentTPUpdate();
-
                 }
                 finally
                 {

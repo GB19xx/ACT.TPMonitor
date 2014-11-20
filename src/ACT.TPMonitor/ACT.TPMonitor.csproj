@@ -41,6 +41,7 @@
     </Win32Resource>
   </PropertyGroup>
   <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="Advanced Combat Tracker">
       <HintPath>D:\Advanced Combat Tracker\Advanced Combat Tracker.exe</HintPath>
@@ -71,13 +72,9 @@
       <DependentUpon>AllianceStyleViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="AutoUpdater.cs" />
-    <Compile Include="Combatant.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="FFXIVPluginHelper.cs" />
     <Compile Include="GitHub.cs" />
-    <Compile Include="PartyMember.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

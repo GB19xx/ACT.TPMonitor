@@ -1,5 +1,13 @@
 ﻿namespace ACT.TPMonitor
 {
+    public enum Language : int
+    {
+        Japanese = 0,
+        English,
+        German,
+        French
+    }
+
     public enum TYPE : byte
     {
         Player = 0x01,

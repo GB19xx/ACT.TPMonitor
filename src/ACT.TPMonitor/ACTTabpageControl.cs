@@ -53,10 +53,10 @@ namespace ACT.TPMonitor
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ACTTabpageControl));
             this.textBoxCharacterFolder = new System.Windows.Forms.TextBox();
             this.buttonOpenFolder = new System.Windows.Forms.Button();
@@ -78,6 +78,7 @@ namespace ACT.TPMonitor
             this.buttonCopy = new System.Windows.Forms.Button();
             this.textBoxRecommend = new System.Windows.Forms.TextBox();
             this.groupBoxOption = new System.Windows.Forms.GroupBox();
+            this.checkBoxDisappears = new System.Windows.Forms.CheckBox();
             this.checkBoxShowMyTP = new System.Windows.Forms.CheckBox();
             this.checkBoxHideWhenEnded = new System.Windows.Forms.CheckBox();
             this.checkBoxHideWhenDissolve = new System.Windows.Forms.CheckBox();
@@ -140,7 +141,7 @@ namespace ACT.TPMonitor
             this.checkBoxAllianceStyle = new System.Windows.Forms.CheckBox();
             this.groupBoxUpdateCheck = new System.Windows.Forms.GroupBox();
             this.buttonCheck = new System.Windows.Forms.Button();
-            this.checkBoxDisappears = new System.Windows.Forms.CheckBox();
+            this.panelPlugin = new System.Windows.Forms.Panel();
             this.groupBoxCharacterFolder.SuspendLayout();
             this.groupBoxStatus.SuspendLayout();
             this.tableLayoutPanelStatus.SuspendLayout();
@@ -164,6 +165,7 @@ namespace ACT.TPMonitor
             this.groupBoxWhereNow.SuspendLayout();
             this.groupBoxDisplayJob.SuspendLayout();
             this.groupBoxUpdateCheck.SuspendLayout();
+            this.panelPlugin.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxCharacterFolder
@@ -192,7 +194,7 @@ namespace ACT.TPMonitor
             // 
             this.groupBoxCharacterFolder.Controls.Add(this.buttonOpenFolder);
             this.groupBoxCharacterFolder.Controls.Add(this.textBoxCharacterFolder);
-            this.groupBoxCharacterFolder.Location = new System.Drawing.Point(19, 12);
+            this.groupBoxCharacterFolder.Location = new System.Drawing.Point(13, 12);
             this.groupBoxCharacterFolder.Name = "groupBoxCharacterFolder";
             this.groupBoxCharacterFolder.Size = new System.Drawing.Size(744, 54);
             this.groupBoxCharacterFolder.TabIndex = 0;
@@ -202,7 +204,7 @@ namespace ACT.TPMonitor
             // groupBoxStatus
             // 
             this.groupBoxStatus.Controls.Add(this.tableLayoutPanelStatus);
-            this.groupBoxStatus.Location = new System.Drawing.Point(19, 72);
+            this.groupBoxStatus.Location = new System.Drawing.Point(13, 72);
             this.groupBoxStatus.Name = "groupBoxStatus";
             this.groupBoxStatus.Size = new System.Drawing.Size(292, 96);
             this.groupBoxStatus.TabIndex = 1;
@@ -316,7 +318,7 @@ namespace ACT.TPMonitor
             // 
             this.groupBoxFont.Controls.Add(this.numericUpDownFontSize);
             this.groupBoxFont.Controls.Add(this.comboBoxTPFont);
-            this.groupBoxFont.Location = new System.Drawing.Point(769, 72);
+            this.groupBoxFont.Location = new System.Drawing.Point(763, 72);
             this.groupBoxFont.Name = "groupBoxFont";
             this.groupBoxFont.Size = new System.Drawing.Size(148, 70);
             this.groupBoxFont.TabIndex = 3;
@@ -364,7 +366,7 @@ namespace ACT.TPMonitor
             // 
             this.groupBoxRecommend.Controls.Add(this.buttonCopy);
             this.groupBoxRecommend.Controls.Add(this.textBoxRecommend);
-            this.groupBoxRecommend.Location = new System.Drawing.Point(615, 72);
+            this.groupBoxRecommend.Location = new System.Drawing.Point(609, 72);
             this.groupBoxRecommend.Name = "groupBoxRecommend";
             this.groupBoxRecommend.Size = new System.Drawing.Size(148, 172);
             this.groupBoxRecommend.TabIndex = 6;
@@ -399,12 +401,25 @@ namespace ACT.TPMonitor
             this.groupBoxOption.Controls.Add(this.checkBoxShowMyTP);
             this.groupBoxOption.Controls.Add(this.checkBoxHideWhenEnded);
             this.groupBoxOption.Controls.Add(this.checkBoxHideWhenDissolve);
-            this.groupBoxOption.Location = new System.Drawing.Point(317, 72);
+            this.groupBoxOption.Location = new System.Drawing.Point(311, 72);
             this.groupBoxOption.Name = "groupBoxOption";
             this.groupBoxOption.Size = new System.Drawing.Size(292, 118);
             this.groupBoxOption.TabIndex = 2;
             this.groupBoxOption.TabStop = false;
             this.groupBoxOption.Text = "Option";
+            // 
+            // checkBoxDisappears
+            // 
+            this.checkBoxDisappears.AutoSize = true;
+            this.checkBoxDisappears.Checked = true;
+            this.checkBoxDisappears.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDisappears.Location = new System.Drawing.Point(15, 88);
+            this.checkBoxDisappears.Name = "checkBoxDisappears";
+            this.checkBoxDisappears.Size = new System.Drawing.Size(260, 16);
+            this.checkBoxDisappears.TabIndex = 2;
+            this.checkBoxDisappears.Text = "Disappears when the game window is inactive";
+            this.checkBoxDisappears.UseVisualStyleBackColor = true;
+            this.checkBoxDisappears.CheckedChanged += new System.EventHandler(this.checkBoxDisappears_CheckedChanged);
             // 
             // checkBoxShowMyTP
             // 
@@ -454,7 +469,7 @@ namespace ACT.TPMonitor
             this.groupBoxSettings.Controls.Add(this.groupBoxScale);
             this.groupBoxSettings.Controls.Add(this.dataGridViewColor);
             this.groupBoxSettings.Controls.Add(this.groupBoxWhereNow);
-            this.groupBoxSettings.Location = new System.Drawing.Point(19, 308);
+            this.groupBoxSettings.Location = new System.Drawing.Point(13, 308);
             this.groupBoxSettings.Name = "groupBoxSettings";
             this.groupBoxSettings.Size = new System.Drawing.Size(744, 217);
             this.groupBoxSettings.TabIndex = 5;
@@ -778,8 +793,8 @@ namespace ACT.TPMonitor
             // 
             this.dataGridViewColor.AllowUserToResizeColumns = false;
             this.dataGridViewColor.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightCyan;
-            this.dataGridViewColor.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCyan;
+            this.dataGridViewColor.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewColor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewColor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnStartTP,
@@ -789,14 +804,14 @@ namespace ACT.TPMonitor
             this.dataGridViewColor.Location = new System.Drawing.Point(316, 18);
             this.dataGridViewColor.MultiSelect = false;
             this.dataGridViewColor.Name = "dataGridViewColor";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewColor.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewColor.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewColor.RowTemplate.Height = 21;
             this.dataGridViewColor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewColor.Size = new System.Drawing.Size(422, 164);
@@ -805,9 +820,9 @@ namespace ACT.TPMonitor
             // 
             // ColumnStartTP
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N0";
-            this.ColumnStartTP.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            this.ColumnStartTP.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnStartTP.HeaderText = "StartTP";
             this.ColumnStartTP.Name = "ColumnStartTP";
             this.ColumnStartTP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -815,9 +830,9 @@ namespace ACT.TPMonitor
             // 
             // ColumnEndTP
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N0";
-            this.ColumnEndTP.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            this.ColumnEndTP.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnEndTP.HeaderText = "EndTP";
             this.ColumnEndTP.Name = "ColumnEndTP";
             this.ColumnEndTP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -868,7 +883,7 @@ namespace ACT.TPMonitor
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(688, 257);
+            this.buttonSave.Location = new System.Drawing.Point(682, 257);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 7;
@@ -897,7 +912,7 @@ namespace ACT.TPMonitor
             this.groupBoxDisplayJob.Controls.Add(this.checkBoxPGL);
             this.groupBoxDisplayJob.Controls.Add(this.checkBoxPLD);
             this.groupBoxDisplayJob.Controls.Add(this.checkBoxGLD);
-            this.groupBoxDisplayJob.Location = new System.Drawing.Point(19, 196);
+            this.groupBoxDisplayJob.Location = new System.Drawing.Point(13, 196);
             this.groupBoxDisplayJob.Name = "groupBoxDisplayJob";
             this.groupBoxDisplayJob.Size = new System.Drawing.Size(590, 106);
             this.groupBoxDisplayJob.TabIndex = 4;
@@ -1241,7 +1256,7 @@ namespace ACT.TPMonitor
             // 
             // textBoxColors
             // 
-            this.textBoxColors.Location = new System.Drawing.Point(769, 380);
+            this.textBoxColors.Location = new System.Drawing.Point(763, 380);
             this.textBoxColors.Name = "textBoxColors";
             this.textBoxColors.Size = new System.Drawing.Size(100, 19);
             this.textBoxColors.TabIndex = 8;
@@ -1251,7 +1266,7 @@ namespace ACT.TPMonitor
             // checkBoxAllianceStyle
             // 
             this.checkBoxAllianceStyle.AutoSize = true;
-            this.checkBoxAllianceStyle.Location = new System.Drawing.Point(769, 405);
+            this.checkBoxAllianceStyle.Location = new System.Drawing.Point(763, 405);
             this.checkBoxAllianceStyle.Name = "checkBoxAllianceStyle";
             this.checkBoxAllianceStyle.Size = new System.Drawing.Size(91, 16);
             this.checkBoxAllianceStyle.TabIndex = 10;
@@ -1264,7 +1279,7 @@ namespace ACT.TPMonitor
             // groupBoxUpdateCheck
             // 
             this.groupBoxUpdateCheck.Controls.Add(this.buttonCheck);
-            this.groupBoxUpdateCheck.Location = new System.Drawing.Point(769, 12);
+            this.groupBoxUpdateCheck.Location = new System.Drawing.Point(763, 12);
             this.groupBoxUpdateCheck.Name = "groupBoxUpdateCheck";
             this.groupBoxUpdateCheck.Size = new System.Drawing.Size(148, 54);
             this.groupBoxUpdateCheck.TabIndex = 11;
@@ -1281,34 +1296,30 @@ namespace ACT.TPMonitor
             this.buttonCheck.UseVisualStyleBackColor = true;
             this.buttonCheck.Click += new System.EventHandler(this.buttonCheck_Click);
             // 
-            // checkBoxDisappears
+            // panelPlugin
             // 
-            this.checkBoxDisappears.AutoSize = true;
-            this.checkBoxDisappears.Checked = true;
-            this.checkBoxDisappears.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDisappears.Location = new System.Drawing.Point(15, 88);
-            this.checkBoxDisappears.Name = "checkBoxDisappears";
-            this.checkBoxDisappears.Size = new System.Drawing.Size(260, 16);
-            this.checkBoxDisappears.TabIndex = 2;
-            this.checkBoxDisappears.Text = "Disappears when the game window is inactive";
-            this.checkBoxDisappears.UseVisualStyleBackColor = true;
-            this.checkBoxDisappears.CheckedChanged += new System.EventHandler(this.checkBoxDisappears_CheckedChanged);
+            this.panelPlugin.Controls.Add(this.groupBoxCharacterFolder);
+            this.panelPlugin.Controls.Add(this.groupBoxUpdateCheck);
+            this.panelPlugin.Controls.Add(this.groupBoxStatus);
+            this.panelPlugin.Controls.Add(this.checkBoxAllianceStyle);
+            this.panelPlugin.Controls.Add(this.groupBoxRecommend);
+            this.panelPlugin.Controls.Add(this.textBoxColors);
+            this.panelPlugin.Controls.Add(this.groupBoxFont);
+            this.panelPlugin.Controls.Add(this.buttonSave);
+            this.panelPlugin.Controls.Add(this.groupBoxOption);
+            this.panelPlugin.Controls.Add(this.groupBoxDisplayJob);
+            this.panelPlugin.Controls.Add(this.groupBoxSettings);
+            this.panelPlugin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPlugin.Location = new System.Drawing.Point(0, 0);
+            this.panelPlugin.Name = "panelPlugin";
+            this.panelPlugin.Size = new System.Drawing.Size(953, 539);
+            this.panelPlugin.TabIndex = 12;
             // 
             // ACTTabpageControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBoxUpdateCheck);
-            this.Controls.Add(this.checkBoxAllianceStyle);
-            this.Controls.Add(this.textBoxColors);
-            this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.groupBoxDisplayJob);
-            this.Controls.Add(this.groupBoxSettings);
-            this.Controls.Add(this.groupBoxOption);
-            this.Controls.Add(this.groupBoxFont);
-            this.Controls.Add(this.groupBoxRecommend);
-            this.Controls.Add(this.groupBoxStatus);
-            this.Controls.Add(this.groupBoxCharacterFolder);
+            this.Controls.Add(this.panelPlugin);
             this.Name = "ACTTabpageControl";
             this.Size = new System.Drawing.Size(950, 539);
             this.groupBoxCharacterFolder.ResumeLayout(false);
@@ -1343,8 +1354,9 @@ namespace ACT.TPMonitor
             this.groupBoxDisplayJob.ResumeLayout(false);
             this.groupBoxDisplayJob.PerformLayout();
             this.groupBoxUpdateCheck.ResumeLayout(false);
+            this.panelPlugin.ResumeLayout(false);
+            this.panelPlugin.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
 		}
 		#endregion
@@ -1379,7 +1391,7 @@ namespace ACT.TPMonitor
             checkBoxNIN.Tag = JOB.NIN;
 		}
 
-		Label lblStatus;	// The status label that appears in ACT's Plugin tab
+        Label lblStatus;	// The status label that appears in ACT's Plugin tab
         string settingsFile = Path.Combine(ActGlobals.oFormActMain.AppDataFolder.FullName, "Config\\ACT.TPMonitor.config.xml");
         private TextBox textBoxCharacterFolder;
         private Button buttonOpenFolder;
@@ -1470,6 +1482,7 @@ namespace ACT.TPMonitor
         private GroupBox groupBoxUpdateCheck;
         private Button buttonCheck;
         private CheckBox checkBoxDisappears;
+        private Panel panelPlugin;
         private DataTable dtColor = new DataTable();
 
 		#region IActPluginV1 Members
@@ -1522,7 +1535,7 @@ namespace ACT.TPMonitor
             SetColorSetting();
             buttonApply_Click(this, null);
 
-            lblStatus.Text = "Plugin Started.";
+            lblStatus.Text = "TPMonitor Plugin Started.";
         }
 
         public void DeInitPlugin()
@@ -1544,7 +1557,7 @@ namespace ACT.TPMonitor
             AutoUpdater.Owner = "GB19xx";
             AutoUpdater.RepositoryName = "ACT.TPMonitor";
 #if DEBUG
-            AutoUpdater.RepositoryName = "TestRepository";
+            //AutoUpdater.RepositoryName = "TestRepository";
 #endif
             AutoUpdater.IsCoverdPreRelease = false;
             AutoUpdater.Start();
@@ -1554,12 +1567,25 @@ namespace ACT.TPMonitor
         {
             if (ActGlobals.oFormActMain.Visible)
             {
-                labelACTStatus.Text = controller.ACTVisible ? "Started." : "Not started.";
-                labelFFXIVPluginStatus.Text = controller.FFXIVPluginStatus ? "Started." : "Not started.";
-                labelFFXIVProcessStatus.Text = controller.FFXIVProcess ? "Started." : "No process.";
-                labelLoggedInStatus.Text = controller.LoggedIn ? "Logged in." : "Not logged in.";
+                labelACTStatus.Text = controller.IsACTVisible ? "Started." : "Not started.";
+                labelFFXIVPluginStatus.Text = controller.IsFFXIVPluginStarted ? "Started." : "Not started.";
+                labelFFXIVProcessStatus.Text = controller.IsFFXIVProcessStarted ? "Started." : "No process.";
+                labelLoggedInStatus.Text = controller.IsLoggedIn ? "Logged in." : "Not logged in.";
                 labelHereNowX.Text = string.Format("X:{0}", controller.ViewLocation.X);
                 labelHereNowY.Text = string.Format("Y:{0}", controller.ViewLocation.Y);
+
+                if (controller.IsUnSupportedVerion)
+                {
+                    //panelPlugin.Visible = false;
+                    //Label upgradeLabel = new Label();
+                    //upgradeLabel.Text = string.Format("FFXIV_ACT_Plugin.dll version {0} is not supported version. Please upgrade to {1} or higher. \n\n {2}",
+                    //    FFXIVPluginHelper.GetVersion,
+                    //    controller.SUPPORT_VERSION,
+                    //    "");
+                    //upgradeLabel.AutoSize = true;
+                    //upgradeLabel.Location = new Point(100, 100);
+                    //ActGlobals.oFormActMain.PluginGetSelfData(this).tpPluginSpace.Controls.Add(upgradeLabel);
+                }
             }
         }
 

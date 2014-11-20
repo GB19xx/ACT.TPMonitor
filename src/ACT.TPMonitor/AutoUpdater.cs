@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
@@ -91,13 +90,14 @@ namespace ACT.TPMonitor
                     {
                         var title = "New version available!";
                         var instruction = String.Format("A new version of {0} is available.", RepositoryName);
-                        var msg = string.Format("\n\n{0} {1}{2} is now available.\nYou have version {3}.\nApply it now?\n\n:{4}\n -{5}", 
-                            RepositoryName, 
-                            newVersion.tag_name, 
-                            IsCoverdPreRelease && newVersion.prerelease ? "[PreRelease]" : "", 
-                            CurrentVersion, 
-                            newVersion.name, 
-                            newVersion.body
+                        var detail = string.Join("\n", (" -" + newVersion.body.TrimEnd(' ', '\r', '\n')).Replace("\r\n", "\n -"));
+                        var msg = string.Format("\n\n{0} {1}{2} is now available.\nYou have version {3}.\nApply it now?\n\n:{4}\n{5}",
+                            RepositoryName,
+                            newVersion.tag_name,
+                            IsCoverdPreRelease && newVersion.prerelease ? "[PreRelease]" : "",
+                            CurrentVersion,
+                            newVersion.name,
+                            detail
                             );
                         var result = MessageBox.Show(instruction + msg, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
@@ -125,6 +125,8 @@ namespace ACT.TPMonitor
 
         private static GitHub.Release CheckNewAvailable(List<GitHub.Release> releses)
         {
+            GitHub.Release result = null;
+
             DateTime localFileUpdateTime = PluginDate.pluginFile.LastWriteTime;
 #if DEBUG 
             localFileUpdateTime = DateTime.Parse("2014/11/10 1:10:08");
@@ -141,10 +143,22 @@ namespace ACT.TPMonitor
                 DateTime updatedTime = DateTime.Parse(r.assets[0].updated_at);
                 if (updatedTime.CompareTo(localFileUpdateTime) == 1)
                 {
-                    return r;
+                    if (!r.prerelease)
+                    {
+                        result = r;
+                        break;
+                    }
+                    else if (result == null)
+                    {
+                        result = r;
+                    }
+                }
+                else
+                {
+                    break;
                 }
             }
-            return null;
+            return result;
         }
 
         private static void GetZipFile(string downloadURL)

@@ -78,10 +78,10 @@ namespace ACT.TPMonitor
                     for (int i = s; i < _controller.PartyMemberInfo.Count; i++)
                     {
                         if (!string.IsNullOrEmpty(_controller.PartyMemberInfo[i].Name) &&
-                            _controller.HideJob.IndexOf(_controller.PartyMemberInfo[i].Job) == -1)
+                            _controller.HideJob.IndexOf((JOB)_controller.PartyMemberInfo[i].Job) == -1)
                         {
-                            DrawBar(g, i, _controller.PartyMemberInfo[i].TP, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
-                            DrawValue(g, i, _controller.PartyMemberInfo[i].TP, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
+                            DrawBar(g, i, _controller.PartyMemberInfo[i].CurrentTP, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
+                            DrawValue(g, i, _controller.PartyMemberInfo[i].CurrentTP, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
                         }
                     }
                 }

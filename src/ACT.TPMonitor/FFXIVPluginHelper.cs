@@ -1,27 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Reflection;
+using System.Text.RegularExpressions;
+using Advanced_Combat_Tracker;
 
 namespace ACT.TPMonitor
 {
     public static class FFXIVPluginHelper
     {
-        private static object _plugin = null;
-        private static Version version;
+        private static Regex regVersion = new Regex(@"FileVersion: (?<version>\d+\.\d+\.\d+\.\d+)\n", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static ActPluginData _plugin = null;
 
         public static object Instance
         {
-            get { return _plugin; }
-            set { _plugin = value; }
+            get
+            {
+                if (_plugin == null && ActGlobals.oFormActMain.Visible)
+                {
+                    foreach (ActPluginData plugin in ActGlobals.oFormActMain.ActPlugins)
+                    {
+                        if (plugin.pluginFile.Name == "FFXIV_ACT_Plugin.dll" && plugin.lblPluginStatus.Text == "FFXIV Plugin Started.")
+                        {
+                            _plugin = plugin;
+                            break;
+                        }
+                    }
+                }
+                return _plugin;
+            }
         }
 
-        public static Version Version
+        public static Version GetVersion
         {
-            get { return version; }
-            set { version = value; }
+            get
+            {
+                if (_plugin != null)
+                {
+                    return new Version(regVersion.Match(_plugin.pluginVersion).Groups["version"].ToString());
+                }
+                return null;
+            }
         }
 
         public static Process GetFFXIVProcess
@@ -29,8 +48,8 @@ namespace ACT.TPMonitor
             get {
                 try
                 {
-                    FieldInfo fi = _plugin.GetType().GetField("_Memory", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
-                    var memory = fi.GetValue(_plugin);
+                    FieldInfo fi = _plugin.pluginObj.GetType().GetField("_Memory", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
+                    var memory = fi.GetValue(_plugin.pluginObj);
                     if (memory == null) return null;
 
                     fi = memory.GetType().GetField("_config", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
@@ -52,8 +71,8 @@ namespace ACT.TPMonitor
 
         private static object GetScanCombatants()
         {
-            FieldInfo fi = _plugin.GetType().GetField("_Memory", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
-            var memory = fi.GetValue(_plugin);
+            FieldInfo fi = _plugin.pluginObj.GetType().GetField("_Memory", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
+            var memory = fi.GetValue(_plugin.pluginObj);
             if (memory == null) return null;
 
             fi = memory.GetType().GetField("_config", BindingFlags.GetField | BindingFlags.NonPublic | BindingFlags.Instance);
@@ -76,8 +95,8 @@ namespace ACT.TPMonitor
                 if (scanCombatants == null) return null;
 
                 var item = scanCombatants.GetType().InvokeMember("GetPlayerData", BindingFlags.Public | BindingFlags.Instance | BindingFlags.InvokeMethod, null, scanCombatants, null);
-                FieldInfo fi = item.GetType().GetField("Vit", BindingFlags.Public | BindingFlags.Instance | BindingFlags.GetField);
-                player.MaxHP = (int)fi.GetValue(item);
+                FieldInfo fi = item.GetType().GetField("JobID", BindingFlags.Public | BindingFlags.Instance | BindingFlags.GetField);
+                player.Job = (int)fi.GetValue(item);
             }
             catch { }
             return player;
@@ -118,5 +137,21 @@ namespace ACT.TPMonitor
             catch { }
             return result;
         }
+    }
+
+    public class Combatant
+    {
+        public uint ID;
+        public uint OwnerID;
+        public int Order;
+        public byte type;
+        public int Job;
+        public int Level;
+        public string Name;
+        public int CurrentHP;
+        public int MaxHP;
+        public int CurrentMP;
+        public int MaxMP;
+        public int CurrentTP;
     }
 }
