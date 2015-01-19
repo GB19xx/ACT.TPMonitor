@@ -18,6 +18,7 @@ namespace ACT.TPMonitor
         public ActPluginData actPlugin { get; private set; }
         public bool IsUnSupportedVerion { get; private set; }
         public string CharFolder { get; set; }
+        public string ConfigFile { get; set; }
 
         public bool IsACTVisible { get; set; }
         public bool IsFFXIVPluginStarted { get; set; }
@@ -147,7 +148,7 @@ namespace ACT.TPMonitor
             if (this.IsAllianceStyle)
                 allianceStyle.Adjust();
             else
-                normalStyle.Adjust(Util.GetPartyListLocation(this.CharFolder, this.IsUserScale ? e.Scale : 0f));
+                normalStyle.Adjust(Util.GetPartyListLocation(this.CharFolder, this.IsUserScale ? e.Scale : 0f, this.ConfigFile));
         }
 
         public event EventHandler ChangedStatus;
@@ -193,7 +194,7 @@ namespace ACT.TPMonitor
 
                             if (oldLoggedIn == false)
                             {
-                                Util.InitializedAtLogin();
+                                Util.InitializedAtLogin(this.ConfigFile);
 
                                 switch (Util.GameLanguage)
                                 {
@@ -306,7 +307,7 @@ namespace ACT.TPMonitor
                         switch (command)
                         {
                             case "adjust":
-                                this.PartyListUI = Util.GetPartyListLocation(this.CharFolder);
+                                this.PartyListUI = Util.GetPartyListLocation(this.CharFolder, this.ConfigFile);
                                 if (this.IsAllianceStyle)
                                     allianceStyle.Adjust();
                                 else
@@ -331,7 +332,7 @@ namespace ACT.TPMonitor
 
                                 if (!viewer.Visible)
                                 {
-                                    this.PartyListUI = Util.GetPartyListLocation(this.CharFolder);
+                                    this.PartyListUI = Util.GetPartyListLocation(this.CharFolder, this.ConfigFile);
                                 }
                                 if (this.IsAllianceStyle)
                                     allianceStyle.Adjust();
