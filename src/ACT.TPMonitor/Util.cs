@@ -30,12 +30,13 @@ namespace ACT.TPMonitor
         public static Language GameLanguage { get; private set; }
 
         private static Rectangle _screenRect;
+        private static string _cfgFile = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.Personal), @"My Games\FINAL FANTASY XIV - A Realm Reborn\FFXIV.cfg");
         public static Widget _partyListUI;
         private static DateTime _lastWriteTime = DateTime.MinValue;
 
-        public static void InitializedAtLogin(string cfile)
+        public static void InitializedAtLogin()
         {
-            using (StreamReader sr = new StreamReader(cfile, System.Text.Encoding.GetEncoding("shift_jis")))
+            using (StreamReader sr = new StreamReader(_cfgFile, System.Text.Encoding.GetEncoding("shift_jis")))
             {
                 string line;
                 while ((line = sr.ReadLine()) != null)
@@ -62,11 +63,11 @@ namespace ACT.TPMonitor
             _lastWriteTime = DateTime.MinValue;
         }
 
-        private static Rectangle GetWindowSize(string path, string cfile)
+        private static Rectangle GetWindowSize(string path)
         {
             Rectangle screenRect = new Rectangle(new Point(0, 0), new Size(0, 0));
 
-            using (StreamReader sr = new StreamReader(cfile, System.Text.Encoding.GetEncoding("shift_jis")))
+            using (StreamReader sr = new StreamReader(_cfgFile, System.Text.Encoding.GetEncoding("shift_jis")))
             {
                 string line;
                 while ((line = sr.ReadLine()) != null)
@@ -129,17 +130,17 @@ namespace ACT.TPMonitor
             return screenRect;
         }
 
-        public static Widget GetPartyListLocation(string path, string cfile)
+        public static Widget GetPartyListLocation(string path)
         {
-            return GetPartyListLocation(path, 0f, cfile);
+            return GetPartyListLocation(path, 0f);
         }
 
-        public static Widget GetPartyListLocation(string path, float scale, string cfile)
+        public static Widget GetPartyListLocation(string path, float scale)
         {
             string textFile = Path.Combine(path, @"ADDON.DAT");
             if (_lastWriteTime != File.GetLastWriteTime(textFile))
             {
-                _screenRect = GetWindowSize(path, cfile);
+                _screenRect = GetWindowSize(path);
                 Widget widget = new Widget();
                 widget.Rect = new Rectangle(new Point(0, 0), new Size(0, 0));
                 widget.Scale = 1.0f;
