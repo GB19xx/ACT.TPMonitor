@@ -18,7 +18,6 @@ namespace ACT.TPMonitor
         public ActPluginData actPlugin { get; private set; }
         public bool IsUnSupportedVerion { get; private set; }
         public string CharFolder { get; set; }
-        public string ConfigFile { get; set; }
 
         public bool IsACTVisible { get; set; }
         public bool IsFFXIVPluginStarted { get; set; }
@@ -148,7 +147,7 @@ namespace ACT.TPMonitor
             if (this.IsAllianceStyle)
                 allianceStyle.Adjust();
             else
-                normalStyle.Adjust(Util.GetPartyListLocation(this.CharFolder, this.IsUserScale ? e.Scale : 0f, this.ConfigFile));
+                normalStyle.Adjust(Util.GetPartyListLocation(this.CharFolder, this.IsUserScale ? e.Scale : 0f));
         }
 
         public event EventHandler ChangedStatus;
@@ -194,7 +193,7 @@ namespace ACT.TPMonitor
 
                             if (oldLoggedIn == false)
                             {
-                                Util.InitializedAtLogin(this.ConfigFile);
+                                Util.InitializedAtLogin();
 
                                 switch (Util.GameLanguage)
                                 {
@@ -307,7 +306,7 @@ namespace ACT.TPMonitor
                         switch (command)
                         {
                             case "adjust":
-                                this.PartyListUI = Util.GetPartyListLocation(this.CharFolder, this.ConfigFile);
+                                this.PartyListUI = Util.GetPartyListLocation(this.CharFolder);
                                 if (this.IsAllianceStyle)
                                     allianceStyle.Adjust();
                                 else
@@ -332,7 +331,7 @@ namespace ACT.TPMonitor
 
                                 if (!viewer.Visible)
                                 {
-                                    this.PartyListUI = Util.GetPartyListLocation(this.CharFolder, this.ConfigFile);
+                                    this.PartyListUI = Util.GetPartyListLocation(this.CharFolder);
                                 }
                                 if (this.IsAllianceStyle)
                                     allianceStyle.Adjust();

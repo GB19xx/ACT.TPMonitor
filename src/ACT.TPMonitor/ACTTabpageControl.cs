@@ -142,9 +142,6 @@ namespace ACT.TPMonitor
             this.groupBoxUpdateCheck = new System.Windows.Forms.GroupBox();
             this.buttonCheck = new System.Windows.Forms.Button();
             this.panelPlugin = new System.Windows.Forms.Panel();
-            this.groupBoxConfigFile = new System.Windows.Forms.GroupBox();
-            this.buttonOpenFile = new System.Windows.Forms.Button();
-            this.textBoxConfigFile = new System.Windows.Forms.TextBox();
             this.groupBoxCharacterFolder.SuspendLayout();
             this.groupBoxStatus.SuspendLayout();
             this.tableLayoutPanelStatus.SuspendLayout();
@@ -169,26 +166,25 @@ namespace ACT.TPMonitor
             this.groupBoxDisplayJob.SuspendLayout();
             this.groupBoxUpdateCheck.SuspendLayout();
             this.panelPlugin.SuspendLayout();
-            this.groupBoxConfigFile.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxCharacterFolder
             // 
             this.textBoxCharacterFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxCharacterFolder.Location = new System.Drawing.Point(6, 22);
+            this.textBoxCharacterFolder.Location = new System.Drawing.Point(6, 20);
             this.textBoxCharacterFolder.Name = "textBoxCharacterFolder";
             this.textBoxCharacterFolder.ReadOnly = true;
-            this.textBoxCharacterFolder.Size = new System.Drawing.Size(651, 20);
+            this.textBoxCharacterFolder.Size = new System.Drawing.Size(651, 19);
             this.textBoxCharacterFolder.TabIndex = 0;
             this.textBoxCharacterFolder.Text = "%Appdata%";
             // 
             // buttonOpenFolder
             // 
             this.buttonOpenFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonOpenFolder.Location = new System.Drawing.Point(663, 20);
+            this.buttonOpenFolder.Location = new System.Drawing.Point(663, 18);
             this.buttonOpenFolder.Name = "buttonOpenFolder";
-            this.buttonOpenFolder.Size = new System.Drawing.Size(75, 25);
+            this.buttonOpenFolder.Size = new System.Drawing.Size(75, 23);
             this.buttonOpenFolder.TabIndex = 1;
             this.buttonOpenFolder.Text = "Open Folder";
             this.buttonOpenFolder.UseVisualStyleBackColor = true;
@@ -198,9 +194,9 @@ namespace ACT.TPMonitor
             // 
             this.groupBoxCharacterFolder.Controls.Add(this.buttonOpenFolder);
             this.groupBoxCharacterFolder.Controls.Add(this.textBoxCharacterFolder);
-            this.groupBoxCharacterFolder.Location = new System.Drawing.Point(13, 13);
+            this.groupBoxCharacterFolder.Location = new System.Drawing.Point(13, 12);
             this.groupBoxCharacterFolder.Name = "groupBoxCharacterFolder";
-            this.groupBoxCharacterFolder.Size = new System.Drawing.Size(744, 59);
+            this.groupBoxCharacterFolder.Size = new System.Drawing.Size(744, 54);
             this.groupBoxCharacterFolder.TabIndex = 0;
             this.groupBoxCharacterFolder.TabStop = false;
             this.groupBoxCharacterFolder.Text = "Character Folder";
@@ -208,9 +204,9 @@ namespace ACT.TPMonitor
             // groupBoxStatus
             // 
             this.groupBoxStatus.Controls.Add(this.tableLayoutPanelStatus);
-            this.groupBoxStatus.Location = new System.Drawing.Point(13, 143);
+            this.groupBoxStatus.Location = new System.Drawing.Point(13, 72);
             this.groupBoxStatus.Name = "groupBoxStatus";
-            this.groupBoxStatus.Size = new System.Drawing.Size(292, 104);
+            this.groupBoxStatus.Size = new System.Drawing.Size(292, 96);
             this.groupBoxStatus.TabIndex = 1;
             this.groupBoxStatus.TabStop = false;
             this.groupBoxStatus.Text = "Status";
@@ -228,14 +224,14 @@ namespace ACT.TPMonitor
             this.tableLayoutPanelStatus.Controls.Add(this.labelFFXIVPluginStatus, 1, 1);
             this.tableLayoutPanelStatus.Controls.Add(this.labelLogin, 0, 3);
             this.tableLayoutPanelStatus.Controls.Add(this.labelACTStatus, 1, 0);
-            this.tableLayoutPanelStatus.Location = new System.Drawing.Point(6, 20);
+            this.tableLayoutPanelStatus.Location = new System.Drawing.Point(6, 18);
             this.tableLayoutPanelStatus.Name = "tableLayoutPanelStatus";
             this.tableLayoutPanelStatus.RowCount = 4;
             this.tableLayoutPanelStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelStatus.Size = new System.Drawing.Size(280, 78);
+            this.tableLayoutPanelStatus.Size = new System.Drawing.Size(280, 72);
             this.tableLayoutPanelStatus.TabIndex = 0;
             // 
             // labelACT
@@ -244,7 +240,7 @@ namespace ACT.TPMonitor
             this.labelACT.AutoSize = true;
             this.labelACT.Location = new System.Drawing.Point(3, 3);
             this.labelACT.Name = "labelACT";
-            this.labelACT.Size = new System.Drawing.Size(31, 13);
+            this.labelACT.Size = new System.Drawing.Size(30, 12);
             this.labelACT.TabIndex = 0;
             this.labelACT.Text = "ACT:";
             // 
@@ -252,9 +248,9 @@ namespace ACT.TPMonitor
             // 
             this.labelLoggedInStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelLoggedInStatus.AutoSize = true;
-            this.labelLoggedInStatus.Location = new System.Drawing.Point(123, 61);
+            this.labelLoggedInStatus.Location = new System.Drawing.Point(123, 57);
             this.labelLoggedInStatus.Name = "labelLoggedInStatus";
-            this.labelLoggedInStatus.Size = new System.Drawing.Size(65, 13);
+            this.labelLoggedInStatus.Size = new System.Drawing.Size(66, 12);
             this.labelLoggedInStatus.TabIndex = 7;
             this.labelLoggedInStatus.Text = "No Process.";
             // 
@@ -262,9 +258,9 @@ namespace ACT.TPMonitor
             // 
             this.labelFFXIVPlugin.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelFFXIVPlugin.AutoSize = true;
-            this.labelFFXIVPlugin.Location = new System.Drawing.Point(3, 22);
+            this.labelFFXIVPlugin.Location = new System.Drawing.Point(3, 21);
             this.labelFFXIVPlugin.Name = "labelFFXIVPlugin";
-            this.labelFFXIVPlugin.Size = new System.Drawing.Size(95, 13);
+            this.labelFFXIVPlugin.Size = new System.Drawing.Size(101, 12);
             this.labelFFXIVPlugin.TabIndex = 2;
             this.labelFFXIVPlugin.Text = "FFXIV ACT Plugin:";
             // 
@@ -272,9 +268,9 @@ namespace ACT.TPMonitor
             // 
             this.labelFFXIVProcessStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelFFXIVProcessStatus.AutoSize = true;
-            this.labelFFXIVProcessStatus.Location = new System.Drawing.Point(123, 41);
+            this.labelFFXIVProcessStatus.Location = new System.Drawing.Point(123, 39);
             this.labelFFXIVProcessStatus.Name = "labelFFXIVProcessStatus";
-            this.labelFFXIVProcessStatus.Size = new System.Drawing.Size(65, 13);
+            this.labelFFXIVProcessStatus.Size = new System.Drawing.Size(66, 12);
             this.labelFFXIVProcessStatus.TabIndex = 5;
             this.labelFFXIVProcessStatus.Text = "No Process.";
             // 
@@ -282,9 +278,9 @@ namespace ACT.TPMonitor
             // 
             this.labelFFXIVProcess.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelFFXIVProcess.AutoSize = true;
-            this.labelFFXIVProcess.Location = new System.Drawing.Point(3, 41);
+            this.labelFFXIVProcess.Location = new System.Drawing.Point(3, 39);
             this.labelFFXIVProcess.Name = "labelFFXIVProcess";
-            this.labelFFXIVProcess.Size = new System.Drawing.Size(79, 13);
+            this.labelFFXIVProcess.Size = new System.Drawing.Size(81, 12);
             this.labelFFXIVProcess.TabIndex = 4;
             this.labelFFXIVProcess.Text = "Game Process:";
             // 
@@ -292,9 +288,9 @@ namespace ACT.TPMonitor
             // 
             this.labelFFXIVPluginStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelFFXIVPluginStatus.AutoSize = true;
-            this.labelFFXIVPluginStatus.Location = new System.Drawing.Point(123, 22);
+            this.labelFFXIVPluginStatus.Location = new System.Drawing.Point(123, 21);
             this.labelFFXIVPluginStatus.Name = "labelFFXIVPluginStatus";
-            this.labelFFXIVPluginStatus.Size = new System.Drawing.Size(65, 13);
+            this.labelFFXIVPluginStatus.Size = new System.Drawing.Size(66, 12);
             this.labelFFXIVPluginStatus.TabIndex = 3;
             this.labelFFXIVPluginStatus.Text = "No Process.";
             // 
@@ -302,9 +298,9 @@ namespace ACT.TPMonitor
             // 
             this.labelLogin.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelLogin.AutoSize = true;
-            this.labelLogin.Location = new System.Drawing.Point(3, 61);
+            this.labelLogin.Location = new System.Drawing.Point(3, 57);
             this.labelLogin.Name = "labelLogin";
-            this.labelLogin.Size = new System.Drawing.Size(36, 13);
+            this.labelLogin.Size = new System.Drawing.Size(34, 12);
             this.labelLogin.TabIndex = 6;
             this.labelLogin.Text = "Login:";
             // 
@@ -314,7 +310,7 @@ namespace ACT.TPMonitor
             this.labelACTStatus.AutoSize = true;
             this.labelACTStatus.Location = new System.Drawing.Point(123, 3);
             this.labelACTStatus.Name = "labelACTStatus";
-            this.labelACTStatus.Size = new System.Drawing.Size(65, 13);
+            this.labelACTStatus.Size = new System.Drawing.Size(66, 12);
             this.labelACTStatus.TabIndex = 1;
             this.labelACTStatus.Text = "No Process.";
             // 
@@ -322,9 +318,9 @@ namespace ACT.TPMonitor
             // 
             this.groupBoxFont.Controls.Add(this.numericUpDownFontSize);
             this.groupBoxFont.Controls.Add(this.comboBoxTPFont);
-            this.groupBoxFont.Location = new System.Drawing.Point(763, 143);
+            this.groupBoxFont.Location = new System.Drawing.Point(763, 72);
             this.groupBoxFont.Name = "groupBoxFont";
-            this.groupBoxFont.Size = new System.Drawing.Size(148, 76);
+            this.groupBoxFont.Size = new System.Drawing.Size(148, 70);
             this.groupBoxFont.TabIndex = 3;
             this.groupBoxFont.TabStop = false;
             this.groupBoxFont.Text = "Font";
@@ -332,7 +328,7 @@ namespace ACT.TPMonitor
             // 
             // numericUpDownFontSize
             // 
-            this.numericUpDownFontSize.Location = new System.Drawing.Point(17, 48);
+            this.numericUpDownFontSize.Location = new System.Drawing.Point(17, 44);
             this.numericUpDownFontSize.Maximum = new decimal(new int[] {
             24,
             0,
@@ -344,7 +340,7 @@ namespace ACT.TPMonitor
             0,
             0});
             this.numericUpDownFontSize.Name = "numericUpDownFontSize";
-            this.numericUpDownFontSize.Size = new System.Drawing.Size(51, 20);
+            this.numericUpDownFontSize.Size = new System.Drawing.Size(51, 19);
             this.numericUpDownFontSize.TabIndex = 1;
             this.numericUpDownFontSize.TabStop = false;
             this.numericUpDownFontSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -359,9 +355,9 @@ namespace ACT.TPMonitor
             // 
             this.comboBoxTPFont.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTPFont.FormattingEnabled = true;
-            this.comboBoxTPFont.Location = new System.Drawing.Point(17, 20);
+            this.comboBoxTPFont.Location = new System.Drawing.Point(17, 18);
             this.comboBoxTPFont.Name = "comboBoxTPFont";
-            this.comboBoxTPFont.Size = new System.Drawing.Size(113, 21);
+            this.comboBoxTPFont.Size = new System.Drawing.Size(113, 20);
             this.comboBoxTPFont.TabIndex = 0;
             this.comboBoxTPFont.TabStop = false;
             this.comboBoxTPFont.SelectedIndexChanged += new System.EventHandler(this.comboBoxTPFont_SelectedIndexChanged);
@@ -370,18 +366,18 @@ namespace ACT.TPMonitor
             // 
             this.groupBoxRecommend.Controls.Add(this.buttonCopy);
             this.groupBoxRecommend.Controls.Add(this.textBoxRecommend);
-            this.groupBoxRecommend.Location = new System.Drawing.Point(609, 143);
+            this.groupBoxRecommend.Location = new System.Drawing.Point(609, 72);
             this.groupBoxRecommend.Name = "groupBoxRecommend";
-            this.groupBoxRecommend.Size = new System.Drawing.Size(148, 186);
+            this.groupBoxRecommend.Size = new System.Drawing.Size(148, 172);
             this.groupBoxRecommend.TabIndex = 6;
             this.groupBoxRecommend.TabStop = false;
             this.groupBoxRecommend.Text = "Recommend Macro";
             // 
             // buttonCopy
             // 
-            this.buttonCopy.Location = new System.Drawing.Point(15, 151);
+            this.buttonCopy.Location = new System.Drawing.Point(15, 139);
             this.buttonCopy.Name = "buttonCopy";
-            this.buttonCopy.Size = new System.Drawing.Size(119, 25);
+            this.buttonCopy.Size = new System.Drawing.Size(119, 23);
             this.buttonCopy.TabIndex = 1;
             this.buttonCopy.Text = "Clipbord Copy";
             this.buttonCopy.UseVisualStyleBackColor = true;
@@ -390,11 +386,11 @@ namespace ACT.TPMonitor
             // textBoxRecommend
             // 
             this.textBoxRecommend.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxRecommend.Location = new System.Drawing.Point(6, 20);
+            this.textBoxRecommend.Location = new System.Drawing.Point(6, 18);
             this.textBoxRecommend.Multiline = true;
             this.textBoxRecommend.Name = "textBoxRecommend";
             this.textBoxRecommend.ReadOnly = true;
-            this.textBoxRecommend.Size = new System.Drawing.Size(136, 124);
+            this.textBoxRecommend.Size = new System.Drawing.Size(136, 115);
             this.textBoxRecommend.TabIndex = 0;
             this.textBoxRecommend.Text = "/e TP 2:<2>\r\n/e TP 3:<3>\r\n/e TP 4:<4>\r\n/e TP 5:<5>\r\n/e TP 6:<6>\r\n/e TP 7:<7>\r\n/e " +
     "TP 8:<8>\r\n/e TP /show";
@@ -405,9 +401,9 @@ namespace ACT.TPMonitor
             this.groupBoxOption.Controls.Add(this.checkBoxShowMyTP);
             this.groupBoxOption.Controls.Add(this.checkBoxHideWhenEnded);
             this.groupBoxOption.Controls.Add(this.checkBoxHideWhenDissolve);
-            this.groupBoxOption.Location = new System.Drawing.Point(311, 143);
+            this.groupBoxOption.Location = new System.Drawing.Point(311, 72);
             this.groupBoxOption.Name = "groupBoxOption";
-            this.groupBoxOption.Size = new System.Drawing.Size(292, 128);
+            this.groupBoxOption.Size = new System.Drawing.Size(292, 118);
             this.groupBoxOption.TabIndex = 2;
             this.groupBoxOption.TabStop = false;
             this.groupBoxOption.Text = "Option";
@@ -417,9 +413,9 @@ namespace ACT.TPMonitor
             this.checkBoxDisappears.AutoSize = true;
             this.checkBoxDisappears.Checked = true;
             this.checkBoxDisappears.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDisappears.Location = new System.Drawing.Point(15, 95);
+            this.checkBoxDisappears.Location = new System.Drawing.Point(15, 88);
             this.checkBoxDisappears.Name = "checkBoxDisappears";
-            this.checkBoxDisappears.Size = new System.Drawing.Size(244, 17);
+            this.checkBoxDisappears.Size = new System.Drawing.Size(260, 16);
             this.checkBoxDisappears.TabIndex = 2;
             this.checkBoxDisappears.Text = "Disappears when the game window is inactive";
             this.checkBoxDisappears.UseVisualStyleBackColor = true;
@@ -430,9 +426,9 @@ namespace ACT.TPMonitor
             this.checkBoxShowMyTP.AutoSize = true;
             this.checkBoxShowMyTP.Checked = true;
             this.checkBoxShowMyTP.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowMyTP.Location = new System.Drawing.Point(15, 72);
+            this.checkBoxShowMyTP.Location = new System.Drawing.Point(15, 66);
             this.checkBoxShowMyTP.Name = "checkBoxShowMyTP";
-            this.checkBoxShowMyTP.Size = new System.Drawing.Size(171, 17);
+            this.checkBoxShowMyTP.Size = new System.Drawing.Size(184, 16);
             this.checkBoxShowMyTP.TabIndex = 2;
             this.checkBoxShowMyTP.Text = "Show my TP (Fixed mode only)";
             this.checkBoxShowMyTP.UseVisualStyleBackColor = true;
@@ -443,9 +439,9 @@ namespace ACT.TPMonitor
             this.checkBoxHideWhenEnded.AutoSize = true;
             this.checkBoxHideWhenEnded.Checked = true;
             this.checkBoxHideWhenEnded.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxHideWhenEnded.Location = new System.Drawing.Point(15, 48);
+            this.checkBoxHideWhenEnded.Location = new System.Drawing.Point(15, 44);
             this.checkBoxHideWhenEnded.Name = "checkBoxHideWhenEnded";
-            this.checkBoxHideWhenEnded.Size = new System.Drawing.Size(127, 17);
+            this.checkBoxHideWhenEnded.Size = new System.Drawing.Size(128, 16);
             this.checkBoxHideWhenEnded.TabIndex = 1;
             this.checkBoxHideWhenEnded.Text = "Hide when ID ended.";
             this.checkBoxHideWhenEnded.UseVisualStyleBackColor = true;
@@ -456,9 +452,9 @@ namespace ACT.TPMonitor
             this.checkBoxHideWhenDissolve.AutoSize = true;
             this.checkBoxHideWhenDissolve.Checked = true;
             this.checkBoxHideWhenDissolve.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxHideWhenDissolve.Location = new System.Drawing.Point(15, 24);
+            this.checkBoxHideWhenDissolve.Location = new System.Drawing.Point(15, 22);
             this.checkBoxHideWhenDissolve.Name = "checkBoxHideWhenDissolve";
-            this.checkBoxHideWhenDissolve.Size = new System.Drawing.Size(171, 17);
+            this.checkBoxHideWhenDissolve.Size = new System.Drawing.Size(181, 16);
             this.checkBoxHideWhenDissolve.TabIndex = 0;
             this.checkBoxHideWhenDissolve.Text = "Hide when dissolved the party.";
             this.checkBoxHideWhenDissolve.UseVisualStyleBackColor = true;
@@ -473,9 +469,9 @@ namespace ACT.TPMonitor
             this.groupBoxSettings.Controls.Add(this.groupBoxScale);
             this.groupBoxSettings.Controls.Add(this.dataGridViewColor);
             this.groupBoxSettings.Controls.Add(this.groupBoxWhereNow);
-            this.groupBoxSettings.Location = new System.Drawing.Point(13, 399);
+            this.groupBoxSettings.Location = new System.Drawing.Point(13, 308);
             this.groupBoxSettings.Name = "groupBoxSettings";
-            this.groupBoxSettings.Size = new System.Drawing.Size(744, 235);
+            this.groupBoxSettings.Size = new System.Drawing.Size(744, 217);
             this.groupBoxSettings.TabIndex = 5;
             this.groupBoxSettings.TabStop = false;
             this.groupBoxSettings.Text = "Settings";
@@ -484,10 +480,10 @@ namespace ACT.TPMonitor
             // 
             this.tabControlStyle.Controls.Add(this.tabPagePartyList);
             this.tabControlStyle.Controls.Add(this.tabPageAlliance);
-            this.tabControlStyle.Location = new System.Drawing.Point(6, 20);
+            this.tabControlStyle.Location = new System.Drawing.Point(6, 18);
             this.tabControlStyle.Name = "tabControlStyle";
             this.tabControlStyle.SelectedIndex = 0;
-            this.tabControlStyle.Size = new System.Drawing.Size(286, 137);
+            this.tabControlStyle.Size = new System.Drawing.Size(286, 126);
             this.tabControlStyle.TabIndex = 10;
             this.tabControlStyle.SelectedIndexChanged += new System.EventHandler(this.tabControlStyle_SelectedIndexChanged);
             // 
@@ -506,7 +502,7 @@ namespace ACT.TPMonitor
             this.tabPagePartyList.Location = new System.Drawing.Point(4, 22);
             this.tabPagePartyList.Name = "tabPagePartyList";
             this.tabPagePartyList.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePartyList.Size = new System.Drawing.Size(278, 111);
+            this.tabPagePartyList.Size = new System.Drawing.Size(278, 100);
             this.tabPagePartyList.TabIndex = 0;
             this.tabPagePartyList.Text = "Party List";
             this.tabPagePartyList.UseVisualStyleBackColor = true;
@@ -515,9 +511,9 @@ namespace ACT.TPMonitor
             // 
             this.radioButtonOffset.AutoSize = true;
             this.radioButtonOffset.Checked = true;
-            this.radioButtonOffset.Location = new System.Drawing.Point(5, 7);
+            this.radioButtonOffset.Location = new System.Drawing.Point(5, 6);
             this.radioButtonOffset.Name = "radioButtonOffset";
-            this.radioButtonOffset.Size = new System.Drawing.Size(53, 17);
+            this.radioButtonOffset.Size = new System.Drawing.Size(55, 16);
             this.radioButtonOffset.TabIndex = 0;
             this.radioButtonOffset.TabStop = true;
             this.radioButtonOffset.Text = "Offset";
@@ -527,9 +523,9 @@ namespace ACT.TPMonitor
             // radioButtonFixed
             // 
             this.radioButtonFixed.AutoSize = true;
-            this.radioButtonFixed.Location = new System.Drawing.Point(5, 57);
+            this.radioButtonFixed.Location = new System.Drawing.Point(5, 53);
             this.radioButtonFixed.Name = "radioButtonFixed";
-            this.radioButtonFixed.Size = new System.Drawing.Size(80, 17);
+            this.radioButtonFixed.Size = new System.Drawing.Size(82, 16);
             this.radioButtonFixed.TabIndex = 5;
             this.radioButtonFixed.Text = "Fixed Mode";
             this.radioButtonFixed.UseVisualStyleBackColor = true;
@@ -537,7 +533,7 @@ namespace ACT.TPMonitor
             // 
             // numericUpDownOffsetX
             // 
-            this.numericUpDownOffsetX.Location = new System.Drawing.Point(53, 30);
+            this.numericUpDownOffsetX.Location = new System.Drawing.Point(53, 28);
             this.numericUpDownOffsetX.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -549,14 +545,14 @@ namespace ACT.TPMonitor
             0,
             -2147483648});
             this.numericUpDownOffsetX.Name = "numericUpDownOffsetX";
-            this.numericUpDownOffsetX.Size = new System.Drawing.Size(71, 20);
+            this.numericUpDownOffsetX.Size = new System.Drawing.Size(71, 19);
             this.numericUpDownOffsetX.TabIndex = 2;
             this.numericUpDownOffsetX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownOffsetX.ValueChanged += new System.EventHandler(this.ChangedLocation);
             // 
             // numericUpDownOffsetY
             // 
-            this.numericUpDownOffsetY.Location = new System.Drawing.Point(195, 30);
+            this.numericUpDownOffsetY.Location = new System.Drawing.Point(195, 28);
             this.numericUpDownOffsetY.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -568,14 +564,14 @@ namespace ACT.TPMonitor
             0,
             -2147483648});
             this.numericUpDownOffsetY.Name = "numericUpDownOffsetY";
-            this.numericUpDownOffsetY.Size = new System.Drawing.Size(71, 20);
+            this.numericUpDownOffsetY.Size = new System.Drawing.Size(71, 19);
             this.numericUpDownOffsetY.TabIndex = 4;
             this.numericUpDownOffsetY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownOffsetY.ValueChanged += new System.EventHandler(this.ChangedLocation);
             // 
             // numericUpDownFixedX
             // 
-            this.numericUpDownFixedX.Location = new System.Drawing.Point(53, 81);
+            this.numericUpDownFixedX.Location = new System.Drawing.Point(53, 75);
             this.numericUpDownFixedX.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -587,14 +583,14 @@ namespace ACT.TPMonitor
             0,
             -2147483648});
             this.numericUpDownFixedX.Name = "numericUpDownFixedX";
-            this.numericUpDownFixedX.Size = new System.Drawing.Size(71, 20);
+            this.numericUpDownFixedX.Size = new System.Drawing.Size(71, 19);
             this.numericUpDownFixedX.TabIndex = 7;
             this.numericUpDownFixedX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownFixedX.ValueChanged += new System.EventHandler(this.ChangedLocation);
             // 
             // numericUpDownFixedY
             // 
-            this.numericUpDownFixedY.Location = new System.Drawing.Point(195, 81);
+            this.numericUpDownFixedY.Location = new System.Drawing.Point(195, 75);
             this.numericUpDownFixedY.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -606,7 +602,7 @@ namespace ACT.TPMonitor
             0,
             -2147483648});
             this.numericUpDownFixedY.Name = "numericUpDownFixedY";
-            this.numericUpDownFixedY.Size = new System.Drawing.Size(71, 20);
+            this.numericUpDownFixedY.Size = new System.Drawing.Size(71, 19);
             this.numericUpDownFixedY.TabIndex = 9;
             this.numericUpDownFixedY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownFixedY.ValueChanged += new System.EventHandler(this.ChangedLocation);
@@ -614,36 +610,36 @@ namespace ACT.TPMonitor
             // labelOffsetX
             // 
             this.labelOffsetX.AutoSize = true;
-            this.labelOffsetX.Location = new System.Drawing.Point(33, 33);
+            this.labelOffsetX.Location = new System.Drawing.Point(33, 30);
             this.labelOffsetX.Name = "labelOffsetX";
-            this.labelOffsetX.Size = new System.Drawing.Size(17, 13);
+            this.labelOffsetX.Size = new System.Drawing.Size(14, 12);
             this.labelOffsetX.TabIndex = 1;
             this.labelOffsetX.Text = "X:";
             // 
             // labelFixedX
             // 
             this.labelFixedX.AutoSize = true;
-            this.labelFixedX.Location = new System.Drawing.Point(33, 83);
+            this.labelFixedX.Location = new System.Drawing.Point(33, 77);
             this.labelFixedX.Name = "labelFixedX";
-            this.labelFixedX.Size = new System.Drawing.Size(17, 13);
+            this.labelFixedX.Size = new System.Drawing.Size(14, 12);
             this.labelFixedX.TabIndex = 6;
             this.labelFixedX.Text = "X:";
             // 
             // labelOffsetY
             // 
             this.labelOffsetY.AutoSize = true;
-            this.labelOffsetY.Location = new System.Drawing.Point(175, 33);
+            this.labelOffsetY.Location = new System.Drawing.Point(175, 30);
             this.labelOffsetY.Name = "labelOffsetY";
-            this.labelOffsetY.Size = new System.Drawing.Size(17, 13);
+            this.labelOffsetY.Size = new System.Drawing.Size(14, 12);
             this.labelOffsetY.TabIndex = 3;
             this.labelOffsetY.Text = "Y:";
             // 
             // labelFixedY
             // 
             this.labelFixedY.AutoSize = true;
-            this.labelFixedY.Location = new System.Drawing.Point(175, 83);
+            this.labelFixedY.Location = new System.Drawing.Point(175, 77);
             this.labelFixedY.Name = "labelFixedY";
-            this.labelFixedY.Size = new System.Drawing.Size(17, 13);
+            this.labelFixedY.Size = new System.Drawing.Size(14, 12);
             this.labelFixedY.TabIndex = 8;
             this.labelFixedY.Text = "Y:";
             // 
@@ -656,14 +652,14 @@ namespace ACT.TPMonitor
             this.tabPageAlliance.Location = new System.Drawing.Point(4, 22);
             this.tabPageAlliance.Name = "tabPageAlliance";
             this.tabPageAlliance.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAlliance.Size = new System.Drawing.Size(278, 111);
+            this.tabPageAlliance.Size = new System.Drawing.Size(278, 100);
             this.tabPageAlliance.TabIndex = 1;
             this.tabPageAlliance.Text = "Alliance";
             this.tabPageAlliance.UseVisualStyleBackColor = true;
             // 
             // numericUpDownAllianceX
             // 
-            this.numericUpDownAllianceX.Location = new System.Drawing.Point(53, 30);
+            this.numericUpDownAllianceX.Location = new System.Drawing.Point(53, 28);
             this.numericUpDownAllianceX.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -675,14 +671,14 @@ namespace ACT.TPMonitor
             0,
             -2147483648});
             this.numericUpDownAllianceX.Name = "numericUpDownAllianceX";
-            this.numericUpDownAllianceX.Size = new System.Drawing.Size(71, 20);
+            this.numericUpDownAllianceX.Size = new System.Drawing.Size(71, 19);
             this.numericUpDownAllianceX.TabIndex = 6;
             this.numericUpDownAllianceX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownAllianceX.ValueChanged += new System.EventHandler(this.ChangedLocation);
             // 
             // numericUpDownAllianceY
             // 
-            this.numericUpDownAllianceY.Location = new System.Drawing.Point(195, 30);
+            this.numericUpDownAllianceY.Location = new System.Drawing.Point(195, 28);
             this.numericUpDownAllianceY.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -694,7 +690,7 @@ namespace ACT.TPMonitor
             0,
             -2147483648});
             this.numericUpDownAllianceY.Name = "numericUpDownAllianceY";
-            this.numericUpDownAllianceY.Size = new System.Drawing.Size(71, 20);
+            this.numericUpDownAllianceY.Size = new System.Drawing.Size(71, 19);
             this.numericUpDownAllianceY.TabIndex = 8;
             this.numericUpDownAllianceY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownAllianceY.ValueChanged += new System.EventHandler(this.ChangedLocation);
@@ -702,26 +698,26 @@ namespace ACT.TPMonitor
             // labelAllianceX
             // 
             this.labelAllianceX.AutoSize = true;
-            this.labelAllianceX.Location = new System.Drawing.Point(33, 33);
+            this.labelAllianceX.Location = new System.Drawing.Point(33, 30);
             this.labelAllianceX.Name = "labelAllianceX";
-            this.labelAllianceX.Size = new System.Drawing.Size(17, 13);
+            this.labelAllianceX.Size = new System.Drawing.Size(14, 12);
             this.labelAllianceX.TabIndex = 5;
             this.labelAllianceX.Text = "X:";
             // 
             // labelAllianceY
             // 
             this.labelAllianceY.AutoSize = true;
-            this.labelAllianceY.Location = new System.Drawing.Point(175, 33);
+            this.labelAllianceY.Location = new System.Drawing.Point(175, 30);
             this.labelAllianceY.Name = "labelAllianceY";
-            this.labelAllianceY.Size = new System.Drawing.Size(17, 13);
+            this.labelAllianceY.Size = new System.Drawing.Size(14, 12);
             this.labelAllianceY.TabIndex = 7;
             this.labelAllianceY.Text = "Y:";
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(663, 204);
+            this.buttonCancel.Location = new System.Drawing.Point(663, 188);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 25);
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 15;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -729,9 +725,9 @@ namespace ACT.TPMonitor
             // 
             // buttonApply
             // 
-            this.buttonApply.Location = new System.Drawing.Point(582, 204);
+            this.buttonApply.Location = new System.Drawing.Point(582, 188);
             this.buttonApply.Name = "buttonApply";
-            this.buttonApply.Size = new System.Drawing.Size(75, 25);
+            this.buttonApply.Size = new System.Drawing.Size(75, 23);
             this.buttonApply.TabIndex = 14;
             this.buttonApply.Text = "Apply";
             this.buttonApply.UseVisualStyleBackColor = true;
@@ -739,9 +735,9 @@ namespace ACT.TPMonitor
             // 
             // buttonDefault
             // 
-            this.buttonDefault.Location = new System.Drawing.Point(316, 204);
+            this.buttonDefault.Location = new System.Drawing.Point(316, 188);
             this.buttonDefault.Name = "buttonDefault";
-            this.buttonDefault.Size = new System.Drawing.Size(75, 25);
+            this.buttonDefault.Size = new System.Drawing.Size(75, 23);
             this.buttonDefault.TabIndex = 13;
             this.buttonDefault.Text = "Default";
             this.buttonDefault.UseVisualStyleBackColor = true;
@@ -751,9 +747,9 @@ namespace ACT.TPMonitor
             // 
             this.groupBoxScale.Controls.Add(this.checkBoxUserScale);
             this.groupBoxScale.Controls.Add(this.numericUpDownUserScale);
-            this.groupBoxScale.Location = new System.Drawing.Point(6, 177);
+            this.groupBoxScale.Location = new System.Drawing.Point(6, 163);
             this.groupBoxScale.Name = "groupBoxScale";
-            this.groupBoxScale.Size = new System.Drawing.Size(152, 52);
+            this.groupBoxScale.Size = new System.Drawing.Size(152, 48);
             this.groupBoxScale.TabIndex = 11;
             this.groupBoxScale.TabStop = false;
             // 
@@ -762,7 +758,7 @@ namespace ACT.TPMonitor
             this.checkBoxUserScale.AutoSize = true;
             this.checkBoxUserScale.Location = new System.Drawing.Point(6, -1);
             this.checkBoxUserScale.Name = "checkBoxUserScale";
-            this.checkBoxUserScale.Size = new System.Drawing.Size(53, 17);
+            this.checkBoxUserScale.Size = new System.Drawing.Size(52, 16);
             this.checkBoxUserScale.TabIndex = 0;
             this.checkBoxUserScale.Text = "Scale";
             this.checkBoxUserScale.UseVisualStyleBackColor = true;
@@ -771,7 +767,7 @@ namespace ACT.TPMonitor
             // numericUpDownUserScale
             // 
             this.numericUpDownUserScale.Enabled = false;
-            this.numericUpDownUserScale.Location = new System.Drawing.Point(48, 20);
+            this.numericUpDownUserScale.Location = new System.Drawing.Point(48, 18);
             this.numericUpDownUserScale.Maximum = new decimal(new int[] {
             200,
             0,
@@ -783,7 +779,7 @@ namespace ACT.TPMonitor
             0,
             0});
             this.numericUpDownUserScale.Name = "numericUpDownUserScale";
-            this.numericUpDownUserScale.Size = new System.Drawing.Size(71, 20);
+            this.numericUpDownUserScale.Size = new System.Drawing.Size(71, 19);
             this.numericUpDownUserScale.TabIndex = 1;
             this.numericUpDownUserScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownUserScale.Value = new decimal(new int[] {
@@ -805,7 +801,7 @@ namespace ACT.TPMonitor
             this.ColumnEndTP,
             this.ColumnColor,
             this.ColumnDialog});
-            this.dataGridViewColor.Location = new System.Drawing.Point(316, 20);
+            this.dataGridViewColor.Location = new System.Drawing.Point(316, 18);
             this.dataGridViewColor.MultiSelect = false;
             this.dataGridViewColor.Name = "dataGridViewColor";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -818,7 +814,7 @@ namespace ACT.TPMonitor
             this.dataGridViewColor.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewColor.RowTemplate.Height = 21;
             this.dataGridViewColor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridViewColor.Size = new System.Drawing.Size(422, 178);
+            this.dataGridViewColor.Size = new System.Drawing.Size(422, 164);
             this.dataGridViewColor.TabIndex = 12;
             this.dataGridViewColor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewColor_CellContentClick);
             // 
@@ -860,9 +856,9 @@ namespace ACT.TPMonitor
             // 
             this.groupBoxWhereNow.Controls.Add(this.labelHereNowX);
             this.groupBoxWhereNow.Controls.Add(this.labelHereNowY);
-            this.groupBoxWhereNow.Location = new System.Drawing.Point(164, 177);
+            this.groupBoxWhereNow.Location = new System.Drawing.Point(164, 163);
             this.groupBoxWhereNow.Name = "groupBoxWhereNow";
-            this.groupBoxWhereNow.Size = new System.Drawing.Size(128, 52);
+            this.groupBoxWhereNow.Size = new System.Drawing.Size(128, 48);
             this.groupBoxWhereNow.TabIndex = 10;
             this.groupBoxWhereNow.TabStop = false;
             this.groupBoxWhereNow.Text = "Where now?";
@@ -870,26 +866,26 @@ namespace ACT.TPMonitor
             // labelHereNowX
             // 
             this.labelHereNowX.AutoSize = true;
-            this.labelHereNowX.Location = new System.Drawing.Point(17, 22);
+            this.labelHereNowX.Location = new System.Drawing.Point(17, 20);
             this.labelHereNowX.Name = "labelHereNowX";
-            this.labelHereNowX.Size = new System.Drawing.Size(17, 13);
+            this.labelHereNowX.Size = new System.Drawing.Size(14, 12);
             this.labelHereNowX.TabIndex = 0;
             this.labelHereNowX.Text = "X:";
             // 
             // labelHereNowY
             // 
             this.labelHereNowY.AutoSize = true;
-            this.labelHereNowY.Location = new System.Drawing.Point(70, 22);
+            this.labelHereNowY.Location = new System.Drawing.Point(70, 20);
             this.labelHereNowY.Name = "labelHereNowY";
-            this.labelHereNowY.Size = new System.Drawing.Size(17, 13);
+            this.labelHereNowY.Size = new System.Drawing.Size(14, 12);
             this.labelHereNowY.TabIndex = 1;
             this.labelHereNowY.Text = "Y:";
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(682, 343);
+            this.buttonSave.Location = new System.Drawing.Point(682, 257);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 25);
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 7;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -916,9 +912,9 @@ namespace ACT.TPMonitor
             this.groupBoxDisplayJob.Controls.Add(this.checkBoxPGL);
             this.groupBoxDisplayJob.Controls.Add(this.checkBoxPLD);
             this.groupBoxDisplayJob.Controls.Add(this.checkBoxGLD);
-            this.groupBoxDisplayJob.Location = new System.Drawing.Point(13, 277);
+            this.groupBoxDisplayJob.Location = new System.Drawing.Point(13, 196);
             this.groupBoxDisplayJob.Name = "groupBoxDisplayJob";
-            this.groupBoxDisplayJob.Size = new System.Drawing.Size(590, 115);
+            this.groupBoxDisplayJob.Size = new System.Drawing.Size(590, 106);
             this.groupBoxDisplayJob.TabIndex = 4;
             this.groupBoxDisplayJob.TabStop = false;
             this.groupBoxDisplayJob.Text = "Display Job";
@@ -931,7 +927,7 @@ namespace ACT.TPMonitor
             this.checkBoxNIN.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxNIN.ImageIndex = 19;
             this.checkBoxNIN.ImageList = this.imageListJob;
-            this.checkBoxNIN.Location = new System.Drawing.Point(226, 67);
+            this.checkBoxNIN.Location = new System.Drawing.Point(226, 62);
             this.checkBoxNIN.Name = "checkBoxNIN";
             this.checkBoxNIN.Size = new System.Drawing.Size(38, 38);
             this.checkBoxNIN.TabIndex = 11;
@@ -971,7 +967,7 @@ namespace ACT.TPMonitor
             this.checkBoxROG.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxROG.ImageIndex = 18;
             this.checkBoxROG.ImageList = this.imageListJob;
-            this.checkBoxROG.Location = new System.Drawing.Point(226, 20);
+            this.checkBoxROG.Location = new System.Drawing.Point(226, 18);
             this.checkBoxROG.Name = "checkBoxROG";
             this.checkBoxROG.Size = new System.Drawing.Size(38, 38);
             this.checkBoxROG.TabIndex = 10;
@@ -986,7 +982,7 @@ namespace ACT.TPMonitor
             this.checkBoxSCH.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxSCH.ImageIndex = 17;
             this.checkBoxSCH.ImageList = this.imageListJob;
-            this.checkBoxSCH.Location = new System.Drawing.Point(402, 67);
+            this.checkBoxSCH.Location = new System.Drawing.Point(402, 62);
             this.checkBoxSCH.Name = "checkBoxSCH";
             this.checkBoxSCH.Size = new System.Drawing.Size(38, 38);
             this.checkBoxSCH.TabIndex = 18;
@@ -1001,7 +997,7 @@ namespace ACT.TPMonitor
             this.checkBoxSMN.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxSMN.ImageIndex = 16;
             this.checkBoxSMN.ImageList = this.imageListJob;
-            this.checkBoxSMN.Location = new System.Drawing.Point(358, 67);
+            this.checkBoxSMN.Location = new System.Drawing.Point(358, 62);
             this.checkBoxSMN.Name = "checkBoxSMN";
             this.checkBoxSMN.Size = new System.Drawing.Size(38, 38);
             this.checkBoxSMN.TabIndex = 17;
@@ -1016,7 +1012,7 @@ namespace ACT.TPMonitor
             this.checkBoxACN.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxACN.ImageIndex = 15;
             this.checkBoxACN.ImageList = this.imageListJob;
-            this.checkBoxACN.Location = new System.Drawing.Point(358, 20);
+            this.checkBoxACN.Location = new System.Drawing.Point(358, 18);
             this.checkBoxACN.Name = "checkBoxACN";
             this.checkBoxACN.Size = new System.Drawing.Size(38, 38);
             this.checkBoxACN.TabIndex = 16;
@@ -1031,7 +1027,7 @@ namespace ACT.TPMonitor
             this.checkBoxBLM.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxBLM.ImageIndex = 14;
             this.checkBoxBLM.ImageList = this.imageListJob;
-            this.checkBoxBLM.Location = new System.Drawing.Point(314, 67);
+            this.checkBoxBLM.Location = new System.Drawing.Point(314, 62);
             this.checkBoxBLM.Name = "checkBoxBLM";
             this.checkBoxBLM.Size = new System.Drawing.Size(38, 38);
             this.checkBoxBLM.TabIndex = 15;
@@ -1046,7 +1042,7 @@ namespace ACT.TPMonitor
             this.checkBoxTHM.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxTHM.ImageIndex = 7;
             this.checkBoxTHM.ImageList = this.imageListJob;
-            this.checkBoxTHM.Location = new System.Drawing.Point(314, 20);
+            this.checkBoxTHM.Location = new System.Drawing.Point(314, 18);
             this.checkBoxTHM.Name = "checkBoxTHM";
             this.checkBoxTHM.Size = new System.Drawing.Size(38, 38);
             this.checkBoxTHM.TabIndex = 14;
@@ -1061,7 +1057,7 @@ namespace ACT.TPMonitor
             this.checkBoxWHM.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxWHM.ImageIndex = 13;
             this.checkBoxWHM.ImageList = this.imageListJob;
-            this.checkBoxWHM.Location = new System.Drawing.Point(270, 67);
+            this.checkBoxWHM.Location = new System.Drawing.Point(270, 62);
             this.checkBoxWHM.Name = "checkBoxWHM";
             this.checkBoxWHM.Size = new System.Drawing.Size(38, 38);
             this.checkBoxWHM.TabIndex = 13;
@@ -1076,7 +1072,7 @@ namespace ACT.TPMonitor
             this.checkBoxCNJ.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxCNJ.ImageIndex = 6;
             this.checkBoxCNJ.ImageList = this.imageListJob;
-            this.checkBoxCNJ.Location = new System.Drawing.Point(270, 20);
+            this.checkBoxCNJ.Location = new System.Drawing.Point(270, 18);
             this.checkBoxCNJ.Name = "checkBoxCNJ";
             this.checkBoxCNJ.Size = new System.Drawing.Size(38, 38);
             this.checkBoxCNJ.TabIndex = 12;
@@ -1091,7 +1087,7 @@ namespace ACT.TPMonitor
             this.checkBoxBRD.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxBRD.ImageIndex = 12;
             this.checkBoxBRD.ImageList = this.imageListJob;
-            this.checkBoxBRD.Location = new System.Drawing.Point(182, 67);
+            this.checkBoxBRD.Location = new System.Drawing.Point(182, 62);
             this.checkBoxBRD.Name = "checkBoxBRD";
             this.checkBoxBRD.Size = new System.Drawing.Size(38, 38);
             this.checkBoxBRD.TabIndex = 9;
@@ -1106,7 +1102,7 @@ namespace ACT.TPMonitor
             this.checkBoxARC.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxARC.ImageIndex = 5;
             this.checkBoxARC.ImageList = this.imageListJob;
-            this.checkBoxARC.Location = new System.Drawing.Point(182, 20);
+            this.checkBoxARC.Location = new System.Drawing.Point(182, 18);
             this.checkBoxARC.Name = "checkBoxARC";
             this.checkBoxARC.Size = new System.Drawing.Size(38, 38);
             this.checkBoxARC.TabIndex = 8;
@@ -1121,7 +1117,7 @@ namespace ACT.TPMonitor
             this.checkBoxDRG.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxDRG.ImageIndex = 11;
             this.checkBoxDRG.ImageList = this.imageListJob;
-            this.checkBoxDRG.Location = new System.Drawing.Point(138, 67);
+            this.checkBoxDRG.Location = new System.Drawing.Point(138, 62);
             this.checkBoxDRG.Name = "checkBoxDRG";
             this.checkBoxDRG.Size = new System.Drawing.Size(38, 38);
             this.checkBoxDRG.TabIndex = 7;
@@ -1136,7 +1132,7 @@ namespace ACT.TPMonitor
             this.checkBoxLNC.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxLNC.ImageIndex = 4;
             this.checkBoxLNC.ImageList = this.imageListJob;
-            this.checkBoxLNC.Location = new System.Drawing.Point(138, 20);
+            this.checkBoxLNC.Location = new System.Drawing.Point(138, 18);
             this.checkBoxLNC.Name = "checkBoxLNC";
             this.checkBoxLNC.Size = new System.Drawing.Size(38, 38);
             this.checkBoxLNC.TabIndex = 6;
@@ -1151,7 +1147,7 @@ namespace ACT.TPMonitor
             this.checkBoxWAR.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxWAR.ImageIndex = 10;
             this.checkBoxWAR.ImageList = this.imageListJob;
-            this.checkBoxWAR.Location = new System.Drawing.Point(50, 67);
+            this.checkBoxWAR.Location = new System.Drawing.Point(50, 62);
             this.checkBoxWAR.Name = "checkBoxWAR";
             this.checkBoxWAR.Size = new System.Drawing.Size(38, 38);
             this.checkBoxWAR.TabIndex = 3;
@@ -1166,7 +1162,7 @@ namespace ACT.TPMonitor
             this.checkBoxMRD.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxMRD.ImageIndex = 3;
             this.checkBoxMRD.ImageList = this.imageListJob;
-            this.checkBoxMRD.Location = new System.Drawing.Point(50, 20);
+            this.checkBoxMRD.Location = new System.Drawing.Point(50, 18);
             this.checkBoxMRD.Name = "checkBoxMRD";
             this.checkBoxMRD.Size = new System.Drawing.Size(38, 38);
             this.checkBoxMRD.TabIndex = 2;
@@ -1181,7 +1177,7 @@ namespace ACT.TPMonitor
             this.checkBoxMNK.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxMNK.ImageIndex = 9;
             this.checkBoxMNK.ImageList = this.imageListJob;
-            this.checkBoxMNK.Location = new System.Drawing.Point(94, 67);
+            this.checkBoxMNK.Location = new System.Drawing.Point(94, 62);
             this.checkBoxMNK.Name = "checkBoxMNK";
             this.checkBoxMNK.Size = new System.Drawing.Size(38, 38);
             this.checkBoxMNK.TabIndex = 5;
@@ -1196,7 +1192,7 @@ namespace ACT.TPMonitor
             this.checkBoxPGL.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxPGL.ImageIndex = 2;
             this.checkBoxPGL.ImageList = this.imageListJob;
-            this.checkBoxPGL.Location = new System.Drawing.Point(94, 20);
+            this.checkBoxPGL.Location = new System.Drawing.Point(94, 18);
             this.checkBoxPGL.Name = "checkBoxPGL";
             this.checkBoxPGL.Size = new System.Drawing.Size(38, 38);
             this.checkBoxPGL.TabIndex = 4;
@@ -1211,7 +1207,7 @@ namespace ACT.TPMonitor
             this.checkBoxPLD.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxPLD.ImageIndex = 8;
             this.checkBoxPLD.ImageList = this.imageListJob;
-            this.checkBoxPLD.Location = new System.Drawing.Point(6, 67);
+            this.checkBoxPLD.Location = new System.Drawing.Point(6, 62);
             this.checkBoxPLD.Name = "checkBoxPLD";
             this.checkBoxPLD.Size = new System.Drawing.Size(38, 38);
             this.checkBoxPLD.TabIndex = 1;
@@ -1226,7 +1222,7 @@ namespace ACT.TPMonitor
             this.checkBoxGLD.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxGLD.ImageIndex = 1;
             this.checkBoxGLD.ImageList = this.imageListJob;
-            this.checkBoxGLD.Location = new System.Drawing.Point(6, 20);
+            this.checkBoxGLD.Location = new System.Drawing.Point(6, 18);
             this.checkBoxGLD.Name = "checkBoxGLD";
             this.checkBoxGLD.Size = new System.Drawing.Size(38, 38);
             this.checkBoxGLD.TabIndex = 0;
@@ -1260,9 +1256,9 @@ namespace ACT.TPMonitor
             // 
             // textBoxColors
             // 
-            this.textBoxColors.Location = new System.Drawing.Point(763, 477);
+            this.textBoxColors.Location = new System.Drawing.Point(763, 380);
             this.textBoxColors.Name = "textBoxColors";
-            this.textBoxColors.Size = new System.Drawing.Size(100, 20);
+            this.textBoxColors.Size = new System.Drawing.Size(100, 19);
             this.textBoxColors.TabIndex = 8;
             this.textBoxColors.TabStop = false;
             this.textBoxColors.Visible = false;
@@ -1270,9 +1266,9 @@ namespace ACT.TPMonitor
             // checkBoxAllianceStyle
             // 
             this.checkBoxAllianceStyle.AutoSize = true;
-            this.checkBoxAllianceStyle.Location = new System.Drawing.Point(763, 504);
+            this.checkBoxAllianceStyle.Location = new System.Drawing.Point(763, 405);
             this.checkBoxAllianceStyle.Name = "checkBoxAllianceStyle";
-            this.checkBoxAllianceStyle.Size = new System.Drawing.Size(86, 17);
+            this.checkBoxAllianceStyle.Size = new System.Drawing.Size(91, 16);
             this.checkBoxAllianceStyle.TabIndex = 10;
             this.checkBoxAllianceStyle.TabStop = false;
             this.checkBoxAllianceStyle.Text = "AllianceStyle";
@@ -1283,18 +1279,18 @@ namespace ACT.TPMonitor
             // groupBoxUpdateCheck
             // 
             this.groupBoxUpdateCheck.Controls.Add(this.buttonCheck);
-            this.groupBoxUpdateCheck.Location = new System.Drawing.Point(763, 13);
+            this.groupBoxUpdateCheck.Location = new System.Drawing.Point(763, 12);
             this.groupBoxUpdateCheck.Name = "groupBoxUpdateCheck";
-            this.groupBoxUpdateCheck.Size = new System.Drawing.Size(148, 59);
+            this.groupBoxUpdateCheck.Size = new System.Drawing.Size(148, 54);
             this.groupBoxUpdateCheck.TabIndex = 11;
             this.groupBoxUpdateCheck.TabStop = false;
             this.groupBoxUpdateCheck.Text = "Update Check";
             // 
             // buttonCheck
             // 
-            this.buttonCheck.Location = new System.Drawing.Point(37, 20);
+            this.buttonCheck.Location = new System.Drawing.Point(37, 18);
             this.buttonCheck.Name = "buttonCheck";
-            this.buttonCheck.Size = new System.Drawing.Size(75, 25);
+            this.buttonCheck.Size = new System.Drawing.Size(75, 23);
             this.buttonCheck.TabIndex = 0;
             this.buttonCheck.Text = "Check";
             this.buttonCheck.UseVisualStyleBackColor = true;
@@ -1302,7 +1298,6 @@ namespace ACT.TPMonitor
             // 
             // panelPlugin
             // 
-            this.panelPlugin.Controls.Add(this.groupBoxConfigFile);
             this.panelPlugin.Controls.Add(this.groupBoxCharacterFolder);
             this.panelPlugin.Controls.Add(this.groupBoxUpdateCheck);
             this.panelPlugin.Controls.Add(this.groupBoxStatus);
@@ -1317,49 +1312,16 @@ namespace ACT.TPMonitor
             this.panelPlugin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPlugin.Location = new System.Drawing.Point(0, 0);
             this.panelPlugin.Name = "panelPlugin";
-            this.panelPlugin.Size = new System.Drawing.Size(950, 649);
+            this.panelPlugin.Size = new System.Drawing.Size(953, 539);
             this.panelPlugin.TabIndex = 12;
-            // 
-            // groupBoxConfigFile
-            // 
-            this.groupBoxConfigFile.Controls.Add(this.buttonOpenFile);
-            this.groupBoxConfigFile.Controls.Add(this.textBoxConfigFile);
-            this.groupBoxConfigFile.Location = new System.Drawing.Point(13, 78);
-            this.groupBoxConfigFile.Name = "groupBoxConfigFile";
-            this.groupBoxConfigFile.Size = new System.Drawing.Size(744, 59);
-            this.groupBoxConfigFile.TabIndex = 12;
-            this.groupBoxConfigFile.TabStop = false;
-            this.groupBoxConfigFile.Text = "FFXIV Config File";
-            // 
-            // buttonOpenFile
-            // 
-            this.buttonOpenFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonOpenFile.Location = new System.Drawing.Point(663, 20);
-            this.buttonOpenFile.Name = "buttonOpenFile";
-            this.buttonOpenFile.Size = new System.Drawing.Size(75, 25);
-            this.buttonOpenFile.TabIndex = 1;
-            this.buttonOpenFile.Text = "Open File";
-            this.buttonOpenFile.UseVisualStyleBackColor = true;
-            this.buttonOpenFolder.Click += new System.EventHandler(this.buttonOpenFile_Click);
-            // 
-            // textBoxConfigFile
-            // 
-            this.textBoxConfigFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxConfigFile.Location = new System.Drawing.Point(6, 22);
-            this.textBoxConfigFile.Name = "textBoxConfigFile";
-            this.textBoxConfigFile.ReadOnly = true;
-            this.textBoxConfigFile.Size = new System.Drawing.Size(651, 20);
-            this.textBoxConfigFile.TabIndex = 0;
-            this.textBoxConfigFile.Text = "%Appdata%";
             // 
             // ACTTabpageControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelPlugin);
             this.Name = "ACTTabpageControl";
-            this.Size = new System.Drawing.Size(950, 649);
+            this.Size = new System.Drawing.Size(950, 539);
             this.groupBoxCharacterFolder.ResumeLayout(false);
             this.groupBoxCharacterFolder.PerformLayout();
             this.groupBoxStatus.ResumeLayout(false);
@@ -1394,71 +1356,18 @@ namespace ACT.TPMonitor
             this.groupBoxUpdateCheck.ResumeLayout(false);
             this.panelPlugin.ResumeLayout(false);
             this.panelPlugin.PerformLayout();
-            this.groupBoxConfigFile.ResumeLayout(false);
-            this.groupBoxConfigFile.PerformLayout();
             this.ResumeLayout(false);
 
 		}
 		#endregion
 
         #endregion
-        
-        private void GetFfxivChracterFolder(bool init = false) {
-            bool needFolder = false;
-            if (init) {
-                string[] tmp = null;
-                try {
-                    tmp = Directory.GetDirectories(Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"My Games\FINAL FANTASY XIV - A Realm Reborn")), @"FFXIV_*");
-                } catch {}
-                if (tmp != null && tmp.Length > 0) {
-                    textBoxCharacterFolder.Text = tmp[0];
-                } else {
-                    needFolder = true;
-                }
-            }
-            if (!init || needFolder) {
-                FolderBrowserDialog f = new FolderBrowserDialog();
-                //f.RootFolder = Environment.SpecialFolder.MyDocuments;
-                f.RootFolder = Environment.SpecialFolder.MyComputer;
-                f.SelectedPath = textBoxCharacterFolder.Text;
-                f.ShowNewFolderButton = false;
-                if (f.ShowDialog(this) == DialogResult.OK) {
-                    if (Path.GetFileName(f.SelectedPath).StartsWith("FFXIV_CHR")) {
-                        textBoxCharacterFolder.Text = f.SelectedPath;
-                        if (!init) {
-                            controller.PartyListUI = Util.GetPartyListLocation(textBoxCharacterFolder.Text, textBoxConfigFile.Text);
-                        }
-                    } else {
-                        MessageBox.Show("Please select a folder that starts with 'FFXIV_CHR'");
-                    }
-                }
-            }
-        }
-
-        private void getFfxivConfigFile(bool init = false) {
-            string defConfigPath = Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.Personal), @"My Games\FINAL FANTASY XIV - A Realm Reborn\FFXIV.cfg");
-            if (File.Exists(defConfigPath) && init) {
-                textBoxConfigFile.Text = defConfigPath;
-            } else {
-                OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Title = @"Please select your FFXIV.cfg file";
-                ofd.Multiselect = false;
-                ofd.Filter = "FFXIV Config|FFXIV.cfg";
-                ofd.CheckPathExists = true;
-                ofd.CheckFileExists = true;
-                ofd.FilterIndex = 1;
-                ofd.InitialDirectory = "C:\\";
-                ofd.RestoreDirectory = true;
-                ofd.ShowDialog();
-                textBoxConfigFile.Text = ofd.FileName;
-            }
-        }
 
         public ACTTabpageControl()
 		{
 			InitializeComponent();
 
-            textBoxCharacterFolder.Text = @"";
+            textBoxCharacterFolder.Text = (Directory.GetDirectories(Path.Combine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"My Games\FINAL FANTASY XIV - A Realm Reborn")), @"FFXIV_*"))[0]; 
             comboBoxTPFont.Text = "PIRULEN";
 
             checkBoxGLD.Tag = JOB.GLD;
@@ -1574,9 +1483,6 @@ namespace ACT.TPMonitor
         private Button buttonCheck;
         private CheckBox checkBoxDisappears;
         private Panel panelPlugin;
-        private GroupBox groupBoxConfigFile;
-        private Button buttonOpenFile;
-        private TextBox textBoxConfigFile;
         private DataTable dtColor = new DataTable();
 
 		#region IActPluginV1 Members
@@ -1589,11 +1495,12 @@ namespace ACT.TPMonitor
             pluginScreenSpace.Text = "TPMonitor";
             lblStatus = pluginStatusText;	        // Hand the status label's reference to our local var
             pluginScreenSpace.Controls.Add(this);	// Add this UserControl to the tab ACT provides
-            this.Dock = DockStyle.Fill;	            // Expand the UserControl to fill the tab's client space
+            this.Dock = DockStyle.Fill;	            // Expand the UserControl to fill the tab's client space            
+
+            controller = new TPMonitorController(this);
             
             xmlSettings = new SettingsSerializer(this);	// Create a new settings serializer and pass it this instance
             LoadSettings();
-            controller = new TPMonitorController(this);
 
             // Load FFXIV plugin's assembly if needed
             AppDomain.CurrentDomain.AssemblyResolve += (o, e) =>
@@ -1612,7 +1519,6 @@ namespace ACT.TPMonitor
             };
 
             controller.CharFolder = textBoxCharacterFolder.Text;
-            controller.ConfigFile = textBoxConfigFile.Text;
             controller.HideWhenDissolve = checkBoxHideWhenDissolve.Checked;
             controller.HideWhenEnded = checkBoxHideWhenEnded.Checked;
             controller.ShowMyTP = checkBoxShowMyTP.Checked;
@@ -1687,7 +1593,6 @@ namespace ACT.TPMonitor
         private void LoadSettings()
 		{
             xmlSettings.AddControlSetting(textBoxCharacterFolder.Name, textBoxCharacterFolder);
-            xmlSettings.AddControlSetting(textBoxConfigFile.Name, textBoxConfigFile);
             xmlSettings.AddControlSetting(comboBoxTPFont.Name, comboBoxTPFont);
             xmlSettings.AddControlSetting(numericUpDownFontSize.Name, numericUpDownFontSize);
             xmlSettings.AddControlSetting(checkBoxHideWhenDissolve.Name, checkBoxHideWhenDissolve);
@@ -1750,10 +1655,7 @@ namespace ACT.TPMonitor
 					lblStatus.Text = "Error loading settings: " + ex.Message;
 				}
 				xReader.Close();
-            } else {
-                this.GetFfxivChracterFolder(true);
-                this.getFfxivConfigFile(true);
-            }
+			}
 		}
 
         private void SaveSettings()
@@ -1850,11 +1752,22 @@ namespace ACT.TPMonitor
 
         private void buttonOpenFolder_Click(object sender, EventArgs e)
         {
-            this.GetFfxivChracterFolder();
-        }
-
-        private void buttonOpenFile_Click(object sender, EventArgs e) {
-            this.getFfxivConfigFile();
+            FolderBrowserDialog f = new FolderBrowserDialog();
+            f.RootFolder = Environment.SpecialFolder.MyDocuments;
+            f.SelectedPath = textBoxCharacterFolder.Text;
+            f.ShowNewFolderButton = false;
+            if (f.ShowDialog(this) == DialogResult.OK)
+            {
+                if (Path.GetFileName(f.SelectedPath).StartsWith("FFXIV_CHR"))
+                {
+                    textBoxCharacterFolder.Text = f.SelectedPath;
+                    controller.PartyListUI = Util.GetPartyListLocation(textBoxCharacterFolder.Text);
+                }
+                else
+                {
+                    MessageBox.Show("Please select a folder that starts with 'FFXIV_CHR'");
+                }
+            }
         }
         
         private void buttonCopy_Click(object sender, EventArgs e)
@@ -1931,7 +1844,7 @@ namespace ACT.TPMonitor
                     tabControlStyle.SelectedIndex = 0;
                     if (radioButtonOffset.Checked)
                     {
-                        controller.PartyListUI = Util.GetPartyListLocation(textBoxCharacterFolder.Text, textBoxConfigFile.Text);
+                        controller.PartyListUI = Util.GetPartyListLocation(textBoxCharacterFolder.Text);
                         arg.Location = new Point(
                             controller.PartyListUI.Rect.Location.X + (int)numericUpDownOffsetX.Value,
                             controller.PartyListUI.Rect.Location.Y + (int)numericUpDownOffsetY.Value);
@@ -2160,10 +2073,6 @@ namespace ACT.TPMonitor
         {
             AutoUpdater.IsCoverdPreRelease = true;
             AutoUpdater.Start();
-        }
-
-        private void panelPlugin_Paint(object sender, PaintEventArgs e) {
-
         }
     }
 }
