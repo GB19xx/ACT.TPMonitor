@@ -207,13 +207,7 @@ namespace ACT.TPMonitor
 
         private static float GetFloat(string v)
         {
-            if (v.IndexOf(".") > 0)
-                return float.Parse(v);
-            else
-            {
-                System.Globalization.CultureInfo cultureFr = new System.Globalization.CultureInfo("fr-fr");
-                return float.Parse(v, cultureFr);
-            }
+            return float.Parse(v, System.Globalization.CultureInfo.InvariantCulture);
         }
 
         public static bool IsActive(IntPtr hWnd)
