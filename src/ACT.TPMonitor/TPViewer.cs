@@ -63,27 +63,51 @@ namespace ACT.TPMonitor
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (this.Visible)
-            {
-                if (_controller.DisappearsInActive && !Util.IsActive(FFXIVPluginHelper.GetFFXIVProcess.MainWindowHandle))
-                {
-                    // Disappears
-                }
-                else
-                {
-                    Graphics g = e.Graphics;
-                    g.Clear(this.BackColor);
+            if (!this.Visible)
+                return;
+            // Disappears
+            if (_controller.DisappearsInActive && !Util.IsActive(FFXIVPluginHelper.GetFFXIVProcess.MainWindowHandle))
+                return;
 
-                    int s = _controller.IsFixedMode && _controller.ShowMyTP ? 0 : 1;
-                    for (int i = s; i < _controller.PartyMemberInfo.Count; i++)
-                    {
-                        if (!string.IsNullOrEmpty(_controller.PartyMemberInfo[i].Name) &&
-                            _controller.HideJob.IndexOf((JOB)_controller.PartyMemberInfo[i].Job) == -1)
-                        {
-                            DrawBar(g, i, _controller.PartyMemberInfo[i].CurrentTP, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
-                            DrawValue(g, i, _controller.PartyMemberInfo[i].CurrentTP, _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale);
-                        }
-                    }
+            Graphics g = e.Graphics;
+            g.Clear(this.BackColor);
+
+            int s = _controller.IsFixedMode && _controller.ShowMyTP ? 0 : 1;
+            for (int i = 0; i < _controller.PartyMemberInfo.Count; i++)
+            {
+                if (string.IsNullOrEmpty(_controller.PartyMemberInfo[i].Name) ||
+                         _controller.HideJob.IndexOf((JOB)_controller.PartyMemberInfo[i].Job) != -1)
+                    continue;
+
+                float scale = _controller.IsUserScale ? _controller.UserScale : _controller.PartyListUI.Scale;
+                bool showSelf = _controller.ShowMyTP && _controller.IsFixedMode;
+                if (showSelf || i != 0)
+                {
+                    DrawBar(g, i, _controller.PartyMemberInfo[i].CurrentTP, scale);
+                    DrawString(g, i,_controller.PartyMemberInfo[i].CurrentTP.ToString(), scale, 0, 0);
+                }
+
+                if (_controller.PartyMemberInfo[i].CooldownMap == null)
+                    continue;
+
+                int offsetAdjust = (int)(_controller.TPFont.Height * scale * 4);
+                int offsetX = offsetAdjust;
+                int font_unit = (int)(_controller.TPFont.Height * scale);
+                int labelOffsetY = (int)(_controller.TPFont.Height * scale * -1.2);
+
+                foreach (TPMonitorController.MonitoredAbility ability in _controller.Abilities)
+                {
+                    if (!_controller.PartyMemberInfo[i].CooldownMap.ContainsKey(ability.MatchName))
+                        continue;
+                    TimeSpan span = _controller.PartyMemberInfo[i].CooldownMap[ability.MatchName].Subtract(DateTime.Now);
+                    int remaining = (int)Math.Ceiling(span.TotalSeconds);
+                    if (remaining <= 0)
+                        continue;
+
+                    DrawString(g, i, remaining.ToString(), scale, offsetX, 0);
+                    DrawString(g, i, ability.ShortName, scale, offsetX, labelOffsetY);
+
+                    offsetX += offsetAdjust;
                 }
             }
         }
@@ -130,10 +154,10 @@ namespace ACT.TPMonitor
             return brush;
         }
 
-        private void DrawValue(Graphics g, int idx, int value, float scale)
+        private void DrawString(Graphics g, int idx, String str, float scale, int offsetX, int offsetY)
         {
             // レイアウト枠
-            Rectangle rect = new Rectangle((int)(247 * scale), (int)(((40 * idx) + 60 + 8) * scale), (int)(100 * scale), (int)(8 * scale));
+            Rectangle rect = new Rectangle((int)(247 * scale) + offsetX, (int)(((40 * idx) + 60 + 8) * scale) + offsetY, (int)(100 * scale), (int)(8 * scale));
             rect.Inflate(0, 0); // ちょっと小さい枠内にレイアウト
 
             // 文字列位置の設定
@@ -148,7 +172,7 @@ namespace ACT.TPMonitor
 
             // パスを作成
             GraphicsPath path = new GraphicsPath();
-            path.AddString(value.ToString(), f.FontFamily, (int)f.Style, f.Height * scale, rect, sf); // 文字列のパスを追加
+            path.AddString(str, f.FontFamily, (int)f.Style, f.Height * scale, rect, sf); // 文字列のパスを追加
 
             // フチを描く
             Pen p = new Pen(Color.FromArgb(0x46, 0x86, 0xa9), 1.0f * scale);
