@@ -142,8 +142,12 @@ namespace ACT.TPMonitor
             {
                 _screenRect = GetWindowSize(path);
                 Widget widget = new Widget();
-                widget.Rect = new Rectangle(new Point(0, 0), new Size(0, 0));
+                widget.Rect = new Rectangle(new Point(0, 0), new Size(380, 408));
                 widget.Scale = 1.0f;
+
+                _partyListUI = widget;
+                _lastWriteTime = File.GetLastWriteTime(textFile);
+                return _partyListUI;
 
                 using (System.IO.StreamReader sr = new System.IO.StreamReader(textFile, System.Text.Encoding.GetEncoding("shift_jis")))
                 {
