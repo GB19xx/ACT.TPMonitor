@@ -196,6 +196,8 @@ namespace ACT.TPMonitor
                             }
                             y += _screenRect.Top;
 
+                            // Add room for cooldowns.
+                            width += 200;
 
                             widget.Rect = new Rectangle(new Point(x, y), new Size(width, height));
                             widget.Scale = widgetScale;

@@ -123,6 +123,8 @@ namespace ACT.TPMonitor
 
                         Combatant combatant = new Combatant();
 
+                        fi = temp.GetType().GetField("ID", BindingFlags.Public | BindingFlags.Instance);
+                        combatant.ID = (uint)fi.GetValue(temp);
                         fi = temp.GetType().GetField("Job", BindingFlags.Public | BindingFlags.Instance);
                         combatant.Job = (int)fi.GetValue(temp);
                         fi = temp.GetType().GetField("Name", BindingFlags.Public | BindingFlags.Instance);
@@ -153,5 +155,6 @@ namespace ACT.TPMonitor
         public int CurrentMP;
         public int MaxMP;
         public int CurrentTP;
+        public Dictionary<string, DateTime> CooldownMap;
     }
 }

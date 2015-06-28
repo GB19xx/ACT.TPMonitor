@@ -48,9 +48,19 @@ namespace ACT.TPMonitor
         public SynchronizedCollection<JOB> HideJob { get; set; }
         public DataTable dtColor { get; set; }
 
+        public class MonitoredAbility
+        {
+            public string MatchName;
+            public string ShortName;
+            public int CooldownSeconds;
+        }
+        public List<MonitoredAbility> Abilities { get; private set; }
+
         private Regex regexCmd = new Regex(@"(?<Time>\[.+?\]) .{2}:.{4}:TP ((?<Num>\d):(?<Name>.*)|/(?<Command>.+))", RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private Regex regexDissolve = new Regex(@"(パーティ(を解散しま|が解散されま)した|のパーティから離脱しました)。", RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private Regex regexEnded = new Regex(@"「.+?」の攻略を終了した。$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private Regex regexAbility = new Regex(@"(?<Time>\[.+?\]) ..:(?<ID>[0-9A-Z]+):(?<Name>.*?):.*?:(?<Ability>.*?):", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private Regex regexCmdWatchAbility = new Regex(@"watch (?<MatchName>.*?):(?<ShortName>.*?):(?<CooldownSeconds>\d+)");
 
         private ACTTabpageControl actTab;
         private Form viewer;
@@ -101,6 +111,8 @@ namespace ACT.TPMonitor
             getTP = new Thread(new ThreadStart(GetMemberTP));
             getTP.Name = "Get TP Thread";
             getTP.Start();
+
+            Abilities = new List<MonitoredAbility>();
         }
 
         public void Dispose()
@@ -260,6 +272,52 @@ namespace ACT.TPMonitor
             }
         }
 
+        private bool playerByHexID(string hexID, out int playerID)
+        {
+            uint id;
+            try
+            {
+                id = UInt32.Parse(hexID, System.Globalization.NumberStyles.HexNumber);
+            }
+            catch
+            {
+                playerID = -1;
+                return false;
+            }
+
+            for (int i = 0; i < 8; i++)
+            {
+                if (PartyMemberInfo[i].ID != id)
+                    continue;
+                playerID = i;
+                return true;
+            }
+
+            playerID = -1;
+            return false;
+        }
+
+        private void noteCooldown(string abilityStr, string hexID)
+        {
+            int playerID;
+            if (!playerByHexID(hexID, out playerID))
+                return;
+
+            if (PartyMemberInfo[playerID].CooldownMap == null)
+                PartyMemberInfo[playerID].CooldownMap = new Dictionary<string, DateTime>();
+
+            foreach (MonitoredAbility ability in Abilities)
+            {
+                if (ability.MatchName != abilityStr)
+                    continue;
+
+                // Time is hard, so rather than parsing just assume time is now.  <_<
+                DateTime readyTime = DateTime.Now.AddSeconds(ability.CooldownSeconds);
+                PartyMemberInfo[playerID].CooldownMap[abilityStr] = readyTime;
+                return;
+            }
+        }
+
         private void act_OnLogLineRead(bool isImport, LogLineEventArgs logInfo)
         {
             if (!isImport)
@@ -279,10 +337,20 @@ namespace ACT.TPMonitor
                     return;
                 }
 
+                Match abilityMatch = regexAbility.Match(logInfo.logLine);
+                if (abilityMatch.Success)
+                {
+                    string ability = abilityMatch.Groups["Ability"].ToString();
+                    string hexID = abilityMatch.Groups["ID"].ToString();
+                    noteCooldown(ability, hexID);
+                    return;
+                }
+
                 Match match = regexCmd.Match(logInfo.logLine);
                 if (match.Success)
                 {
-                    string command = match.Groups["Command"].ToString().ToLower();
+                    string caseSensitiveCommand = match.Groups["Command"].ToString();
+                    string command = caseSensitiveCommand.ToLower();
                     if (string.IsNullOrEmpty(command))
                     {
                         switch (match.Groups["Num"].ToString())
@@ -303,6 +371,22 @@ namespace ACT.TPMonitor
                     }
                     else
                     {
+                        Match watchMatch = regexCmdWatchAbility.Match(caseSensitiveCommand);
+                        if (watchMatch.Success)
+                        {
+                            string matchName = watchMatch.Groups["MatchName"].ToString();
+                            foreach (MonitoredAbility ability in Abilities)
+                            {
+                                if (ability.MatchName == matchName)
+                                    return;
+                            }
+
+                            string shortName = watchMatch.Groups["ShortName"].ToString();
+                            int cooldown = Convert.ToInt32(watchMatch.Groups["CooldownSeconds"].ToString());
+                            Abilities.Add(new MonitoredAbility{MatchName = matchName, ShortName = shortName, CooldownSeconds = cooldown});
+                            return;
+                        }
+
                         switch (command)
                         {
                             case "adjust":
@@ -318,7 +402,9 @@ namespace ACT.TPMonitor
                                     PartyMemberInfo[i].Job = (int)JOB.Unknown;
                                     PartyMemberInfo[i].Name = string.Empty;
                                     PartyMemberInfo[i].CurrentTP = 0;
+                                    PartyMemberInfo[i].CooldownMap = null;
                                 }
+                                Abilities.Clear();
                                 break;
                             case "hide":
                                 viewer.Hide();
@@ -392,6 +478,7 @@ namespace ACT.TPMonitor
                                 PartyMemberInfo[i].CurrentMP = c.CurrentMP;
                                 PartyMemberInfo[i].MaxMP = c.MaxMP;
                                 PartyMemberInfo[i].CurrentTP = c.CurrentTP;
+                                PartyMemberInfo[i].ID = c.ID;
                                 break;
                             }
                         }
