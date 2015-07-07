@@ -116,8 +116,11 @@ namespace ACT.TPMonitor
             this.labelHereNowY = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
             this.groupBoxDisplayJob = new System.Windows.Forms.GroupBox();
-            this.checkBoxNIN = new System.Windows.Forms.CheckBox();
+            this.checkBoxAST = new System.Windows.Forms.CheckBox();
             this.imageListJob = new System.Windows.Forms.ImageList(this.components);
+            this.checkBoxMCH = new System.Windows.Forms.CheckBox();
+            this.checkBoxDRK = new System.Windows.Forms.CheckBox();
+            this.checkBoxNIN = new System.Windows.Forms.CheckBox();
             this.checkBoxROG = new System.Windows.Forms.CheckBox();
             this.checkBoxSCH = new System.Windows.Forms.CheckBox();
             this.checkBoxSMN = new System.Windows.Forms.CheckBox();
@@ -469,7 +472,7 @@ namespace ACT.TPMonitor
             this.groupBoxSettings.Controls.Add(this.groupBoxScale);
             this.groupBoxSettings.Controls.Add(this.dataGridViewColor);
             this.groupBoxSettings.Controls.Add(this.groupBoxWhereNow);
-            this.groupBoxSettings.Location = new System.Drawing.Point(13, 308);
+            this.groupBoxSettings.Location = new System.Drawing.Point(13, 352);
             this.groupBoxSettings.Name = "groupBoxSettings";
             this.groupBoxSettings.Size = new System.Drawing.Size(744, 217);
             this.groupBoxSettings.TabIndex = 5;
@@ -511,6 +514,7 @@ namespace ACT.TPMonitor
             // 
             this.radioButtonOffset.AutoSize = true;
             this.radioButtonOffset.Checked = true;
+            this.radioButtonOffset.Enabled = false;
             this.radioButtonOffset.Location = new System.Drawing.Point(5, 6);
             this.radioButtonOffset.Name = "radioButtonOffset";
             this.radioButtonOffset.Size = new System.Drawing.Size(55, 16);
@@ -533,6 +537,7 @@ namespace ACT.TPMonitor
             // 
             // numericUpDownOffsetX
             // 
+            this.numericUpDownOffsetX.Enabled = false;
             this.numericUpDownOffsetX.Location = new System.Drawing.Point(53, 28);
             this.numericUpDownOffsetX.Maximum = new decimal(new int[] {
             10000,
@@ -552,6 +557,7 @@ namespace ACT.TPMonitor
             // 
             // numericUpDownOffsetY
             // 
+            this.numericUpDownOffsetY.Enabled = false;
             this.numericUpDownOffsetY.Location = new System.Drawing.Point(195, 28);
             this.numericUpDownOffsetY.Maximum = new decimal(new int[] {
             10000,
@@ -610,6 +616,7 @@ namespace ACT.TPMonitor
             // labelOffsetX
             // 
             this.labelOffsetX.AutoSize = true;
+            this.labelOffsetX.Enabled = false;
             this.labelOffsetX.Location = new System.Drawing.Point(33, 30);
             this.labelOffsetX.Name = "labelOffsetX";
             this.labelOffsetX.Size = new System.Drawing.Size(14, 12);
@@ -628,6 +635,7 @@ namespace ACT.TPMonitor
             // labelOffsetY
             // 
             this.labelOffsetY.AutoSize = true;
+            this.labelOffsetY.Enabled = false;
             this.labelOffsetY.Location = new System.Drawing.Point(175, 30);
             this.labelOffsetY.Name = "labelOffsetY";
             this.labelOffsetY.Size = new System.Drawing.Size(14, 12);
@@ -893,6 +901,9 @@ namespace ACT.TPMonitor
             // 
             // groupBoxDisplayJob
             // 
+            this.groupBoxDisplayJob.Controls.Add(this.checkBoxAST);
+            this.groupBoxDisplayJob.Controls.Add(this.checkBoxMCH);
+            this.groupBoxDisplayJob.Controls.Add(this.checkBoxDRK);
             this.groupBoxDisplayJob.Controls.Add(this.checkBoxNIN);
             this.groupBoxDisplayJob.Controls.Add(this.checkBoxROG);
             this.groupBoxDisplayJob.Controls.Add(this.checkBoxSCH);
@@ -914,25 +925,25 @@ namespace ACT.TPMonitor
             this.groupBoxDisplayJob.Controls.Add(this.checkBoxGLD);
             this.groupBoxDisplayJob.Location = new System.Drawing.Point(13, 196);
             this.groupBoxDisplayJob.Name = "groupBoxDisplayJob";
-            this.groupBoxDisplayJob.Size = new System.Drawing.Size(590, 106);
+            this.groupBoxDisplayJob.Size = new System.Drawing.Size(590, 150);
             this.groupBoxDisplayJob.TabIndex = 4;
             this.groupBoxDisplayJob.TabStop = false;
             this.groupBoxDisplayJob.Text = "Display Job";
             // 
-            // checkBoxNIN
+            // checkBoxAST
             // 
-            this.checkBoxNIN.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBoxNIN.AutoSize = true;
-            this.checkBoxNIN.Checked = true;
-            this.checkBoxNIN.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxNIN.ImageIndex = 19;
-            this.checkBoxNIN.ImageList = this.imageListJob;
-            this.checkBoxNIN.Location = new System.Drawing.Point(226, 62);
-            this.checkBoxNIN.Name = "checkBoxNIN";
-            this.checkBoxNIN.Size = new System.Drawing.Size(38, 38);
-            this.checkBoxNIN.TabIndex = 11;
-            this.checkBoxNIN.UseVisualStyleBackColor = true;
-            this.checkBoxNIN.CheckedChanged += new System.EventHandler(this.checkBoxJob_CheckedChanged);
+            this.checkBoxAST.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxAST.AutoSize = true;
+            this.checkBoxAST.Checked = true;
+            this.checkBoxAST.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxAST.ImageIndex = 22;
+            this.checkBoxAST.ImageList = this.imageListJob;
+            this.checkBoxAST.Location = new System.Drawing.Point(96, 106);
+            this.checkBoxAST.Name = "checkBoxAST";
+            this.checkBoxAST.Size = new System.Drawing.Size(38, 38);
+            this.checkBoxAST.TabIndex = 21;
+            this.checkBoxAST.UseVisualStyleBackColor = true;
+            this.checkBoxAST.CheckedChanged += new System.EventHandler(this.checkBoxJob_CheckedChanged);
             // 
             // imageListJob
             // 
@@ -958,6 +969,54 @@ namespace ACT.TPMonitor
             this.imageListJob.Images.SetKeyName(17, "Scholar.png");
             this.imageListJob.Images.SetKeyName(18, "Rogue.png");
             this.imageListJob.Images.SetKeyName(19, "Ninja.png");
+            this.imageListJob.Images.SetKeyName(20, "Machinist.png");
+            this.imageListJob.Images.SetKeyName(21, "DarkKnight.png");
+            this.imageListJob.Images.SetKeyName(22, "Astrologian.png");
+            // 
+            // checkBoxMCH
+            // 
+            this.checkBoxMCH.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxMCH.AutoSize = true;
+            this.checkBoxMCH.Checked = true;
+            this.checkBoxMCH.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMCH.ImageIndex = 20;
+            this.checkBoxMCH.ImageList = this.imageListJob;
+            this.checkBoxMCH.Location = new System.Drawing.Point(50, 106);
+            this.checkBoxMCH.Name = "checkBoxMCH";
+            this.checkBoxMCH.Size = new System.Drawing.Size(38, 38);
+            this.checkBoxMCH.TabIndex = 20;
+            this.checkBoxMCH.UseVisualStyleBackColor = true;
+            this.checkBoxMCH.CheckedChanged += new System.EventHandler(this.checkBoxJob_CheckedChanged);
+            // 
+            // checkBoxDRK
+            // 
+            this.checkBoxDRK.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxDRK.AutoSize = true;
+            this.checkBoxDRK.Checked = true;
+            this.checkBoxDRK.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDRK.ImageIndex = 21;
+            this.checkBoxDRK.ImageList = this.imageListJob;
+            this.checkBoxDRK.Location = new System.Drawing.Point(6, 106);
+            this.checkBoxDRK.Name = "checkBoxDRK";
+            this.checkBoxDRK.Size = new System.Drawing.Size(38, 38);
+            this.checkBoxDRK.TabIndex = 19;
+            this.checkBoxDRK.UseVisualStyleBackColor = true;
+            this.checkBoxDRK.CheckedChanged += new System.EventHandler(this.checkBoxJob_CheckedChanged);
+            // 
+            // checkBoxNIN
+            // 
+            this.checkBoxNIN.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxNIN.AutoSize = true;
+            this.checkBoxNIN.Checked = true;
+            this.checkBoxNIN.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxNIN.ImageIndex = 19;
+            this.checkBoxNIN.ImageList = this.imageListJob;
+            this.checkBoxNIN.Location = new System.Drawing.Point(226, 62);
+            this.checkBoxNIN.Name = "checkBoxNIN";
+            this.checkBoxNIN.Size = new System.Drawing.Size(38, 38);
+            this.checkBoxNIN.TabIndex = 11;
+            this.checkBoxNIN.UseVisualStyleBackColor = true;
+            this.checkBoxNIN.CheckedChanged += new System.EventHandler(this.checkBoxJob_CheckedChanged);
             // 
             // checkBoxROG
             // 
@@ -1253,6 +1312,9 @@ namespace ACT.TPMonitor
             this.imageListJobOff.Images.SetKeyName(17, "Scholar_off.png");
             this.imageListJobOff.Images.SetKeyName(18, "Rogue_off.png");
             this.imageListJobOff.Images.SetKeyName(19, "Ninja_off.png");
+            this.imageListJobOff.Images.SetKeyName(20, "Machinist_off.png");
+            this.imageListJobOff.Images.SetKeyName(21, "DarkKnight_off.png");
+            this.imageListJobOff.Images.SetKeyName(22, "Astrologian_off.png");
             // 
             // textBoxColors
             // 
@@ -1312,7 +1374,7 @@ namespace ACT.TPMonitor
             this.panelPlugin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPlugin.Location = new System.Drawing.Point(0, 0);
             this.panelPlugin.Name = "panelPlugin";
-            this.panelPlugin.Size = new System.Drawing.Size(953, 539);
+            this.panelPlugin.Size = new System.Drawing.Size(950, 580);
             this.panelPlugin.TabIndex = 12;
             // 
             // ACTTabpageControl
@@ -1321,7 +1383,7 @@ namespace ACT.TPMonitor
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelPlugin);
             this.Name = "ACTTabpageControl";
-            this.Size = new System.Drawing.Size(950, 539);
+            this.Size = new System.Drawing.Size(950, 580);
             this.groupBoxCharacterFolder.ResumeLayout(false);
             this.groupBoxCharacterFolder.PerformLayout();
             this.groupBoxStatus.ResumeLayout(false);
@@ -1389,6 +1451,9 @@ namespace ACT.TPMonitor
             checkBoxSCH.Tag = JOB.SCH;
             checkBoxROG.Tag = JOB.ROG;
             checkBoxNIN.Tag = JOB.NIN;
+            checkBoxDRK.Tag = JOB.DRK;
+            checkBoxMCH.Tag = JOB.MCH;
+            checkBoxAST.Tag = JOB.AST;
 		}
 
         Label lblStatus;	// The status label that appears in ACT's Plugin tab
@@ -1483,6 +1548,9 @@ namespace ACT.TPMonitor
         private Button buttonCheck;
         private CheckBox checkBoxDisappears;
         private Panel panelPlugin;
+        private CheckBox checkBoxAST;
+        private CheckBox checkBoxMCH;
+        private CheckBox checkBoxDRK;
         private DataTable dtColor = new DataTable();
 
 		#region IActPluginV1 Members
@@ -1534,6 +1602,9 @@ namespace ACT.TPMonitor
             }
             SetColorSetting();
             buttonApply_Click(this, null);
+
+            radioButtonFixed.Checked = true;
+            checkBoxUserScale.Checked = true;
 
             lblStatus.Text = "TPMonitor Plugin Started.";
         }
@@ -1631,6 +1702,9 @@ namespace ACT.TPMonitor
             xmlSettings.AddControlSetting(checkBoxSCH.Name, checkBoxSCH);
             xmlSettings.AddControlSetting(checkBoxROG.Name, checkBoxROG);
             xmlSettings.AddControlSetting(checkBoxNIN.Name, checkBoxNIN);
+            xmlSettings.AddControlSetting(checkBoxDRK.Name, checkBoxDRK);
+            xmlSettings.AddControlSetting(checkBoxMCH.Name, checkBoxMCH);
+            xmlSettings.AddControlSetting(checkBoxAST.Name, checkBoxAST);
 
 			if (File.Exists(settingsFile))
 			{

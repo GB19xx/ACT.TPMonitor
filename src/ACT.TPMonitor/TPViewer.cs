@@ -9,6 +9,7 @@ namespace ACT.TPMonitor
     public partial class TPViewer : Form
     {
         private TPMonitorController _controller;
+        private Widget widget;
 
         public TPViewer(TPMonitorController controller)
         {
@@ -43,6 +44,7 @@ namespace ACT.TPMonitor
 
         public void Adjust(Widget widget)
         {
+            this.widget = widget;
             Point pos = widget.Rect.Location;
             if (_controller.IsFixedMode)
             {
@@ -71,6 +73,11 @@ namespace ACT.TPMonitor
                 }
                 else
                 {
+                    if (_controller.IsUserScale)
+                    {
+                        this.SetBounds(this.Location.X, this.Location.Y, (int)(this.widget.Rect.Size.Width * _controller.UserScale), (int)(this.widget.Rect.Height * _controller.UserScale));
+                    }
+                    
                     Graphics g = e.Graphics;
                     g.Clear(this.BackColor);
 
